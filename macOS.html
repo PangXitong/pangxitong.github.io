@@ -1,0 +1,288 @@
+<!--头部-->
+<html lang="zh-CN">
+  <head>
+    <meta name="description"content="庞玺桐的个人博客">
+    <meta charset="utf-8">
+    <title>庞玺桐的个人博客</title> 
+    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css.css">
+    <meta name="applicable-device" content="pc,mobile">
+    <script type="text/javascript" src="./JavaScript.js"></script>
+    <!--百度统计-->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4882febf72013f5fbb90c577bfa65f40";
+      var s = document.getElementsByTagName("script")[0]; 
+     s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <!--span颜色注释-->
+    <style>
+      span {
+            color: #EDEDED;
+      }
+      span2 {
+            color: #EEFCA9;
+      }
+      span3 {
+             color: red;
+      }
+      span4 {
+             color: black;
+      }
+      span5 {
+             color: #D6B1A6;
+      }
+      span6 {
+             color: #E25DA9;
+      }
+      span7 {
+             color: #848484;
+      }
+      .page2{
+      padding-left:80px;/*左侧间距*/
+      text-align:left
+      }
+    </style>
+    <!--复制链接-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+    function shareCopyUrl(that) {
+            var clipboard = new ClipboardJS(that);
+            clipboard.on('success', function (e) {
+            console.info('Text:', e.text);
+            e.clearSelection();
+    }); 
+            clipboard.on('error', function (e) {
+            // console.error('Action:', e.action);
+            // console.error('Trigger:', e.trigger);
+    });
+            // 处理第一次点击不成功
+            clipboard.onClick(event);
+    }
+    </script>
+    <!--固定顶部导航栏-->    
+    <div class="top">
+      <center> 
+        <ul><big>
+          <li><a href="./index.html">庞玺桐的个人博客
+          <li><a href="#"><div style="display:inline-block;" class="downtime"></div></a></li>
+          <li id="right"><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li></big>
+          </li>        
+        </ul>
+      </center>      
+    </div>
+  </head>
+  <!--身体-->
+  <body bgcolor="#fff">
+    <!--表头-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 align="center"><big><big><big><big>macOS应急指令</h1></big></big></big></big>
+    <p align="left"class="container"style="width:900px;">
+      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此文章用于macOS13软件在故障时进行故障排除或临时的紧急修复。文章信息参考<a href="https://support.apple.com"target="_blank">Apple支持</a>。<br><br><small>(<span3>注意：</span3>此文章部分功能仅适用于macOS13，intel芯片的mac和M1芯片的mac部分操作略有差别，在最终执行操作时，应当参考<a href="https://support.apple.com"target="_blank">Apple支持</a>的最新文章，硬件故障不能通过软件修复)</small>
+      <br><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.&#160;macOS自带Web Server（apache）网页文件路径&#160;/Library/WebServer/Documents
+      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;macOS终端指令
+      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;开启 Apache：sudo apachectl start<button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="sudo apachectl start">复制</a></button>
+      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;停止 Apache：sudo apachectl stop<button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="sudo apachectl stop">复制</a></button>
+      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;重启 Apache：sudo apachectl restart<button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="sudo apachectl restart">复制</a> </button>
+      <br><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.&#160;故障排除和紧急修复，恢复到默认设置，参考文档：<a href="https://support.apple.com/zh-cn/HT201255"target="_blank">Apple支持</a>的最新文章
+      <br><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.&#160;终端常用指令：
+      <p align="left"class="container"style="width:750px;">安装开发者软件：xcode-select –install
+      <br><br>时间机器解除运行限制：sudo sysctl debug. lowpri_throttle_ enabled=0
+      <br>恢复限制：sudo syscl debug.lowpri_throttle_enabled=1
+      <br><br>新建隐藏文件夹：mkdir Documents/.abc
+      <br>将文件夹变成隐藏：mv + 拖动文件夹进入窗口
+      <br>将文件变成隐藏：chflags hidden + 拖动文件夹进入窗口
+      <br><br>重启程序呜、桌面和启动台：killall Dock
+      <br><br>1.查看端口被哪个程序占用:sudo lsof -i tcp:port
+      <br>示例：sudo lsof -i tcp:8080 查看8080端口是否被占用
+      <br>2.看到进程的PID，可以将进程杀死:sudo kill -9 PID
+      <br>示例：sudo kill -9 3210
+      <br><br>开机启动声音
+      <br>关闭：sudo nvram SystemAudioVolume=%80
+      <br>打开：sudo nvram -d SystemAudioVolume
+      <br><br>检验并更改SIP配置（在恢复模式下）
+      <br>检验：csrutil status
+      <br>关闭：csrutil disable
+      <br>开启：csrutil enable
+      <br><br>检查更新：softwareupdate -l
+      <br>执行安装更新：softwareupdate -i -a
+      <br>取消macOS公测版（需要重启电脑）：sudo softwareupdate --clear-catalog</p>
+      <p align="left"class="container"style="width:900px;"><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;4.&#160;macOS通用快捷键：</p><br>
+      <p align="left"class="container"style="width:750px;">关闭/退出应用： Command + Q
+      <br>复制粘贴 ：Command + C / V
+      <br>剪切内容 ：Command + X / V
+      <br>剪切/移动文件：Command + Option + V
+      <br>截屏（全凭） ：Command + Shift + 3
+      <br>截屏（选择） ：Command + Shift + 4
+      <br>录屏（显示） ：Command + Shift + 5
+      <br>切换桌面 ：Control + 右/左
+      <br>右键 ：Control + 鼠标点击
+      <br>删除：Command + delete
+      <br>关闭窗口：Command + W
+      <br>剪切：Command + A
+      <br>保存：Command + S
+      <br>快速查看：［空格］
+      <br>推出磁盘：Command + E
+      <br>输入“”：Shift + Option + K
+      <br>显示隐藏的文件：Command + Shift + .</p>
+      <p align="left"class="container"style="width:900px;"><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;5.&#160;macOS文件系统：</p><br>
+      <p align="left"class="container"style="width:750px;">
+      <big>（1）.Applications（应用程序）</big>
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;这个是存放各种软件的位置。
+
+<br><big>（2）.System（系统）</big>
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;包含由Apple安装的系统软件。这此资源是系统正常运行所必须的，位于启动卷宗中。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/CFMSupport CFM, Code Fragment Manager, 等同旧Mac OS应用程序都会使用的共有程式库. 以确保Mac OS环境的一致性. 当中储存有一个在OS X中极为重要的档桉—CarbonLib, 是执行炭火软件时必不可欠的档桉. 此外还有DiscRecordingLib(CD/R-RW用的程式库), OpenGLLib(OpenGL), stbCLib(c语言)。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/DTDs 作为存放系统所使用的各种XML档桉, 并为其格式定义之档桉. Mac OS X Data形式製成的文书, 分别由三个档桉管理, 分别是PropertyList.dtd, KeyboardLayout.dtd及sdef.dtd三个档桉所组成. 而DTD, 全名为Document Type Definition. 此外, .plist档桉亦是由XML撰写出来的。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/Extensions其实这裡就是用作存放硬件驱动的地方,苹果不称驱动程序为driver, 而是称为Extension。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/Filesystems 主要就是用以存放OS X对应及支持何种档桉格式的资料. 例同标准的AppleShare(苹果档桉分享标准), ISO 9660/FTP/HFS及至网络上用的如Samba等。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/HelpViewer 一切和Mac OS Help有关的档桉及文件都存放于此。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/Find 就是搜寻机能了. 是对应多国语言的。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/OpenSSL 全名为Secure Sockets Layer. 是一套通讯加密技术, 一般用于Web服务器上, 会将密码传送时以加密的暗号处理, 从而减低第三方成功盗 取资料的可能. 一般应用于以https开首的URL上. Mac OS X内置的WebServer—Apache, 亦包含这个服务。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/CoreServices/Dock这是OS X的特徵之一, 这部份是有关Dock的资料。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/CoreServices/Finder.app这个比较特别, 因为这是一个应用而非一个档桉夹, Finder.app可说是负责掌控整个OS上的一切资源。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/CoreServices/Kerberos由MIT(麻省理工大学)开发的网络认证技术. 能够很简单地以单一ID登入系统的检证技术. Mac OS X支援其版本4的Kerberos. 所谓Kerberos, 在希腊神话中是一头住在冥界, 拥三头, 蛇尾的地狱守门犬。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/CoreServices/Menu ExtrasStatus bar上面所有系统自带工具的原文件，双击打开可以直接在status bar上添加相应文件。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/CoreServices/Setup Assistant所有有关设定助理的资料都存放于此。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;/System/Library/CoreServices/Software Update这裡就是负责Software update的地方。
+
+<br><big>（3）.Library（资料库）</big>
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;系统资源库。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;比如字体、ColorSync 配置、偏好设置以及插件都应该安装在 Library 目录下适当的子目录中。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Application Support包含了应用相关的数据以及支持文件，比如第三方的插件，帮助应用，模板以及应用使用到但是并不需要用来支持运行的额外资源文件。按照惯例，所有这些内容都会被存储在以应用名称命名的子目录当中。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Assistants包含了帮助用户进行配置或者其它任务的程序。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ColorPickers包含了用来选择色彩的资源，它们根据某种模型，比如 HLS (色彩角、饱和度、亮度) 选择器或者 RGB 选择器。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ColorSync包含了 ColorSync 配置和脚本。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Components包含了系统包和扩展。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Contextual Menu Items包含了用于扩展系统级菜单的插件。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Dictionaries包含了系统自带的字典文件。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Desktop Pictures桌面图片目录。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Documentation包含了供计算机用户和管理员参考的文档文件和 Apple 帮助包。(Apple 帮助包在Help 子目录当中。) 在本地域中，这个目录包含了 Apple 公司发布的帮助包(不包括开发者文档)。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Extensions包含了设备驱动和其它内核扩展。(只存在于系统域当中。)
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Favorites包含了指向经常访问的文件夹、文件或者网站的别名。(仅仅存在于用户域当中。)
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Fonts包含了用于显示和打印的字体文件。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Java包含了Java运行环境。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;StartupItems包含了在系统导入时刻运行的系统以及第三方脚本和程序。 (更多有关系统导入时刻启动步骤的信息请参考系统启动程序主题)
+<br><big>（4）.User（用户）</big>
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;包含了某个用户专有的资源。这里也有一个Library文件夹，不同与上边的那个Library，是专为你的帐号服务，里面放的是你自己的个性化字体、配置文件等。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Applications包含仅仅当前用户可用的应用。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Desktop 包含了 Finder 在当前登录用户桌面上显示的桌面项。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Documents 包含了用户的个人文档。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Download 包含了下载的各种文档。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Library 包含了应用设置、偏好设置一起其他用户专有的系统资源。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Documentation包含了供计算机用户和管理员参考的文档文件和 Apple 帮助包。(Apple 帮助包在Help 子目录当中。) 在本地域中，这个目录包含了 Apple 公司发布的帮助包(不包括开发者文档)。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Extensions包含了设备驱动和其它内核扩展。(只存在于系统域当中）
+<br><big>（5）硬盘中还有几个隐藏文件夹</big>
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;1) bin———储存有基本的UNIX指令
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2) sbin——–UNIX 系统指令的储存地方, 是比较进阶的指令
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;3) etc———系统设定档桉储存地方
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;4) var———改动频繁的档桉, 都置放于此, 例如各log档桉
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;5) tmp——–系统的暂存档
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;6) usr———UNIX的使用者专用档桉夹
+      </p>
+      <br><p align="left"class="container"style="width:900px;"><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;结语：这些可以说是macOS的基础知识了，如果你准备使用macOS学习、办公或日常生活，这些是必备的知识，如果使用macOS只是为了安装Windows，那当我没说。</p>
+        <style>
+        .button1 {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            padding: 32px 64px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            border: 4px solid #0079F2;
+            border-radius:20px;
+        }
+        .button1:hover {
+            background-color: #0079F2;
+            color: white;
+        }
+    </style>
+    <p align="center"><a href="./index.html"target="_blank"><button class="button1"><big><big>回到首页</big></big></button></a></p>
+    <!--评论-->
+<center><div id="gitalk-container"style="width:800px;"></div></center>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <!-- or -->
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  
+  
+<div id="gitalk-container"></div>
+  <script>
+const gitalk = new Gitalk({
+  clientID: 'b2de3d132f1cc875b717',
+  clientSecret: 'e22e40f64a0e6e2a2243b8d1ad28a92d2761edfb',
+  repo: 'PangXitong',      // The repository of store comments,
+  owner: 'PangXitong',
+  admin: ['PangXitong'],
+  id: 'bug',      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+    <!--底部导航栏-->
+    <p style="background-color:#222222"style="color:#FFF"align="center">
+      <span><big><big><big><big>关注我</big></big></big></big></span><br>
+      <a href="https://jq.qq.com/?_wv=1027&k=HkcZEDm4"target="_blank"><img border="0" src="./images/qq.webp"width="100" height="100" />&#160;&#160;&#160;&#160;</a>
+      <a href="https://y.music.163.com/m/artist?app_version=8.8.20&id=51058853&userid=3695971939&dlt=0846"target="_blank"><img border="0" src="./images/NetEaseCloudMusic.png"width="100" height="100" />&#160;&#160;&#160;&#160;</a>
+      <a href="https://join.worldcommunitygrid.org?recruiterId=1147626"target="_blank"><img border="0" src="./images/WCG.webp"width="100" height="100" />&#160;&#160;&#160;&#160;</a>
+      <a href="https://v.douyin.com/6Fy16w1/"target="_blank"><img border="0" src="./images/tik-tok.png"width="100" height="100" />&#160;&#160;&#160;&#160;</a>
+      <a href="https://weibo.com/u/7460136539"target="_blank"><img border="0" src="./images/microblog.webp"width="100" height="100" /></a>&#160;&#160;&#160;&#160;</a>
+      <a href="mailto:pangxitong@yeah.net"target="_blank"><img border="0" src="./images/mail.webp"width="100" height="100" /></a>&#160;&#160;&#160;&#160;</a>
+      <a href="https://github.com/PangXitong"target="_blank"><img border="0" src="./images/GitHub.webp"width="100" height="100" />&#160;&#160;&#160;&#160;</a>
+      <a href="https://pan.baidu.com/s/1ZcUdw9lwF8Pde9fg_uSZhw?pwd=97xm"target="_blank"><img border="0" src="./images/panbaidu.webp"width="100" height="100" />&#160;&#160;&#160;&#160;</a>
+      <a href="https://afdian.net/a/PangXitong"target="_blank"><img border="0" src="./images/Money_Pro.webp"width="100" height="100" /></a>
+      <!-- 开服时间 -->
+      <class>
+        <table style="background-color:#222222">
+          <tr>
+            <td>
+              <div class="main-footer">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-4"class="city">
+                      <h4>技术支持</h4>
+                      <ul class="footer-links">
+                        <li><a href="https://www.w3school.com.cn"target="_blank">W3school</a> </li>
+                        <li><a href="https://tryzth.com"target="_blank">Panda Frp</a></li>
+                        <li><a href="https://www.natfrp.com"target="_blank">SAKURA FRP</a></li>
+                        <li><a href="https://github.com"target="_blank">GitHub</a></li>
+                        <li><a href="https://tongji.baidu.com"target="_blank">百度统计</a></li>
+                        <li><a href="https://gitalk.github.io"target="_blank">Gitalk</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-4">
+                      <h4>博客声明</h4>
+                      此博客没有收费项目，请各位谨防上当受骗。<br><br>此博客不含广告，仅做公益的正版资源共享和技术交流<br><br>
+                    </div>                    
+                    <div class="col-md-4">
+                      <h4>友情链接</h4>
+                      <ul class="footer-links">
+                        <li><a href="https://github.com/mcheping520"target="_blank">和平peaceful</a></li>
+                        <li><a href="https://github.com/lijianyv2-1"target="_blank">Xcating</a></li>
+                        <li><a href="./mccu/index.html"target="_blank">MCCU</a></li>
+                        <li><a href="https://steveandkrepa.github.io/?"target="_blank">袁浚皓的个人博客</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <p style="text-align: center;"><div style="display:inline-block;" class="uptime"></div>&nbsp;&nbsp;&nbsp;开发者：庞玺桐&nbsp;&nbsp;&nbsp;网站版本：1.0.0
+              
+              
+              </p>
+            </div>
+          </tr>
+        </table>
+      </class>
+    </p>
+  </body>
+</html>
