@@ -4,7 +4,7 @@
   height: auto; /*高度改为自动高度*/
   width:100%;
   margin-left: 0;
-  background:#0053AA;
+  background:#2F6AE8;
   position: fixed; /*固定在顶部*/
   top: 0;/*离顶部的距离为0*/
   margin-bottom: 5px;
@@ -41,15 +41,15 @@
   transition: all 0.5s;
 }
 .top li a:hover{
-  /* 鼠标选中时背景变为黑色 */
-  background-color: #0053AA;
+  /* 鼠标选中时背景变为？色 */
+  background-color: #2F6AE8;
   font-size: 20px;
   transition: all 0.3s;
 }
 .top ul li ul{
   /* 设置二级菜单 */
   margin-left: 0px;
-  background:#182E8C;
+  background:#2F6AE8;
   position: relative;
   display: none;    /* 默认隐藏二级菜单的内容 */
   transition: all 0.5s;
