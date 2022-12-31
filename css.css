@@ -159,14 +159,14 @@ padding-bottom:10px;/*下方间距*/
 }
 
 p{
-line-height:1.4;/*间距*/
+line-height:1.6;/*间距*/
 color:#334555;/*颜色*/
 font-size:18px;/*字号*/
-font-family:-apple-system；/*字体*/
-font-weight:600；/*粗细*/
+font-family: 'Open Sans', sans-serif;/*字体*/
+font-weight:normal；/*粗细*/
 word-spacing:normal:/*单词间距*/
 text-decoration:none；/*修饰文字(none正常，underline下划线，overline上划线，line-through删除线 blink闪烁(只支持IE6,7,搜狐))*/
-letter-spacing:norma；/*字符间距(normal默认，length长度单位)*/
+letter-spacing:normal；/*字符间距(normal默认，length长度单位)*/
 }
 
 h1{
