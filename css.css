@@ -202,3 +202,7 @@ border-bottom-right-radius:10px ;/*右下角圆角*/
 width:900px;
 margin:center
 }
+.bottom{
+position: fixed; /*固定在底部*/
+bottom:0; /*底部间距*/
+)
