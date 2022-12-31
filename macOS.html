@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
       <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;重启 Apache：sudo apachectl restart<button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="sudo apachectl restart">复制</a> </button>
       <br><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.&#160;故障排除和紧急修复，恢复到默认设置，参考文档：<a href="https://support.apple.com/zh-cn/HT201255"target="_blank">Apple支持</a>的最新文章
       <br><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.&#160;终端常用指令：
-      <p align="left"class="container"style="width:750px;">安装开发者软件：xcode-select –install
+      <p align="left"class="container"style="width:750px;"><br>安装开发者软件：xcode-select –install
       <br><br>时间机器解除运行限制：sudo sysctl debug. lowpri_throttle_ enabled=0
       <br>恢复限制：sudo syscl debug.lowpri_throttle_enabled=1
       <br><br>新建隐藏文件夹：mkdir Documents/.abc
@@ -192,6 +192,13 @@ var _hmt = _hmt || [];
 <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;4) var———改动频繁的档桉, 都置放于此, 例如各log档桉
 <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;5) tmp——–系统的暂存档
 <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;6) usr———UNIX的使用者专用档桉夹
+
+<p align="left"class="container"style="width:900px;"><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;6.&#160;删除顽固图标</p>
+<p align="left"class="container"style="width:750px;">
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;mac中不在appstore上下载的应用经常在删除后它的图标还残留在launchpad中，并且长按图标也不会出现删除符号。下面解决这个问题。
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;在folder中输入路径/private/var/folders，找到名为com.apple.dock.launchpad的文件夹，里面包含一个db文件夹，即数据库，接下来对数据集进行操作。从终端输入“cd 空格 拖拽db文件夹 回车”进入到db文件夹，执行（输入并回车）：
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;sqlite3 db "delete from apps where title='应用程序名称';"&&killall Dock
+<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;再到启动台中查看，就能发现图标已经被成功删除。
       </p>
       <br><p align="left"class="container"style="width:900px;"><br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;结语：这些可以说是macOS的基础知识了，如果你准备使用macOS学习、办公或日常生活，这些是必备的知识，如果使用macOS只是为了安装Windows，那当我没说。</p>
         <style>
