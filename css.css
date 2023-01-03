@@ -179,7 +179,7 @@ text-decoration:none；/*修饰文字(none正常，underline下划线，overline
 letter-spacing:normal；/*字符间距(normal默认，length长度单位)*/
 }
 
-.h{
+h{
 color:#2C3E50;/*颜色*/
 font-size:40px;/*字号*/
 font-family:STXingkai；/*字体*/
