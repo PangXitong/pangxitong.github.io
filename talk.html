@@ -50,13 +50,36 @@ var _hmt = _hmt || [];
              color: #B8B8B8;
       }
     </style>
-
+    <!--复制链接-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+    function shareCopyUrl(that) {
+            var clipboard = new ClipboardJS(that);
+            clipboard.on('success', function (e) {
+            console.info('Text:', e.text);
+            e.clearSelection();
+    }); 
+            clipboard.on('error', function (e) {
+            // console.error('Action:', e.action);
+            // console.error('Trigger:', e.trigger);
+    });
+            // 处理第一次点击不成功
+            clipboard.onClick(event);
+    }
+    </script>
 </head>
 <!--身体-->
 <body>
 <!--评论-->
 <!-- CSS -->
-<br><div style="font-size:40px;">庞玺桐的个人博客评论端</div><br><div style="font-size:20px;">支持Markdown语法、Latex语法、OwO表情语法和纯文本</div>
+<br><div style="font-size:50px;">庞玺桐的博客评论端</div><br><div style="font-size:14px;">支持Markdown语法、Latex语法、OwO表情语法和纯文本</div>
+</div><br><div style="font-size:18px;">登录或使用公用账号：「匿名」pangxitongmac@163.com
+
+<button type="button">
+            <a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="pangxitongmac@163.com"><big><span4>复制</span4></big></a>
+          </button>
+          
+          </div><br>
 <link href="https://cdn.bootcdn.net/ajax/libs/artalk/2.4.4/Artalk.css" rel="stylesheet">
 <!-- JS -->
 <script src="https://cdn.bootcdn.net/ajax/libs/artalk/2.4.4/Artalk.js"></script>
