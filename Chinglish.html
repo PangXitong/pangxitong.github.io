@@ -1,0 +1,221 @@
+<!--头部-->
+<html lang="zh-CN">
+  <head>
+    <meta name="description"content="庞玺桐的博客">
+    <meta charset="utf-8">
+    <title>Chinglish字体</title> 
+    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,庞玺桐的博客,编程,做一件有意义的事">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css.css">
+    <meta name="applicable-device" content="pc,mobile">
+    <script type="text/javascript" src="./JavaScript.js"></script>
+    <!--百度统计-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <!--span颜色注释-->
+    <style>
+      span {
+            color: #EDEDED;
+      }
+      span2 {
+            color: #EEFCA9;
+      }
+      span3 {
+             color: red;
+      }
+      span4 {
+             color: black;
+      }
+      span5 {
+             color: #D6B1A6;
+      }
+      span6 {
+             color: #E25DA9;
+      }
+      span7 {
+             color: #848484;
+      }
+      span8 {
+             color: #059CE5;
+      }
+      span9 {
+             color: #B8B8B8;
+      }
+      
+/* 顶部导航栏 */
+.top1{
+  /* 设置宽度高度背景颜色 */
+  height: auto; /*高度改为自动高度*/
+  width:100%;
+  margin-left: 0;
+  background:#CD0E12;
+  position: fixed; /*固定在顶部*/
+  top: 0;/*离顶部的距离为0*/
+  margin-bottom: 5px;
+  transition: all 0.5s;
+}
+.top1 ul{
+  /* 清除ul标签的默认样式 */
+  width: auto;/*宽度也改为自动*/
+  list-style-type: none;
+  white-space:nowrap;
+  overflow: hidden;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* margin-top: 0;          */
+  padding: 0;
+  transition: all 0.5s;
+  height: 30px;
+}
+.top1 li {
+  float:left; /* 使li内容横向浮动，即横向排列  */
+  margin-right:2%;  /* 两个li之间的距离*/
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.top1 li a{
+ /* 设置链接内容显示的格式*/
+  display: block; /* 把链接显示为块元素可使整个链接区域可点击 */
+  color:white;
+  text-align: center;
+  padding: 3px;
+  overflow: hidden;
+  text-decoration: none; /* 去除下划线 */
+  transition: all 0.5s;
+}
+.top1 li a:hover{
+  /* 鼠标选中时背景变为？色 */
+  background-color: #CD0E12;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+.top1 ul li ul{
+  /* 设置二级菜单 */
+  margin-left: 0px;
+  background:#0053AA;
+  position: relative;
+  display: none;    /* 默认隐藏二级菜单的内容 */
+  transition: all 0.5s;
+}
+.top1 ul li ul li{
+  /* 二级菜单li内容的显示 */
+  
+  float:none;
+  text-align: center;
+  transition: all 0.5s;
+}
+.top1 ul li:hover ul{
+  /* 鼠标选中二级菜单内容时 */
+  display: block;
+  opacity: 1;
+  transition: all 0.5s;
+  animation-duration: 5s;
+}
+    </style>
+    <!--复制链接-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+    function shareCopyUrl(that) {
+            var clipboard = new ClipboardJS(that);
+            clipboard.on('success', function (e) {
+            console.info('Text:', e.text);
+            e.clearSelection();
+    }); 
+            clipboard.on('error', function (e) {
+            // console.error('Action:', e.action);
+            // console.error('Trigger:', e.trigger);
+    });
+            // 处理第一次点击不成功
+            clipboard.onClick(event);
+    }
+    </script>
+    <!--固定顶部导航栏-->    
+    <div class="top1">
+      <center> 
+        <ul><big>
+        <li><a href="https://wtcu.github.io/font.html"target="_blank">Chinglish字体</a></li>
+          <li><a href="./index.html">庞玺桐
+          <li><a href="https://wtcu.github.io/"target="_blank">WTCU</a></li>
+          <li><a href="./open.html"target="_blank">协议</a></li>
+          <li><a href="./talk.html"target="_blank">评论</a></li>
+          <li id="right"><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li></big>
+          </li>        
+        </ul>
+      </center>      
+    </div>
+  </head>
+  <!--身体-->
+  <body bgcolor="#fff">
+    <!--表头-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 align="center"><big><big><big><big>Chinglish字体</h1></big></big></big></big>
+    <center><p>（2023年1月12日）</p></center>
+    <br><center><p style="width:900px"><big>此字体为庞玺桐借助<a href="https://fontforge.org"> Fontforge</a>，将<span3><big>中国元素</big></span3>添加到英文字体中<br>希望能对您的作品做出帮助。</big></p></center>
+    
+    <style>
+        .button2 {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            padding: 16px 32px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            border: 4px solid red;
+            border-radius:20px;
+        }
+        .button2:hover {
+            background-color: #0079F2;
+            color: white;
+        }
+    </style><center>下载字体：<a href="./images/字体文件" download="字体文件"><button class="button2"><big><big>敬请期待</big></big></button></a></center>
+    
+    <center><p style="width:900px"><br><small><span3>注意：</span3>使用字体的文件直接发送给其他用户，度过该用户设备未安装Chinglish字体，将无法显示，或显示乱码，建议将文件导出为图片或PDF分享以避免此错误。
+    <br><span3>条款与条件：</span3>此字体为庞玺桐原创字体，并不开源但免费发放，不允许转载和售卖，此页面为Chinglish字体下载的唯一合法途径。如有需要进行更改的，需联系<a href="mailto:pangxitong@yeah.net"target="_blank"style="text-decoration: none;">pangxitong@yeah.net</a> 取得授权后方可更改，最终解释权归庞玺桐本人所有。详细信息请见<a href="./open.html"target="_blank">《开源协议与版权声明》</a>。</small></p></center>
+      
+    <br>
+
+    
+    
+<!--评论-->
+<br><div style="font-size:50px;">Chinglish评论</div><br><div style="font-size:14px;">支持Markdown语法、Latex语法、OwO表情语法和纯文本</div><br>
+<!-- CSS -->
+<link href="https://cdn.bootcdn.net/ajax/libs/artalk/2.4.4/Artalk.css" rel="stylesheet">
+<!-- JS -->
+<script src="https://cdn.bootcdn.net/ajax/libs/artalk/2.4.4/Artalk.js"></script>
+<!-- Artalk -->
+<include src="Arttalk.html"></include>
+<br><br><div style="font-size:16px;">评论服务由庞玺桐的个人iMac上构建的自建Artalk服务器提供</div><br><br>
+    <br>
+        <style>
+        .button1 {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            padding: 32px 64px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            border: 4px solid #0079F2;
+            border-radius:20px;
+        }
+        .button1:hover {
+            background-color: #0079F2;
+            color: white;
+        }
+    </style>
+    <p align="center"><a href="./index.html"target="_blank"><button class="button1"><big><big>回到首页</big></big></button></a></p>
+    <br>
+<!--底部导航栏-->
+<include src="bottom.html"></include>  </body>
+</html>
