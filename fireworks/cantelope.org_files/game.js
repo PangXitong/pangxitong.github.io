@@ -1,34 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>HTML5+Canvas漂亮的3D烟花动画生日特效</title>
-
-<style>
-html,body{
-	margin:0px;
-	width:100%;
-	height:100%;
-	overflow:hidden;
-	background:#000;
-}
-</style>
-
-</head>
-<body>
-<canvas id="canvas" style="position:absolute;width:100%;height:100%;z-index:8888"></canvas>
-<canvas style="position:absolute;width:100%;height:100%;z-index:9999" class="canvas" ></canvas>
-<div class="overlay">
-  <div class="tabs">
-    <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
-
-    <div class="tabs-panels">
-      <ul class="tabs-panel commands">
-      </ul>
-    </div>
-  </div>
-</div>
-<script>
 function initVars(){
 
 	pi=Math.PI;
@@ -43,7 +12,7 @@ function initVars(){
 	seedTimer=0;seedInterval=5,seedLife=100;gravity=.02;
 	seeds=new Array();
 	sparkPics=new Array();
-	s="cantelope.org.html";
+	s="./";
 	for(i=1;i<=10;++i){
 		sparkPic=new Image();
 		sparkPic.src=s+"spark"+i+".png";
@@ -92,7 +61,7 @@ function rasterizePoint(x,y,z){
 }
 
 function spawnSeed(){
-
+	
 	seed=new Object();
 	seed.x=-50+Math.random()*100;
 	seed.y=25;
@@ -105,7 +74,7 @@ function spawnSeed(){
 }
 
 function splode(x,y,z){
-
+	
 	t=5+parseInt(Math.random()*150);
 	sparkV=1+Math.random()*2.5;
 	type=parseInt(Math.random()*3);
@@ -162,7 +131,7 @@ function splode(x,y,z){
 }
 
 function doLogic(){
-
+	
 	if(seedTimer<frames){
 		seedTimer=frames+seedInterval*Math.random()*10;
 		spawnSeed();
@@ -197,7 +166,7 @@ function doLogic(){
 			}else{
 				sparks[i].trail.push(point);
 			}
-			if(sparks[i].trail.length>5)sparks[i].trail.splice(0,1);
+			if(sparks[i].trail.length>5)sparks[i].trail.splice(0,1);				
 			sparks[i].x+=sparks[i].vx;
 			sparks[i].y+=sparks[i].vy;
 			sparks[i].z+=sparks[i].vz;
@@ -218,7 +187,7 @@ function doLogic(){
 }
 
 function rgb(col){
-
+	
 	var r = parseInt((.5+Math.sin(col)*.5)*16);
 	var g = parseInt((.5+Math.cos(col)*.5)*16);
 	var b = parseInt((.5-Math.sin(col)*.5)*16);
@@ -226,9 +195,9 @@ function rgb(col){
 }
 
 function draw(){
-
+	
 	ctx.clearRect(0,0,cx*2,cy*2);
-
+	
 	ctx.fillStyle="#ff8";
 	for(i=-100;i<100;i+=3){
 		for(j=-100;j<100;j+=4){
@@ -240,7 +209,7 @@ function draw(){
 				a = 0.75 - Math.pow(d / 100, 6) * 0.75;
 				if(a>0){
 					ctx.globalAlpha = a;
-					ctx.fillRect(point.x-size/2,point.y-size/2,size,size);
+					ctx.fillRect(point.x-size/2,point.y-size/2,size,size);				
 				}
 			}
 		}
@@ -315,8 +284,3 @@ window.addEventListener("resize",()=>{
 
 initVars();
 frame();
-</script>
-<script src="js/index.js"></script>
-
-</body>
-</html>
