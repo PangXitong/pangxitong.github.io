@@ -24,8 +24,30 @@ var _hmt = _hmt || [];
     </head>
     <body>
         庞玺桐的个人博客的远程测试页面
-<!--底部导航栏-->
-<include src="Readme.md"></include>
+        
+        
+        <div id="content"></div>
+        
+        
+        <script>
+        $(function(){
+        $.ajax({
+            type:"get",
+            url:"./Readme.md",
+            dataType:"html",
+            success:function(res){
+            $("#content").append(marked(res));  // 使用marked插件解析.md文件
+            }
+        })
+    })
+        </script>
+        
+        
+        1
+        
+        
+        <div id="content"></div>
+
     </body>
 </html>
 
