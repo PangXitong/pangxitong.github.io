@@ -11,12 +11,9 @@
         <script>
     </head>
     <body>
-        庞玺桐的个人博客的远程测试页面
-        
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <div id="content"></div> <script>$.get('../md/index.md',function(response, status, xhr){ $("#content").html(marked(response)); });</script>
-        
-        <div id="content"></div><script>varaa=`## XXE-"xml external entity injection"既"xml外部实体注入漏洞"。 概括一下就是"攻击者通过向服务器注入指定的xml实体内容,从而让服务器按照指定的配置进行执行,导致问题"也就是说服务端接收和解析了来自用户端的xml数据,而又没有做严格的安全控制,从而导致xml外部实体注入。 具体的关于xml实体的介绍,网络上有很多,自己动手先查一下。 现在很多语言里面对应的解析xml的函数默认是禁止解析外部实体内容的,从而也就直接避免了这个漏洞。 以PHP为例,在PHP里面解析xml用的是libxml,其在≥2.9.0的版本中,默认是禁止解析xml外部实体内容的。 ` document.getElementById('content').innerHTML=marked(aa);</script>
-            
+        <p>庞玺桐的个人博客的远程测试页面</p>
+        <div id="content"></div>
+        <script>varaa=`## XXE-"xml external entity injection"既"xml外部实体注入漏洞"。 概括一下就是"攻击者通过向服务器注入指定的xml实体内容,从而让服务器按照指定的配置进行执行,导致问题"也就是说服务端接收和解析了来自用户端的xml数据,而又没有做严格的安全控制,从而导致xml外部实体注入。 具体的关于xml实体的介绍,网络上有很多,自己动手先查一下。 现在很多语言里面对应的解析xml的函数默认是禁止解析外部实体内容的,从而也就直接避免了这个漏洞。 以PHP为例,在PHP里面解析xml用的是libxml,其在≥2.9.0的版本中,默认是禁止解析xml外部实体内容的。 ` document.getElementById('content').innerHTML=marked(aa);</script>
     </body>
 </html>
 
