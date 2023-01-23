@@ -1,0 +1,41 @@
+<html lang="zh-CN">
+    <head>
+        <meta name="description"content="庞玺桐的博客">
+        <meta charset="utf-8">
+        <title>测试4</title> 
+        <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,测试版,庞玺桐的博客,测试,测试界面">
+        <link rel="shortcut icon" href="./images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="./css.css">
+        <meta name="applicable-device" content="pc,mobile">
+        <script type="text/javascript" src="./JavaScript.js"></script>
+        <!--响应式设计-->
+        <link rel="stylesheet" href="style.css" media="(min-width: 851px)" type="text/css" />
+        <link rel="stylesheet" href="mobile.css" media="(max-width: 850px)" type="text/css" />
+        <!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    </head>
+    <body>
+        庞玺桐的个人博客的远程测试页面
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <div id="content"></div>
+        <script>
+        $.get('../Readme.md',function(response, status, xhr){ $("#content").html(marked(response)); });
+        </script>
+
+    </body>
+</html>
+
+
+
+
+
