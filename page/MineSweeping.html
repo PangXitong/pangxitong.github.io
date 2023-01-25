@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang='zh'>
+<head>
+    <!--百度统计-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>扫雷游戏</title>
+
+<a href="https://blog.csdn.net/qq_44394562/article/details/125052194" onclick="this.remove()" target="_blank" class="github-corner"aria-label="View source on GitHub">
+  <svg width="80" height="80" viewBox="0 0 250 250"style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
+
+<style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+    .main {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #box{
+        border: 5px solid black;
+        overflow: hidden;
+        width: 900px;
+        min-width: 900px;
+        background-color: #ccc;
+        background-size: 900px 450px;
+    }
+    #box > div{
+        cursor: pointer;
+    }
+    #box > .block{
+        width: 20px;
+        height: 20px;
+        background-color: rgb(192, 192, 192);
+        float: left;
+        border-left:5px solid #fff;
+        border-top:5px solid #fff;
+        border-bottom:5px solid rgb(128, 128, 128);
+        border-right:5px solid rgb(128, 128, 128);
+    }
+    #box > .block:hover{
+        background-color: rgb(192, 192, 192);
+        border:0;
+        border-top: 2px solid rgb(138, 138, 138);
+        border-left: 2px solid rgb(138, 138, 138);
+        width: 28px;
+        height: 28px;
+    }
+    #box > .show{
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #fff;
+        /* background-color: transparent; */
+        float: left;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    #box > .bomb{
+        width: 24px;
+        height: 24px;
+        border: 3px solid rgba(255, 100, 100, 0.4);
+        background-color: rgba(0, 0, 0, 0.1);
+        float: left;
+    }
+    .main .header {
+        flex-shrink: 0;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .main #time{
+        width: 100px;
+        height: 40px;
+        margin-right: 40px;
+        line-height: 40px;
+        background: #ccc;
+        border-radius: 5px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .main input {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        height: 40px;
+        width: 100px;
+        border: 2px #ccc solid;
+        border-radius: 5px;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 0 5px;
+    }
+    .main .num {
+        margin-right: 40px;
+    }
+    .main .restart {
+        width: 100px;
+        height: 40px;
+        background-color: #ededed;
+        border-radius: 5px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .main .restart:hover {
+        background-color: #ccc;
+    }
+</style>
+</head>
+<body>
+	<center><h>扫雷</h></center>
+    <div class="main">
+        <div class="header">
+            <div id="time">
+                0
+            </div>
+            <div class="num">
+                <input type="number" min="1" placeholder="1~441" max="441" value="99" id="num" onblur="if(this.value-0>441){this.value=441}else if(this.value-0<1){this.value=1}"/>
+            </div>
+            <div class="restart" onclick="window.location.reload()">
+                重开
+            </div>
+        </div>
+        <div id="box"></div>
+    </div>
+
+    <script>
+        class sweep{
+            constructor(item) {
+                this.item = document.querySelector(item)
+                this.bombNum = 99   // 炸弹数量(默认)
+                this.allBlock = []  // 全部地块DOM列表
+                this.blockList = [] // 无炸弹地块列表
+                this.bombList = []  // 有炸弹地块列表
+                this.showList = []  // 揭开地块的列表
+                this.blockObj = []  // 地块对象
+                this.flagList = new Set()   // 旗子列表
+                this.begin = false  // 开始
+                this.timer = null   // 计时器
+
+                this.init()
+            }
+
+            // 启动器
+            init () {
+                this.conTextMenu()
+                this.createFloor()
+                this.clickBlock()
+            }
+
+            // 生成地形
+            createFloor () {
+                let frg = document.createDocumentFragment()
+                for(let j = 0; j < 450; j++){
+                    let div = document.createElement('div')
+                    this.blockList.push(j)
+                    this.blockObj.push({
+                        id: j,
+                        x: j%30,
+                        y: parseInt(j/30)
+                    })
+                    div.dataset.id = j
+                    div.className = 'block'
+                    this.allBlock.push(div)
+                    frg.appendChild(div)
+                }
+                this.item.appendChild(frg)
+            }
+
+            // 生成炸弹
+            createBomb (arr) {
+                this.bombNum = parseInt(document.querySelector('#num').value)
+                arr.forEach((item) => {
+                    this.blockList.splice(this.blockList.indexOf(item), 1)
+                })
+                for(let i = 0; i < this.bombNum; i++){
+                    this.bombList.push(this.blockList.splice(parseInt(Math.random() * this.blockList.length), 1)[0])
+                }
+                arr.forEach((item) => {
+                    this.blockList.push(item)
+                })
+            }
+
+            // 点击事件
+            clickBlock () {
+                // 单击
+                this.item.addEventListener('click', (e) => {
+                    e = e || window.event
+                    let target = e.target || e.srcElement
+                    if(!this.begin){
+                        this.begin = true
+                        this.setTime()
+                        let arr = this.getBlock(target.dataset.id - 0)
+                        arr.push(target.dataset.id - 0)
+                        this.createBomb(arr)
+                    }
+                    if(target.className === 'block'){
+                        this.show(target)
+                        if(!this.blockList.some((item) => {return this.allBlock[item].className !== 'show'})){
+                            this.victory() 
+                            return
+                        }
+                    }
+                })
+
+                // 选中事件
+                this.item.addEventListener('selectstart', (e) => {
+                    e = e || window.event
+                    e.preventDefault()
+                })
+
+                // 双击事件
+                this.item.addEventListener('dblclick', (e) => {
+                    e = e || window.event
+                    let target = e.target || e.srcElement
+                    if(target.className === 'show'){
+                        let num = target.dataset.id - 0
+                        let arr = this.getBlock(num)
+                        if(arr.some((item) => { return this.bombList.indexOf(item) !== -1 && this.allBlock[item].className !== 'bomb' })){
+                            if(target.innerText - 0 && arr.filter((item) => { return this.allBlock[item].className === 'bomb'}).length === target.innerText - 0){
+                                this.fail()
+                            }
+                        } else {
+                            arr.forEach((item) => {
+                                if(this.allBlock[item].className === 'block'){
+                                    this.show(this.allBlock[item])
+                                }
+                            })
+                            if(this.showList.length === this.blockList.length) {
+                                this.victory()
+                            }
+                        }
+                    }
+                })
+            }
+
+            // 判断方块四周
+            show (item) {
+                let sum = 0
+                let num = parseInt(item.dataset.id)
+                if(this.bombList.some((i) => { return i === parseInt(item.dataset.id) })){
+                    this.fail()
+                } else {
+                    this.showList.push(parseInt(item.dataset.id))
+                    let arr = this.getBlock(num)
+                    arr.forEach((one) => {
+                        if(this.bombList.some((i) => {return i === one})){
+                            sum ++
+                        }
+                    })
+                    item.className = 'show'
+                    if(sum){
+                        item.innerText = sum
+                    } else {    // 追加 show
+                        arr.forEach((num) => {
+                            if(this.allBlock[num].className === 'block'){
+                                this.show(this.allBlock[num])
+                            }
+                        })
+                    }
+                }
+            }
+
+            // 获取到四周的方块
+            getBlock(num) {
+                let arr = []
+                if(num === 0){
+                    arr = [num + 1, num + 30, num + 31]
+                } else if (num === 29){
+                    arr = [num - 1, num + 30, num + 29]
+                } else if (num === 420){
+                    arr = [num + 1, num - 30, num - 29]
+                } else if (num === 449){
+                    arr = [num - 1, num - 30, num - 31]
+                } else if (num < 29){
+                    arr = [num + 1, num - 1, num + 30, num + 31, num + 29]
+                } else if (num > 420){
+                    arr = [num + 1, num - 1, num - 30, num - 29, num - 31]
+                } else if (num % 30 === 0){
+                    arr = [num + 1, num - 30, num - 29, num + 30, num + 31]
+                } else if (num % 30 === 29){
+                    arr = [num - 1, num - 30, num - 31, num + 30, num + 29]
+                } else {
+                    arr = [num + 1, num - 1, num + 29, num + 30, num + 31, num - 30, num - 31, num - 29]
+                }
+                return arr
+            }
+
+            // 计时器
+            setTime(){
+                let t = document.getElementById('time')
+                let s = t.innerText - 0
+                this.timer = setInterval(() => {
+                    s ++
+                    t.innerText = s
+                }, 1000)
+            }
+
+            // 失败
+            fail (){
+                let bool = confirm('踩到雷，失败了！')
+                if(bool){
+                    window.location.reload()
+                }
+            }
+
+            // 成功
+            victory (){
+                alert('成功了！成功了！带成功！')
+                clearInterval(this.timer)
+                alert('你的生命减少了 ' + document.querySelector('#time').innerText + ' 秒')
+            }
+
+            // 右键事件
+            conTextMenu () {
+                this.item.addEventListener('contextmenu', (e) => {
+                    e = e || window.event
+                    let target = e.target || e.srcElement
+                    try {e.preventDefault()} catch (err) {e.returnValue = false}
+                    if(target.className === 'block'){
+                        target.className = 'bomb'
+                        this.flagList.add(parseInt(target.dataset.id))
+                    } else if (target.className === 'bomb'){
+                        target.className = 'block'
+                        this.flagList.delete(parseInt(target.dataset.id))
+                    }
+                    if(this.flagList.size === this.bombNum) {
+                        let flagAllBomb = this.bombList.every(item => {
+                            return this.flagList.has(item)
+                        })
+                        if(flagAllBomb) {
+                            this.victory()
+                        }
+                    }
+                })
+            }
+        }
+
+        let first = new sweep('#box')
+
+    </script>
+
+<style>
+span4 {
+       color: black;
+}
+span9 {
+       color: #686868;
+}
+p{
+line-height:1.6;/*间距*/
+color:#334555;/*颜色*/
+font-size:18px;/*字号*/
+font-family: 'Open Sans', sans-serif;/*字体*/
+font-weight:normal；/*粗细*/
+word-spacing:normal:/*单词间距*/
+text-decoration:none；/*修饰文字(none正常，underline下划线，overline上划线，line-through删除线 blink闪烁(只支持IE6,7,搜狐))*/
+letter-spacing:normal；/*字符间距(normal默认，length长度单位)*/
+}
+h{
+color:black;/*颜色*/
+font-size:60px;/*字号*/
+font-family:STXingkai；/*字体*/
+font-weight:600；/*粗细*/
+}
+    </style>
+    <p align="center"><small><span>
+    <a target="_blank" href="./open.html"><span9>Copyright</span9></a>&nbsp;©&nbsp;2023&nbsp;PangXitong.&nbsp;&nbsp;All rights reserved. Baced on <a target="_blank" href="https://blog.csdn.net/qq_44394562/article/details/125052194"><span9>Serendipity_-</span9></a>. Powered by <a target="_blank" href="http://github.io"><span9>Github Pages</span9></a></span></small></p>
+</body>
+</html>
