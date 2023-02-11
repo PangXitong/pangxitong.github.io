@@ -1,0 +1,226 @@
+ /* 顶部导航栏 */
+.top{
+  /* 设置宽度高度背景颜色 */
+  height: auto; /*高度改为自动高度*/
+  width:100%;
+  margin-left: 0;
+  background:#2075F3;
+  position: fixed; /*固定在顶部*/
+  top: 0;/*离顶部的距离为0*/
+  margin-bottom: 5px;
+  transition: all 0.5s;
+}
+.top ul{
+  /* 清除ul标签的默认样式 */
+  width: auto;/*宽度也改为自动*/
+  list-style-type: none;
+  white-space:nowrap;
+  overflow: hidden;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* margin-top: 0;          */
+  padding: 0;
+  transition: all 0.5s;
+  height: 30px;
+}
+.top li {
+  float:left; /* 使li内容横向浮动，即横向排列  */
+  margin-right:2%;  /* 两个li之间的距离*/
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.top li a{
+ /* 设置链接内容显示的格式*/
+  display: block; /* 把链接显示为块元素可使整个链接区域可点击 */
+  color:white;
+  text-align: center;
+  padding: 3px;
+  overflow: hidden;
+  text-decoration: none; /* 去除下划线 */
+  transition: all 0.5s;
+}
+.top li a:hover{
+  /* 鼠标选中时背景变为？色 */
+  background-color: #2075F3;
+  font-size: 20px;
+  transition: all 0.3s;
+}
+.top ul li ul{
+  /* 设置二级菜单 */
+  margin-left: 0px;
+  background:#0053AA;
+  position: relative;
+  display: none;    /* 默认隐藏二级菜单的内容 */
+  transition: all 0.5s;
+}
+.top ul li ul li{
+  /* 二级菜单li内容的显示 */
+  
+  float:none;
+  text-align: center;
+  transition: all 0.5s;
+}
+.top ul li:hover ul{
+  /* 鼠标选中二级菜单内容时 */
+  display: block;
+  opacity: 1;
+  transition: all 0.5s;
+  animation-duration: 5s;
+}
+#right {
+  float:right; /* 使li内容横向浮动，即横向排列  */
+  margin-right:2%;  /* 两个li之间的距离*/
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+/* <!--底部导航栏--> */
+:root{--font-family-sans-serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}*,::after,::before{box-sizing:border-box}html{font-family:sans-serif;-webkit-tap-highlight-color:transparent}article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}[tabindex="-1"]:focus:not(:focus-visible){outline:0!important}hr{box-sizing:content-box;margin-bottom:1rem}abbr[data-original-title],abbr[title]{text-decoration:underline;overflow-y:scroll}.container{width:100%;padding-right:15px;padding-left:15px;margin-left:auto}@media (min-width:576px){.container,.container-sm{max-width:540px}}@media (min-width:768px){.container,.container-md,.container-sm{max-width:720px}}@media (min-width:992px){.container,.container-lg,.container-md,.container-sm{max-width:960px}}@media (min-width:1200px){.container,.container-lg,.container-md,.container-sm,.container-xl{max-width:1140px}}.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;padding-left:0}.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-auto,.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-auto,.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-auto,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-auto{position:relative;padding-right:15px;padding-left:15px}.col{-ms-flex-preferred-size:0;order:12}.offset-1{margin-left:8.333333%}.offset-2{margin-left:16.666667%}.offset-3{margin-left:25%}.offset-4{margin-left:33.333333%}.offset-5{margin-left:41.666667%}.offset-6{margin-left:50%}.offset-7{margin-left:58.333333%}.offset-8{margin-left:66.666667%}.offset-9{margin-left:75%}.offset-10{margin-left:83.333333%}.offset-11{margin-left:91.666667%}@media (min-width:576px){.col-sm{-ms-flex-preferred-size:0;flex-basis:0;order:12}.offset-sm-0{margin-left:0}.offset-sm-1{margin-left:8.333333%}.offset-sm-2{margin-left:16.666667%}.offset-sm-3{margin-left:25%}.offset-sm-4{margin-left:33.333333%}.offset-sm-5{margin-left:41.666667%}.offset-sm-6{margin-left:50%}.offset-sm-7{margin-left:58.333333%}.offset-sm-8{margin-left:66.666667%}.offset-sm-9{margin-left:75%}.offset-sm-10{margin-left:83.333333%}.offset-sm-11{margin-left:91.666667%}}@media (min-width:768px){.col-md{-ms-flex-preferred-size:0;width:auto;max-width:100%}.col-md-1{-ms-flex:0 0 8.333333%;flex:0 0 8.333333%;max-width:8.333333%}.col-md-2{-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%}.col-md-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-md-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;order:12}.offset-xl-0{margin-left:0}.offset-xl-1{margin-left:8.333333%}.offset-xl-2{margin-left:16.666667%}.offset-xl-3{margin-left:25%}.offset-xl-4{margin-left:33.333333%}.offset-xl-5{margin-left:41.666667%}.offset-xl-6{margin-left:50%}.offset-xl-7{margin-left:58.333333%}.offset-xl-8{margin-left:66.666667%}.offset-xl-9{margin-left:75%}.offset-xl-10{margin-left:83.333333%}.offset-xl-11{margin-left:91.666667%}}.table{width:100%;border:0}.text-decoration-none{text-decoration:none!important}.text-break{word-wrap:break-word!important}.text-reset{color:inherit!important}.visible{visibility:visible!important}.invisible{visibility:hidden!important}@media print{*,::after,::before{text-shadow:none!important;widows:3}h2,h3{page-break-after:avoid}@page{size:a3}body{min-width:992px!important}.container{min-width:992px!important}.navbar{display:none}.badge{border:1px solid #000}.table{border-collapse:collapse!important}.table-dark th,.table-dark thead }
+ul.footer-links li a:hover {
+    color: #2D4571;
+}
+div{ 
+      text-align: center; 
+}
+table{ 
+       margin: auto; 
+}
+ul:not(.browser-default) {
+  padding-left: 0;
+  list-style-type: none;
+}
+a {
+  color: #039be5;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 70%;
+  }
+}
+.container .row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+
+
+h4 {
+  font-size: 2.28rem;
+  line-height: 110%;
+  margin: 1.14rem 0 0.912rem 0;
+}
+/* 颜色配置 */
+.main-footer {
+    color: #fff;
+    background-color: #222;
+    padding: 1.5rem;
+}
+   /* box-shadow: 0 0 0 30px; */
+.main-footer h4 {
+    font-family: 'Russo One', sans-serif!important;
+    font-weight: 100!important;
+    line-height: 1.1!important;
+    color: #fff;
+    border-bottom: 5px solid #2D4571;
+}
+ul.footer-links li a {
+    color: #fff;
+}
+
+/* 段落居中变窄 */
+.paragraph-left{width:100%;padding-right:20px;padding-left:20px;margin:center}
+
+/* 响应式两列*/
+.city {
+float: left;
+margin: 5px;
+padding: 15px;
+width: 300px;
+height: 300px;
+border: 0px solid black;
+} 
+
+/*代码片段*/
+.code {
+background-color:#262626;
+padding-right:10px;/*左侧间距*/
+padding-left:10px;/*右侧间距*/
+padding-top:10px;/*上方间距*/
+padding-bottom:10px;/*下方间距*/
+}
+
+p{
+line-height:1.6;/*间距*/
+color:#334555;/*颜色*/
+font-size:18px;/*字号*/
+font-family: 'Open Sans', sans-serif;/*字体*/
+font-weight:normal；/*粗细*/
+word-spacing:normal:/*单词间距*/
+text-decoration:none；/*修饰文字(none正常，underline下划线，overline上划线，line-through删除线 blink闪烁(只支持IE6,7,搜狐))*/
+letter-spacing:normal；/*字符间距(normal默认，length长度单位)*/
+}
+
+h1{
+line-height:normal;/*大小*/
+color:#2C3E50;/*颜色*/
+font-size:40px;/*字号*/
+font-family:STXingkai；/*字体*/
+font-weight:600；/*粗细*/
+word-spacing:normal:/*单词间距*/
+text-decoration:none；/*修饰文字(none正常，underline下划线，overline上划线，line-through删除线*/
+letter-spacing:normal；/*字符间距(normal默认，length长度单位)*/
+}
+
+h{
+color:#2C3E50;/*颜色*/
+font-size:40px;/*字号*/
+font-family:STXingkai；/*字体*/
+font-weight:600；/*粗细*/
+}
+
+.bother{
+border: 0px solid #000;/*边框*/
+padding-right:10px;/*左侧间距*/
+padding-left:20px;/*右侧间距*/
+padding-top:1px;/*上方间距*/
+padding-bottom:10px;/*下方间距*/
+box-shadow:0px 0px 10px 2px #E8E8E8 ;/*对外阴影*/
+/*  box-shadow:0px 0px 4px 0px #00EC72 inset;  *//*对内阴影*/
+border-top-left-radius: 10px;/*左上角圆角*/
+border-top-right-radius:10px ;/*右上角圆角*/
+border-bottom-left-radius:10px ;/*左下角圆角*/
+border-bottom-right-radius:10px ;/*右下角圆角*/
+width:900px;
+margin:center
+}
+
+/*固定在底部，用<div>执行*/
+.bottom{
+position: fixed; /*固定在底部*/
+bottom:0; /*底部间距*/
+)
+
+/*小方框 Small Bother，不是SB的中文意思*/
+.sb{
+border: 0px solid #000;/*边框*/
+padding-right:10px;/*左侧间距*/
+padding-left:10px;/*右侧间距*/
+padding-top:10px;/*上方间距*/
+padding-bottom:10px;/*下方间距*/
+box-shadow:0px 0px 10px 2px #E8E8E8 ;/*对外阴影*/
+/*  box-shadow:0px 0px 4px 0px #00EC72 inset;  *//*对内阴影*/
+border-top-left-radius: 10px;/*左上角圆角*/
+border-top-right-radius:10px ;/*右上角圆角*/
+border-bottom-left-radius:10px ;/*左下角圆角*/
+border-bottom-right-radius:10px ;/*右下角圆角*/
+width:900px;
+margin:center
+}
