@@ -63,22 +63,6 @@ var _hmt = _hmt || [];
       span10 {
              color: #334555;
       }
-/*小方框 Small Bother，不是SB的中文意思*/
-.sb{
-border: 4px solid #317FFF;/*边框*/
-padding-right:10px;/*左侧间距*/
-padding-left:10px;/*右侧间距*/
-padding-top:10px;/*上方间距*/
-padding-bottom:10px;/*下方间距*/
-box-shadow:0px 0px 10px 6px #E8E8E8 ;/*对外阴影*/
-/*  box-shadow:0px 0px 4px 0px #00EC72 inset;  *//*对内阴影*/
-border-top-left-radius: 20px;/*左上角圆角*/
-border-top-right-radius:20px ;/*右上角圆角*/
-border-bottom-left-radius:20px ;/*左下角圆角*/
-border-bottom-right-radius:20px ;/*右下角圆角*/
-width:900px;
-margin:center
-}
     </style>
     <!--复制链接-->
     <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
@@ -119,6 +103,12 @@ margin:center
     <br>
     <br>
     <h1 align="center"style="font-family: 'Open Sans',sans-serif;"><big><big><big><big>庞玺桐的个人博客</h1></big></big></big></big>
+    <p align="center"><a href="#introduce"class="sba"><span4>自我介绍</span4></a>
+    &#160;&#160;&#160;&#160;<a href="#code"class="sba"><span4>数据中心</span4></a>
+    &#160;&#160;&#160;&#160;<a href="#page"class="sba"><span4>文章</span4></a>
+    &#160;&#160;&#160;&#160;<a href="#donate"class="sba"><span4>捐助</span4></a>
+    &#160;&#160;&#160;&#160;<a href="#talk"class="sba"><span4>评论</span4></a>
+    &#160;&#160;&#160;&#160;<a href="#follow"class="sba"><span4>关注我</span4></a></p>
     <br>
     <!--概况-->
     <table>
@@ -140,6 +130,7 @@ margin:center
           <br>
           <br>
           &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;由于GitHub在中国出现了响应延迟、域名污染等问题，导致访问缓慢，我决定基于<a href="https://gitea.io"target="_blank">Gitea</a>建立自托管数据库，做我在<a href="https://github.com/PangXitong"target="_blank">GitHub</a>所有的项目的镜像仓库。<a href="http://341qwc20wv96.ngrok.xiaomiqiu123.top/"target="_blank">前往Gitea数据库>></a>
+          <!--自我介绍跳转--><p id="introduce"></p>
           </p>
         </td>
         <td>
@@ -163,6 +154,8 @@ margin:center
     <br>
     </p><br><br>
     <div><iframe align="center" width="100%" height="413" src="connect.html"></iframe></div>
+    <!--数据中心跳转--><p id="code"></p>
+    <br>
     <br>
        <!--GitHub-->
     <br>
@@ -194,7 +187,7 @@ margin:center
                 <a href="https://github.com/PangXitong/PangXitong"target="_blank">庞玺桐主页</a> 和 <a href="https://github.com/PangXitong/pangxitong.github.io"target="_blank">博客 GitHub Pages</a>
                 <br>
                 <a href="https://github.com/WTCU"target="_blank">WTCU项目</a> 和 <a href="https://github.com/WTCU"target="_blank">WTCU网站</a>
-                <br>
+                <br><!--文章跳转--><p id="page"></p>
                 <a href="https://github.com/PangXitong/Chinglish-Pang"target="_blank">Chinglish-Pang</a> 和 <a href="https://github.com/WTCU/kiftd"target="_blank">kiftd二次开发</a>
                 </p>
               </td>
@@ -248,7 +241,7 @@ margin:center
     <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;测试你的密码被暴力破解的时间，并给予相应的评价<span8>&#160;点击开始测试>></span8></p>
     </div></a></center><br><br>
     
-    <center><a href="./more.html"target="_blank"><div class="bother"style="box-shadow:0px 0px 10px 2px #D1D1D1">
+    <center><a href="./more.html"target="_blank"><div class="bother"style="box-shadow:0px 0px 10px 1px #D1D1D1">
     <p align="center"><big style="color:black">查看更多文章</big><br><p align="center"><a href="./more.html#new"class="sb"target="_blank"><span4>新思想</span4></a>&#160;&#160;&#160;&#160;<a href="./more.html#tool"class="sb"target="_blank"><span4>小工具</span4></a>&#160;&#160;&#160;&#160;<a href="./more.html#game"class="sb"target="_blank"><span4>小游戏</span4></a>&#160;&#160;&#160;&#160;<a href="./more.html#teach"class="sb"target="_blank"><span4>小教程</span4></a></p></p>
     </div></a></center><br><br>
     
@@ -275,9 +268,9 @@ margin:center
         </td>
       </tr>
     </table>
-    <br><br><br>
+    <br><!--捐助跳转--><p id="donate"></p><br>
     </p><br><br>
-        <!--支持我-->
+    <!--支持我-->
     <p>
       <table>
         <tr align="center">
@@ -338,7 +331,7 @@ margin:center
           <h1 align="center"><span><big>感谢您的阅读</big></span></h1>
     </table>
     <br><br><br>
-    </p><br><br>
+    </p><!--评论跳转--><p id="talk"></p><br><br><br><br>
 
 <!--评论-->
 <br><div style="font-size:40px;">庞玺桐的个人博客评论端</div><br><div style="font-size:20px;">支持Markdown语法、Latex语法、OwO表情语法和纯文本</div><br>
@@ -349,7 +342,8 @@ margin:center
 <!-- Artalk -->
 <include src="Arttalk.html"></include>
 <br><br><div style="font-size:16px;">评论服务由庞玺桐的个人iMac上构建的自建Artalk服务器提供</div><br><br>
-<!--底部导航栏-->
+<!--底部导航栏--><br><br>
+<!--关注跳转--><p id="follow"></p>
 <include src="bottom.html"></include>
   </body>
 </html>
