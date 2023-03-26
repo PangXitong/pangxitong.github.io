@@ -1,70 +1,62 @@
-<!--头部-->
 <html lang="zh-CN">
   <head>
     <meta name="description"content="庞玺桐的博客">
     <meta charset="utf-8">
-    <title>庞玺桐的博客</title> 
-    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,庞玺桐的博客,macOS,macos,开源,我的世界,Minecraft,MinecraftJava,小游戏,GitHub,博客首页,新年快乐,Artalk,自建服务器,博客评论,博客自托管评论系统,神奇玺桐">
+    <title>庞玺桐</title> 
+    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,庞玺桐的博客,macOS,macos,开源,小游戏,GitHub,Artalk,博客自托管评论系统,神奇玺桐">
     <link rel="shortcut icon" href="./images/favicon.ico">
     <link rel="bookmark" href="./images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./css.css">
+    <!--<link rel="stylesheet" type="text/css" href="./css.css">-->
     <meta name="applicable-device" content="pc,mobile">
     <script type="text/javascript" src="./JavaScript.js"></script>
-    <!--响应式设计
-    <link rel="stylesheet" href="style.css" media="(min-width: 851px)" type="text/css" />
-    <link rel="stylesheet" href="mobile.css" media="(max-width: 850px)" type="text/css" />-->
-    <!--百度统计-->
     <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-    <!--弹窗
-    <div class="web_notice" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);z-index: 99999;">
-      <div style="position: fixed;top: 50%;left: 50%;width: 500px;background: #FFF;transform: translate(-50%, -50%);border-radius: 40px;padding: 20px 40px;">
-        <h3 style="font-weight: bold;text-align: center;font-size: 30px;"><span3>新年快乐</span3></h3>
-        <div style="font-size: 16px;margin-top: 26px;line-height: 30px;color: #000;"align="left"><div style="display:inline-block;" class="downtime"></div><br>庞玺桐的博客为不能放烟花的网友准备了线上烟花<br>大家快来体验吧！<a href="./page/Firework/a1025062.html"target="_blank">立刻体验>></a></div>
-        <a style="display: block;background: #0053AA;color: #FFF;text-align: center;font-weight: bold;font-size: 19px;line-height: 60px;margin: 0 auto;margin-top: 25px;border-radius: 32px;width: 80%;" onclick="javascript:document.querySelector('.web_notice').remove()">我知道了</a>
-      </div>
-    </div> -->
-    <!--span颜色注释-->
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <!-- 渐变背景 -->
     <style>
-      span {
-            color: #EDEDED;
-      }
-      span2 {
-            color: #EEFCA9;
-      }
-      span3 {
-             color: red;
-      }
-      span4 {
-             color: black;
-      }
-      span5 {
-             color: #D6B1A6;
-      }
-      span6 {
-             color: #E25DA9;
-      }
-      span7 {
-             color: #848484;
-      }
-      span8 {
-             color: #059CE5;
-      }
-      span9 {
-             color: #B8B8B8;
-      }
-      span10 {
-             color: #334555;
-      }
+    #canvas-basic {
+        position: fixed;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -999;
+    }
     </style>
-    <!--复制链接<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>-->
+    <!-- 渐变背景初始化 -->
+    <canvas id="canvas-basic"></canvas> 
+    <script src="./granim.min.js"></script>
+    <script>
+    var granimInstance = new Granim({
+        element: '#canvas-basic',
+        direction: 'left-right',
+        isPausedWhenNotInView: true,
+        states : {
+            "default-state": {
+                gradients: [
+                     ['#fff1eb', '#ace0f9'],
+                     ['#d4fc79', '#96e6a1'],
+                     ['#a1c4fd', '#c2e9fb'],
+                     ['#a8edea', '#fed6e3'],
+                     ['#9890e3', '#b1f4cf'],
+                     ['#a1c4fd', '#c2e9fb'],
+                     ['#fff1eb', '#ace0f9'],
+                    ['#a18cd1', '#fbc2eb']
+                ]
+            }
+        }
+    });
+    </script>
+    <!--复制链接<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <script>
     function shareCopyUrl(that) {
             var clipboard = new ClipboardJS(that);
@@ -79,284 +71,104 @@ var _hmt = _hmt || [];
             // 处理第一次点击不成功
             clipboard.onClick(event);
     }
-    </script>
-    <!--固定顶部导航栏-->    
-    <div class="top">
-      <center> 
-        <ul><big>
-          <li><a href="#">庞玺桐的博客
-          <li><a href="https://wtcu.github.io/"target="_blank">WTCU</a></li>
-          <li><a href="./open.html"target="_blank">协议</a></li>
-          <li><a href="./talk.html"target="_blank">评论</a></li>
-          <li><a href="./page/news.html"target="_blank">时事评说</a></li>
-          <li id="right"><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li></big>
-          </li>        
-        </ul>
-      </center>      
+    </script>-->
+    <style>
+    .bother{
+     border: 4px solid #5765F2;
+     /*边框*/
+     padding-right: 40px;
+     /*左侧间距*/
+     padding-left: 40px;
+     /*右侧间距*/
+     padding-top: 10px;
+     /*上方间距*/
+     padding-bottom: 10px;
+     /*下方间距*/
+     /*box-shadow: 0px 0px 0px 4px #4482FF;
+     对外阴影*/
+     /*  box-shadow:0px 0px 4px 0px #00EC72 inset;  */
+     /*对内阴影*/
+     border-top-left-radius: 40px;
+     /*左上角圆角*/
+     border-top-right-radius: 40px;
+     /*右上角圆角*/
+     border-bottom-left-radius: 40px;
+     /*左下角圆角*/
+     border-bottom-right-radius: 40px;
+     /*右下角圆角*/
+     width: 100px;
+     margin: center;
+     background-color: #5765F2
+    }
+    a {
+     color: #0079F2;
+     text-decoration: none;
+     -webkit-tap-highlight-color: transparent;
+    }
+    .cent {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     max-width:600px
+    }
+    .cent1 {
+     position: absolute;
+     top: 30%;
+     left: 40%;
+     transform: translate(-50%, -50%);
+    }
+    .translate{
+     padding-top: 5%;
+     padding-right: 5%;
+     color:black
+    }
+    p {
+     line-height: 1.6;
+     /*间距*/
+     color: #334555;
+     /*颜色*/
+     font-size: 18px;
+     /*字号*/
+     font-family: 'Open Sans', sans-serif;
+     /*字体*/
+     font-weight: normal;
+     /*粗细*/
+     word-spacing: normal;
+     /*单词间距*/
+     text-decoration: none;
+     /*修饰文字(none正常，underline下划线，overline上划线，line-through删除线 blink闪烁(只支持IE6,7,搜狐))*/
+     letter-spacing: normal;
+     /*字符间距(normal默认，length长度单位)*/
+    }
+    h1 {
+     line-height: normal;
+     /*大小*/
+     color: #2C3E50;
+     /*颜色*/
+     font-size: 60px;
+     /*字号*/
+     font-family: STXingkai;
+     /*字体*/
+     font-weight: 600;
+     /*粗细*/
+     word-spacing: normal;
+     /*单词间距*/
+     text-decoration: none;
+     /*修饰文字(none正常，underline下划线，overline上划线，line-through删除线*/
+     letter-spacing: normal;
+     /*字符间距(normal默认，length长度单位)*/
+ }
+    </style>
+    <head>
+    <center><div style="max-width:1000px"><p align="right"class="translate">简体中文｜<a href="./homepageen.html"target="_blank">英文</a>｜<a href="./global.html"target="_blank">􀆪</a></p></div></center>
+    <center><div class="cent1"><h1 align="left">庞玺桐</h1>
+    <p>我是一名来自吉林省长春市的青年学生</p>
     </div>
-  </head>
-  <!--身体-->
-  <body bgcolor="#fff">
-    <!--表头-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1 align="center"style="font-family: 'Open Sans',sans-serif;"><big><big><big><big>庞玺桐的个人博客</h1></big></big></big></big>
-    <p align="center"><a href="#introduce"class="sba"><span4>自我介绍</span4></a>
-    &#160;&#160;&#160;&#160;<a href="#code"class="sba"><span4>数据中心</span4></a>
-    &#160;&#160;&#160;&#160;<a href="#page"class="sba"><span4>文章</span4></a>
-    &#160;&#160;&#160;&#160;<a href="#donate"class="sba"><span4>捐助</span4></a>
-    &#160;&#160;&#160;&#160;<a href="#talk"class="sba"><span4>评论</span4></a>
-    &#160;&#160;&#160;&#160;<a href="#follow"class="sba"><span4>关注我</span4></a></p>
-    <br>
-    <!--概况-->
-    <table>
-      <tr align="center">
-          <td><p>
-          <h1 align="center">博客概况</h1>
-          <p>
-          <a href="https://pangxitong.github.io"target="_blank">博客网址：https://pangxitong.github.io</a>
-          <button type="button">
-            <a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="https://pangxitong.github.io">复制</a>
-          </button>
-          <br>
-          
-          <a href="http://341qwc20wv96.ngrok.xiaomiqiu123.top"target="_blank">Gitea-GitClub：http://341qwc20wv96.ngrok.xiaomiqiu123.top</a>
-          <button type="button">
-            <a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="http://341qwc20wv96.ngrok.xiaomiqiu123.top">复制</a>
-          </button>
-          <br>
-          
-          <a href="https://3jxkfrdkfhha.ngrok.xiaomiqiu123.top"target="_blank">Artalk Sidebar：https://3jxkfrdkfhha.ngrok.xiaomiqiu123.top</a>
-          <button type="button">
-            <a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="https://3jxkfrdkfhha.ngrok.xiaomiqiu123.top/">复制</a>
-          </button>
-          <br>
-          
-          <a href="http://pangxitong.github.io"target="_blank"><html xmlns:wb="http://open.weibo.com/wb"><script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script><wb:follow-button uid="7460136539" type="red_1" width="67" height="24" ></wb:follow-button>
-          <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=LC6KPTkFQhzfupb4f9GJNqBfr6kNcYCD&jump_from=webapi&authKey=JmcW+Ft61Bu+va7EmwVLE9W7LwNKt+Nin5INjZqAOB7PPNC9j66HGq3/8Y73rsOz"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="MCCU" title="MCCU"></a>
-          <html xmlns:wb="http://open.weibo.com/wb"><script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script><wb:share-button addition="simple" type="button" default_text="分享庞玺桐的个人博客，让我们一起做公益吧！" ralateUid="7460136539"></wb:share-button></a>
-          </p>
-          <h1 align="center">公告</h1>
-          <p align="left"style="width:450px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;我的博客开始用我的自建服务器运行评论啦！大家快来评论吧！<a href="./talk.html"target="_blank">立刻评论>></a>
-          <br>
-          <br>
-          &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;由于GitHub在中国出现了响应延迟、域名污染等问题，导致访问缓慢，我决定基于<a href="https://gitea.io"target="_blank">Gitea</a>建立自托管数据库，做我在<a href="https://github.com/PangXitong"target="_blank">GitHub</a>所有的项目的镜像仓库。<a href="http://341qwc20wv96.ngrok.xiaomiqiu123.top/"target="_blank">前往Gitea数据库>></a>
-          <!--自我介绍跳转--><p id="introduce"></p>
-          </p>
-        </td>
-        <td>
-          <p align="center">
-            <img src="./images/PangXitong.jpeg"width="256" height="256" />
-            <br><br><br>
-            <img src="./images/IMG_1687.JPG"width="256" height="256" />
-          </p>
-        </td>
-      </tr>
-    </table>
-    <br>
-    <p style="background-color:#fff"style="color:#FFF"align="center">
-    <table>
-          
-    <center><a href="./introduce/index.html"target="_blank"><div class="bother">
-    <h1 align="left">自我介绍&#160;&#160;<small><small><small><small>（2023.2.22）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此页面为庞玺桐的正式的学术自我介绍页面，全文由英文书写。介绍了：自我情况、思想、组织和成果等信息。正式版自我介绍，具有参考价值。&#160;<span8>点击阅读全文>></span8></p>
-    </div></a></center>
-    </table>
-    <br>
-    </p><br><br>
-    <div><iframe align="center" width="100%" height="413" src="connect.html"></iframe></div>
-    <!--数据中心跳转--><p id="code"></p>
-    <br>
-    <br>
-       <!--GitHub-->
-    <br>
-    <table>
-      <tr align="center">
-        <td>
-          <h1 align="center">数据中心 · 代码空间</h1>
-          <p align="left"class="paragraph-left"style="width:512px;">
-            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;由于GitHub在中国出现了响应延迟、域名污染等问题，导致访问缓慢，我决定基于<a href="https://gitea.io"target="_blank">Gitea</a>建立自托管数据库，做我在<a href="https://github.com"target="_blank">GitHub</a>所有的项目的镜像仓库.<a href="http://341qwc20wv96.ngrok.xiaomiqiu123.top/"target="_blank">前往Gitea数据库>></a>
-            <br>
-            <br>
-            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;科技是站在前人的肩膀上发展，注册专利相当于拒绝其他人去使用拓展它；如果这个世界上充满了专利，以后后人想要解决一个简单的问题，都要当心某项专利的话，这不是一个我乐意生活的世界。<a href="https://baike.baidu.com/item/约翰·卡马克/1072333?fr=aladdin"target="_blank"><small>（参考资料：John D. Carmack）</small></a>
-          <br>
-            &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;我认为，科学技术是造福人类的，那么科学技术也应该公众于世，而不是作为资本的工具。我是一个代码自由主义者，也是一名共产主义者，希望能够贡献出自己的微薄力量。
-            <br>
-            </p>
-          <table>
-            <tr align="center">
-              <td>
-                <p>点击下方图标关注我&#160;&#160;&#160;&#160;<br>
-                <a href="https://github.com/PangXitong"target="_blank"><img border="0" src="./images/GitHub.webp"width="100" height="100" /></a><a href="https://github.com/WTCU"target="_blank"><img border="0" src="./images/MCCU.webp"width="100" height="100" /></a></p>
-              </td>
-              <td>
-                <p>
-                以下是我的开源项目
-                <br>
-                <a href="https://github.com/PangXitong/Minecraft-Communism-Union-Official-Website"target="_blank">MCCU网站构建</a> 和 <a href="https://github.com/PangXitong/Minecraft-resource-pack"target="_blank">服务器资源包</a>
-                <br>
-                <a href="https://github.com/PangXitong/PangXitong"target="_blank">庞玺桐主页</a> 和 <a href="https://github.com/PangXitong/pangxitong.github.io"target="_blank">博客 GitHub Pages</a>
-                <br>
-                <a href="https://github.com/WTCU"target="_blank">WTCU项目</a> 和 <a href="https://github.com/WTCU"target="_blank">WTCU网站</a>
-                <br><!--文章跳转--><p id="page"></p>
-                <a href="https://github.com/PangXitong/Chinglish-Pang"target="_blank">Chinglish-Pang</a> 和 <a href="https://github.com/WTCU/kiftd"target="_blank">kiftd二次开发</a>
-                </p>
-              </td>
-            </tr>
-          </table>  
-        </td>&#160;&#160;&#160;&#160;
-        <td align="left"style="width:360px;">
-          
-          <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;我的GitHub项目均遵循此<a href="./open.html"target="_blank">开源协议与版权声明</a>，希望各位开发者能够共同维护和平自由的网络代码环境。<br><br>
-          &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;应用我的开源项目的任何项目的主页，都应当填入一下嵌入代码，并更改"开源链接"为<a href="https://github.io/PangXitong"target="_blank">相应的开源链接</a>或<a href="https://pangxitong.github.io"target="_blank">此博客</a><button type="button"><a href="./images/声明.txt" download="声明.txt"><big><big>下载代码</big></big></a></button><br>
-          <div><iframe align="center" width="300px" height="330" src="./images/声明.html"></iframe></div>
-    <center><details><summary>点击展开效果图</summary><ol><li>
-              <center><style>.github-corner svg{color:#fff;fill:#42b983;fill:var(--theme-color,#000000);height:80px;width:80px}</style>
-<a href="https://pangxitong.github.io" target="_blank" class="github-corner" aria-label="View source on Github"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a></center>
-    </li></ol></details></center>
-        </td>
-      </tr>
-    </table>
-    <br>
-    <br>
-    <!--文章--><br><br>
-    
-    <center><a href="./Chinglish.html"target="_blank"><div class="bother"><h1 align="left">“Chinglish·庞”字体&#160;&#160;<small><small><small><small>（2023.1.13）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此字体为庞玺桐借助Vectornator和Calligraphr，将中国元素添加到英文字体中，字母的所有元素均由华文楷体的中文笔画和基本图形组成，希望能对您的创作做出帮助！<span8>&#160;点击了解更多>></span8></p>
-    </div></a></center><br><br>
-    
-    <center><a href="./open.html"target="_blank"><div class="bother"><h1 align="left">开源协议与版权声明&#160;&#160;<small><small><small><small>（2023.1.2）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此页面为此网站和庞玺桐的所有开源项目的：开源协议与版权声明，此协议对开发者极为重要，需要所有引用我的开源项目的开发者仔细阅读<span8>&#160;点击浏览开源协议与版权声明>></span8></p>
-    </div></a></center><br><br>
-    
-    <center><a href="https://wtcu.github.io/"target="_blank"><div class="bother"><h1 align="left">WTCU&#160;&#160;<small><small><small><small>（2022.12.29）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此页面为WTCU网站，一个大型多功能开源HTML研究项目，由我们的团队成员组成，力求作为我们的研究基地，包含多个研究项目和研究成果<span8>&#160;点击进入研究首页>></span8></p>
-    </div></a></center><br><br>
-    
-    <center><a href="./Support.html"target="_blank"><div class="bother"><h1 align="left">捐助页面&#160;&#160;<small><small><small><small>（2023.1.5）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此页面为此博客的捐助页面，如果我的研究成果给您带来了帮助，那就不妨捐助支持一下我吧，您的捐助是我前进的动力。<span8>&#160;点击参与援助>></span8></p>
-    </div></a></center><br><br>
-    
-    <center><a href="./page/macOS.html"target="_blank"><div class="bother">
-    <h1 align="left">macOS应急指令&#160;&#160;<small><small><small><small>（2022.12.28）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此文章用于macOS13软件在故障时进行故障排除或紧急修复。<span8>点击开始学习>></span8></p>
-    </div></a></center><br><br>
-    
-    <center><a href="./page/minecraft.html"target="_blank"><div class="bother">
-    <h1 align="left">Minecraft进阶教程&#160;&#160;<small><small><small><small>（2022.12.27）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Minecraft&#160;Java&#160;进阶玩法共享！<span8>点击开始学习>></span8></p>
-    </div></a></center><br><br>
-    
-    <center><a href="./page/Password.html"target="_blank"><div class="bother">
-    <h1 align="left">密码强度检测&#160;&#160;<small><small><small><small>（2023.1.22）</small></small></small></small></h1>
-    <p align="left">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;测试你的密码被暴力破解的时间，并给予相应的评价<span8>&#160;点击开始测试>></span8></p>
-    </div></a></center><br><br>
-    
-    <center><a href="./more.html"target="_blank"><div class="bother"style="box-shadow:0px 0px 10px 1px #D1D1D1">
-    <p align="center"><big style="color:black">查看更多文章</big><br><p align="center"><a href="./more.html#new"class="sb"target="_blank"><span4>新思想</span4></a>&#160;&#160;&#160;&#160;<a href="./more.html#tool"class="sb"target="_blank"><span4>小工具</span4></a>&#160;&#160;&#160;&#160;<a href="./more.html#game"class="sb"target="_blank"><span4>小游戏</span4></a>&#160;&#160;&#160;&#160;<a href="./more.html#teach"class="sb"target="_blank"><span4>小教程</span4></a></p></p>
-    </div></a></center><br><br>
-    
-    
-    <!--关注我-->
-    <p style="background-color:#2F6AE8"style="color:#FFF"align="center">
-    <br><br>
-    <table>
-      <tr align="center">
-        <td>
-          <h1 align="center"><span>关注我</span></h1>
-          <p align="left"class="paragraph-left"style="width:512px;">
-            <span>你可以扫描右侧二维码关注我的微信视频号，但是我不愿意陌生人加我的微信。
-            <br>
-            <br>
-            <a href="https://v.douyin.com/6Fy16w1/"target="_blank"><span>抖音（点此此处）</span></a>和微信视频号（右侧二维码）是我主要发布视频的平台。
-            <br>
-            <br>
-            您还可以再此页面底部查看我的更多平台账号</span>
-          </p>
-        </td>
-        <td>
-          <img border="0" src="./images/微信视频号.jpg"width="256" height="256" />
-        </td>
-      </tr>
-    </table>
-    <br><!--捐助跳转--><p id="donate"></p><br>
-    </p><br><br>
-    <!--支持我-->
-    <p>
-      <table>
-        <tr align="center">
-          <td style="width:400px;">
-          <h1 align="center">支付宝红包</h1>
-            <p align="left"style="margin-right:10px">
-              &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;右侧二维码是我的支付宝领取每日红包的二维码，扫描二维码不会扣除您的存款，反而在消费时可以抵扣您的账单，我们也能收到来自支付宝的收益！<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;网站由庞玺桐独自完成运行和维护，网站收入完全归庞玺桐个人所有，网站的运行维护需要精力和资本的加持，您的支持是我前进的动力，感谢您的支持！<a href="./Support.html"target="_blank">进入捐助页面>></a>
-              <br>
-            </p>
-          </td>
-          <td>
-            <input type="radio"onclick="document.getElementById('myImage').src='./images/支持我们.jpg'">同意<a href="./open.html"target="_blank"style="color:#0079F2">《开源协议与版权声明》</a></button><br><img id="myImage" border="0" src="./images/支持我们协议.jpg" style="text-align:center;">
-          </td>
-        </tr>
-      </table>
-    </p>
-    <!--网易云音乐-->
-    <br>
-    <br>
-    <br>
-    <table>
-      <tr align="center">
-        <td>
-          <h1 align="center">网易云音乐作品陈列</h1>
-          <p align="center"class="paragraph-left"style="width:420px;">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1911894977&auto=0&height=66"></iframe>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1961852996&auto=0&height=66"></iframe>
-            
-              <table>
-                <tr align="center">
-                  <td>
-                    <a href="https://y.music.163.com/m/artist?app_version=8.8.20&id=51058853&userid=3695971939&dlt=0846"target="_blank"><img border="0" src="./images/NetEaseCloudMusic.png"width="100" height="100" />&#160;&#160;&#160;&#160;</a>
-                  </td>
-                  <td>
-                    <p>点击左侧网易云音乐图标进入庞玺桐的主页，即可查看更多作品。</p>
-                  </td>
-                </tr>
-              </table>
-            </p>
-          </td>
-          <td>
-          <p align="center"class="paragraph-left"style="width:480px;">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1989578676&auto=0&height=66"></iframe>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1945532610&auto=0&height=66"></iframe>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1946194952&auto=0&height=66"></iframe>
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1961063000&auto=0&height=66"></iframe>
-          </p>
-        </td>
-      </tr>
-    </table>
-    <br>
-    <br>
-    <br>
-<!--关注我-->
-    <p style="background-color:#222222"style="color:#FFF"align="center">
-    <br><br>
-    <table>
-          <h1 align="center"><span><big>感谢您的阅读</big></span></h1>
-    </table>
-    <br><br><br>
-    </p><!--评论跳转--><p id="talk"></p><br><br><br><br>
-
-<!--评论-->
-<br><div style="font-size:40px;">庞玺桐的个人博客评论端</div><br><div style="font-size:20px;">支持Markdown语法、Latex语法、OwO表情语法和纯文本</div><br>
-<!-- CSS -->
-<link href="https://cdn.bootcdn.net/ajax/libs/artalk/2.4.4/Artalk.css" rel="stylesheet">
-<!-- JS -->
-<script src="https://cdn.bootcdn.net/ajax/libs/artalk/2.4.4/Artalk.js"></script>
-<!-- Artalk -->
-<include src="Arttalk.html"></include>
-<br><br><div style="font-size:16px;">评论服务由庞玺桐的个人iMac上构建的自建Artalk服务器提供</div><br><br>
-<!--底部导航栏--><br><br>
-<!--关注跳转--><p id="follow"></p>
-<include src="bottom.html"></include>
+    <center><div class="cent">
+      <a class="bother"align="center"style="color:white;"href="./blog.html"target="_blank"><big>博客</big></a>&#160;&#160;&#160;&#160;
+      <a class="bother"align="center"style="color:white"href="./introduce/index.html"target="_blank"><big>介绍</big></a>
+    </div></center>
+  <body>
   </body>
 </html>
