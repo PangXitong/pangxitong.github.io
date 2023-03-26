@@ -1,0 +1,21 @@
+
+    .cent {
+     position: absolute;
+     top: 60%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     max-width:600px
+    }
+    .cent1 {
+     position: absolute;
+     top: 20%;
+     padding-left: 40px;/*右侧间距*/
+    }
+    h1 {
+     font-size: 100px;
+     /*字号*/
+    }
+    p {
+     font-size: 20px;
+     /*字号*/
+    }

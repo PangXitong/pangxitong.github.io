@@ -1,0 +1,22 @@
+
+    .cent {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     max-width:600px
+    }
+    .cent1 {
+     position: absolute;
+     top: 30%;
+     left: 40%;
+     transform: translate(-50%, -50%);
+    }
+    h1 {
+     font-size: 80px;
+     /*字号*/
+    }
+    p {
+     font-size: 20px;
+     /*字号*/
+    }
