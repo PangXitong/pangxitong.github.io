@@ -4,11 +4,13 @@
      top: 55%;
      left: 50%;
      transform: translate(-50%, -50%);
+     z-index: 2;
     }
     .cent1 {
      position: absolute;
      top: 20%;
      padding-left: 40px;/*右侧间距*/
+     z-index: 1;
     }
     h1 {
      font-size: 120px;
