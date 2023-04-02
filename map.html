@@ -6,12 +6,11 @@
     <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,庞玺桐的博客,macOS,macos,开源,小游戏,GitHub,Artalk,博客自托管评论系统,神奇玺桐">
     <link rel="shortcut icon" href="./blog/images/favicon.ico">
     <link rel="bookmark" href="./blog/images/favicon.ico">
-    <!--<link rel="stylesheet" type="text/css" href="./css.css">-->
     <!--响应式设计-->
     <link rel="stylesheet" href="style.css" media="(min-width: 1001px)" type="text/css" />
     <link rel="stylesheet" href="mobile.css" media="(max-width: 1000px)" type="text/css" />
     <meta name="applicable-device" content="pc,mobile">
-    <!--<script type="text/javascript" src="./JavaScript.js"></script>-->
+    <script type="text/javascript" src="./blog/JavaScript.js"></script>
     <!--百度统计-->
     <script>
     var _hmt = _hmt || [];
@@ -22,18 +21,128 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
+    <script>
+    function shareCopyUrl(that) {
+            var clipboard = new ClipboardJS(that);
+            clipboard.on('success', function (e) {
+            console.info('Text:', e.text);
+            e.clearSelection();
+    }); 
+            clipboard.on('error', function (e) {
+            // console.error('Action:', e.action);
+            // console.error('Trigger:', e.trigger);
+    });
+            // 处理第一次点击不成功
+            clipboard.onClick(event);
+    }
+    </script>
+    <style>
+      span1 {
+            color: #551A8B;
+      }
+      span2 {
+            color: #0200EE;
+      }
+      span3 {
+             color: red;
+      }
+      span4 {
+             color: black;
+      }
+      span5 {
+             color: #D6B1A6;
+      }
+      span6 {
+             color: #E25DA9;
+      }
+      span7 {
+             color: #848484;
+      }
+      span8 {
+             color: #059CE5;
+      }
+      span9 {
+             color: #B8B8B8;
+      }
+      span10 {
+             color: #334555;
+      }
+    </style>
     </head>
-    <body><center>
-    <h2>庞玺桐的博客的导览页面</h2>
+    <body>
+    <h2 style="font-size:40px;">庞玺桐的博客的导览页面</h2>
     <ul>
-          <li><a href="#">庞玺桐的博客
-          <li><a href="https://wtcu.github.io/"target="_blank">WTCU</a></li>
-          <li><a href="./open.html"target="_blank">协议</a></li>
-          <li><a href="./talk.html"target="_blank">评论</a></li>
-          <li><a href="./page/news.html"target="_blank">时事评说</a></li>
-          <li><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li>
-          </li>        
+      <li>此页面颜色字注释</li>
+      <ul>
+      <li><span2>您还未预览的网页</span2></li>
+      <li><span1>您已经预览过的网页</span1></li>
+      <li><span3>因尚未完善或存在问题而不可使用的页面</span3></li>
+      </ul>
+    </ul>
+    <ul>
+      <li>服务器</li>
+        <ul>
+          <li>博客网址：<a href="https://pangxitong.github.io"target="_blank">https://pangxitong.github.io</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="https://pangxitong.github.io">复制</a></button></li>
+          <li>Gitea-GitClub：<a href="http://341qwc20wv96.ngrok.xiaomiqiu123.top"target="_blank">http://341qwc20wv96.ngrok.xiaomiqiu123.top</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="http://341qwc20wv96.ngrok.xiaomiqiu123.top">复制</a></li>
+          <li>Artalk Sidebar：<a href="https://3jxkfrdkfhha.ngrok.xiaomiqiu123.top"target="_blank">https://3jxkfrdkfhha.ngrok.xiaomiqiu123.top</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="https://3jxkfrdkfhha.ngrok.xiaomiqiu123.top/">复制</a></li>
+          <li>Minecraft Server</li>
+            <ul>
+              <li>网站：<a href="./mccu/index.html"target="_blank">https://pangxitong.github.io/mccu/index.html</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="https://pangxitong.github.io/mccu/index.html">复制</a></button></li>
+              <li>tcp-1：<a href="frp-arm.top:44240"target="_blank">frp-arm.top:44240</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="frp-arm.top:44240">复制</a></button></li>
+              <li>IPv4-1：<a href="cn-nn-dx-3.natfrp.cloud:17938"target="_blank">43.249.193.55:44240</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="43.249.193.55:44240">复制</a></button></li>
+              <li>tcp-2：<a href="frp-bar.top:12278"target="_blank">frp-bar.top:12278</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="frp-bar.top:12278">复制</a></button></li>
+              <li>IPv4-2：<a href="116.10.184.211:12278"target="_blank">116.10.184.211:12278</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="116.10.184.211:12278">复制</a></button></li>
+              <li>IPv4-3：<a href="cn-zz-bgp-4.natfrp.cloud:16372"target="_blank">ngrok.xiaomiqiu123.top:38902</a><button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="ngrok.xiaomiqiu123.top:38902">复制</a></button></li>
+            </ul>
         </ul>
-    </center><body>
+          <li>博客<a href="./blog/index.html"target="_blank">./blog</a></li>
+            <ul>
+              <li>博客首页<a href="./blog/index.html"target="_blank">./index.html</a></li>
+              <li>全部文章<a href="./blog/more.html"target="_blank">./more.html</a></li>
+              <li>测试页面<a href="./blog/Test.html"target="_blank">./Test.html</a></li>
+              <li>支持页面<a href="./blog/Support.html"target="_blank">./Support.html</a></li>
+              <li>开源协议与版权声明<a href="./blog/open.html"target="_blank">./open.html</a></li>
+              <li>页面<a href="./blog/more.html"target="_blank">./page</a></li>
+                <ul>
+                  <li>谷歌小恐龙<a href="./blog/page/dragon.html"target="_blank">./dragon.html</a></li>
+                  <li>随机数生成器<a href="./blog/page/Range.html"target="_blank">./Range.html</a></li>
+                  <li>总结我的2022<a href="./blog/page/2022.html"target="_blank">./2022.html</a></li>
+                  <li>macOS应急指令<a href="./blog/page/macOS.html"target="_blank">./macOS.html</a></li>
+                  <li>Minecraft进阶玩法<a href="./blog/page/minecraft.html"target="_blank">./minecraft.html</a></li>
+                  <li>做一件有意义的事情<a href="./blog/page/meaningful.html"target="_blank">./meaningful.html</a></li>
+                  <li>援助页面<a href="./blog/page/aid.html"target="_blank">./aid.html</a></li>
+                  <li>下课提醒器<a href="./blog/page/class.html"target="_blank">./class.html</a></li>
+                  <li>Chinglish字体<a href="./blog/page/Chinglish.html"target="_blank">./Chinglish.html</a></li>
+                  <li>2048原版汉化<a href="./blog/page/2048/index.html"target="_blank">./2048/index.html</a></li>
+                  <li>祝贺烟花<a href="./blog/page/fireworks/index.html"target="_blank">./fireworks/index.html</a></li>
+                  <li>字幕烟花<a href="./blog/page/Firework/a1025062.html"target="_blank">./Firework/a1025062.html</a></li>
+                  <li>在线白板<a href="./blog/page/douBoard/index.html"target="_blank">./douBoard/index.html</a></li>
+                  <li>网页模拟macOS<a href="./blog/page/macOS/index.html"target="_blank">./macOS/index.html</a></li>
+                  <li>扫雷<a href="./blog/page/MineSweeping.html"target="_blank">./MineSweeping.html</a></li>
+                  <li>密码安全性检测<a href="./blog/page/Password.html"target="_blank">./Password.html</a></li>
+                  <li>时事评说（2023.3.13）<a href="./blog/page/news.html"target="_blank">./news.html</a></li>
+                </ul>
+            </ul>
+          <li>Academic Introduction<a href="./introduce/index.html"target="_blank">./introduce</a></li>
+            <ul>
+              <li>Home Page<a href="./introduce/index.html"target="_blank">./index.html</a></li>
+              <li><span3>Papers</span3><a href="./introduce/papers.html"target="_blank"><span3>./papers.html</a></span3></li>
+              <li>blogs<a href="./introduce/blogs.html"target="_blank">./blogs</a></li>
+              <ul>
+               <li>none</li>
+              </ul>
+              <li>Thesis documents<a href="./introduce/papers/抗抑郁药物的临床应用及其作用机理——庞玺桐.pdf"target="_blank">./papers</a></li>
+              <ul>
+               <li>Clinical application and mechanism of antidepressant drugs(Chinese)<a href="./introduce/papers/抗抑郁药物的临床应用及其作用机理——庞玺桐.pdf"target="_blank">./Clinical application and mechanism of antidepressant drugs(Chinese).pdf</a></li>
+              </ul>
+            </ul>
+          <li><a href="./mccu/index.html"target="_blank">Minecraft Communism Union</a></li>
+            <ul>
+              <li>主页<a href="./mccu/index.html"target="_blank">./index.html</a></li>
+              <li>群主阁<a href="./mccu/union.html"target="_blank">./union.html</a></li>
+              <li>规制堂堂规<a href="./mccu/rules.html"target="_blank">./rules.html</a></li>
+            </ul>
+        </ul>
+    <body>
   </body>
 </html>
