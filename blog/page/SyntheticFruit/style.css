@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.cover-container {
+    width: 100%;
+    height: 100%;
+    background-image: url(./assets/bg01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#game-box {
+    display: none;
+}
+
+#game-over-box {
+    display: none;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+#btn-play {
+    position: absolute;
+    background-image: url(./assets/play-game.png);
+    background-size: cover;
+    width: 277px;
+    height: 81px;
+    left: 50%;
+    top: 50%;
+    margin-left: -138.5px;
+    margin-top: -40.5px;
+    cursor: pointer;
+}
+
+#btn-restart {
+    position: absolute;
+    background-image: url(./assets/btn-restart.png);
+    background-size: cover;
+    width: 100px;
+    height: 83px;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -41.5px;
+    cursor: pointer;
+}
+
+#score {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 80px;
+    margin-top: -80px;
+    margin-left: -50px;
+    text-align: center;
+    font-size: large;
+    color: red;
+}

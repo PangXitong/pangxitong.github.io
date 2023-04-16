@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style.css" />
+        <title>SyntheticFruit</title>
+    </head>
+
+    <body>
+        <audio
+            id="merge"
+            controls
+            autoplay
+            hidden
+            src="./assets/merge_music.mp3"
+        ></audio>
+        <audio
+            id="drop"
+            controls
+            autoplay
+            hidden
+            src="./assets/drop_music.mp3"
+        ></audio>
+        <div class="content">
+            <div id="game-box" class="cover-container">
+                <canvas id="gameboard"></canvas>
+            </div>
+            <div class="cover-container" id="pre-box">
+                <button id="btn-play"></button>
+            </div>
+            <div class="cover-container" id="game-over-box">
+                <div id="score"></div>
+                <button id="btn-restart"></button>
+            </div>
+        </div>
+        <script src="./index.js"></script>
+    </body>
+</html>
