@@ -87,6 +87,25 @@ var _hmt = _hmt || [];
     <br>
     <br>
     <h1 align="center"><big><big><big><big><big><big><big>404</h1></big></big></big></big></big></big></big>
+    <div id="countdown"style="font-size: 40px;color:#F63A2D"></div><br>
+<script>
+// 定义倒计时时间（单位：秒）
+var timeleft = 10;
+
+// 定义定时器函数，每秒钟更新倒计时时间并显示
+var countdownTimer = setInterval(function() {
+  document.getElementById("countdown").innerHTML = timeleft + " 秒后跳转到首页";
+  timeleft -= 1;
+  
+  // 如果倒计时时间结束，则清除定时器，跳转到指定页面
+  if (timeleft <= 0) {
+    clearInterval(countdownTimer);
+    window.location.href = "index.html";
+  }
+}, 1000);
+</script>
+
+
     <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此页面可以加载证明您于https://pangxitong.github.io的连接正常。
     <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如果在您的设备上，部分信息无法正常显示，请检查您的浏览器是否支持html5，如果您无法验证您的浏览器是否可以运行html5，请检查您的浏览器是否为最新版。
     <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如果您在使用IE浏览器，请更换其他浏览器，因为Microsoft已经停止了对该浏览器的支持。
