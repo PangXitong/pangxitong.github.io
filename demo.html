@@ -1,17 +1,13 @@
-<html lang="zh-CN">
-  <head>
-    <meta name="description"content="庞玺桐的博客">
-    <meta charset="utf-8">
-    <title>庞玺桐</title> 
-    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,庞玺桐的博客,macOS,macos,开源,小游戏,GitHub,Artalk,博客自托管评论系统,神奇玺桐">
-    <link rel="shortcut icon" href="./blog/images/favicon.ico">
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="./blog/images/favicon.ico">
     <link rel="bookmark" href="./blog/images/favicon.ico">
-    <!--<link rel="stylesheet" type="text/css" href="./css.css">-->
-    <!--响应式设计-->
-    <link rel="stylesheet" href="style.css" media="(min-width: 1001px)" type="text/css" />
+<link rel="stylesheet" href="style.css" media="(min-width: 1001px)" type="text/css" />
     <link rel="stylesheet" href="mobile.css" media="(max-width: 1000px)" type="text/css" />
     <meta name="applicable-device" content="pc,mobile">
-    <!--<script type="text/javascript" src="./JavaScript.js"></script>-->
     <!--百度统计-->
     <script>
     var _hmt = _hmt || [];
@@ -60,23 +56,7 @@
         }
     });
     </script>
-    <!--复制链接<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script>
-    function shareCopyUrl(that) {
-            var clipboard = new ClipboardJS(that);
-            clipboard.on('success', function (e) {
-            console.info('Text:', e.text);
-            e.clearSelection();
-    }); 
-            clipboard.on('error', function (e) {
-            // console.error('Action:', e.action);
-            // console.error('Trigger:', e.trigger);
-    });
-            // 处理第一次点击不成功
-            clipboard.onClick(event);
-    }
-    </script>-->
-    <style>
+<style>
     
     a {
      color: #0079F2;
@@ -133,22 +113,142 @@
     }
  
     </style>
-    </head>
-    <body>
-    <center><div style="max-width:1000px"><h2 align="right"class="translate">简体中文｜<a href="./en.html">English</a>｜<a href="./global.html"target="_blank"style="font-size: 40px;">ø</a></h2></div></center>
-    <center><div class="cent1"><h1 align="left">庞玺桐</h1>
-    <p>我是一名来自吉林省长春市的青年学生。</p>
-    </div>
-    <center><div class="cent">
-      <button type="button"class="bother"><a align="center"style="color:white;"href="./blog/index.html"target="_blank"><big><span>博客</span></big></a></button>
-      <button type="button"class="bother"><a align="center"style="color:white"href="./introduce/index.html"target="_blank"><big><span>介绍</span></big></a></button>
-      <button type="button"class="bother"><a align="center"style="color:white"href="http://341qwc20wv96.ngrok.xiaomiqiu123.top"target="_blank"><big><span>数据中心</span></big></a></button>
-      <button type="button"class="bother"><a align="center"style="color:white"href="./map.html"target="_blank"><big><span>导览</span></big></a></button>
-    </div></center>
+
+  <title>弹窗示例</title>
+  <style>
+    /* 遮罩层样式 */
+    #mask {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      display: none; /* 默认隐藏 */
+    }
     
-    <div class="bottom"style="font-family: 'Open Sans', sans-serif;">
+    /* 弹窗样式 */
+    #popup {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      top: 30%;
+      left: 50%;
+      margin-top: -125px;
+      margin-left: -200px;
+      background-color: white;
+      border-radius: 10px;
+      z-index: 10000;
+      text-align: center;
+      display: none; /* 默认隐藏 */
+    }
+    
+    #hh {
+      margin-top: 50px;
+      font-size: 36px;
+      color: #333;
+    }
+    
+    h2 {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #666;
+    }
+    
+    label {
+      display: block;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    
+    input[type=text] {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    
+    #result {
+      position: fixed;
+      right: 10%;
+      bottom: 10%;
+      font-size: 16px;
+      color: #999;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 遮罩层和弹窗 -->
+  <div id="mask"></div>
+  <div id="popup">
+    <h1 id="hh">请输入标题信息</h1>
+    <label>主标题（必填）</label>
+    <input type="text" id="titleInput" required>
+    <label>副标题</label>
+    <input type="text" id="subtitleInput">
+    <!-- <label>署名</label>
+    <input type="text" id="authorInput">-->
+    <button onclick="submitHandler()">确定</button>
+  </div>
+
+  <!-- 显示页面元素 -->
+  <div class="cent1">
+  	<h1 align="left"id="title"></h1>
+  	<p id="subtitle"></p>
+  </div>
+  <div id="result"></div>
+  <div id="author"></div>
+
+  <!-- 弹出窗口的 JavaScript 脚本 -->
+  <script>
+    var mask = document.getElementById('mask');
+    var popup = document.getElementById('popup');
+    var title = document.getElementById('title');
+    var subtitle = document.getElementById('subtitle');
+    var author = document.getElementById('authorInput');
+
+    function showPopup() {
+      mask.style.display = 'block';
+      popup.style.display = 'block';
+    }
+
+    function hidePopup() {
+      mask.style.display = 'none';
+      popup.style.display = 'none';
+    }
+
+    function submitHandler() {
+      var titleText = document.getElementById('titleInput').value;
+      var subtitleText = document.getElementById('subtitleInput').value;
+      title.innerText = titleText;
+      subtitle.innerText = subtitleText;
+      //author.innerText = document.getElementById('authorInput').value;
+      hidePopup();
+    }
+
+    window.onload = function() {
+      showPopup();
+    };
+  </script>
+<div class="bottom"style="font-family: 'Open Sans', sans-serif;">
     <!--<span1>注意：此页面仍在测试阶段，如果此页面的元素又互相重叠的现象，请在浏览器调节页面缩放。</span1> -->
     <br>
     <a target="_blank" href="./open.html">Copyright</a>&nbsp;©&nbsp;2023&nbsp;PangXitong.&nbsp;&nbsp;All rights reserved. Open source project by <a target="_blank" href="http://github.com/PangXitong">PangXitong</a>. Powered by <a target="_blank" href="http://github.io">Github Pages</a>.</div>
   </body>
 </html>
+
