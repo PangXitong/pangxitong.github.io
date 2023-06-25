@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>听力测试</title>
+  <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="bookmark" href="./images/favicon.ico">
+</head>
+<body>
+  <h1>此页面用于测试人类听力水平</h1>
+  <button onclick="playAudio(250)">250 Hz</button>
+  <button onclick="playAudio(500)">500 Hz</button>
+  <button onclick="playAudio(1000)">1000 Hz</button>
+  <button onclick="playAudio(2000)">2000 Hz</button>
+  <button onclick="playAudio(3000)">3000 Hz</button>
+  <button onclick="playAudio(4000)">4000 Hz</button>
+  <button onclick="playAudio(6000)">6000 Hz</button>
+  <button onclick="playAudio(8000)">8000 Hz</button>
+  25dB及以下音量能听清为宜
+  <script>
+    function playAudio(frequency) {
+      var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      var oscillator = audioContext.createOscillator();
+      var gainNode = audioContext.createGain();
+
+      var dB = 25; // 音量（分贝）
+      var gain = Math.pow(10, dB / 20);
+
+      oscillator.frequency.value = frequency;
+      gainNode.gain.value = gain;
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      oscillator.start();
+      setTimeout(function() {
+        oscillator.stop();
+      }, 1000); // 音频播放时长为 1 秒钟
+    }
+  </script>
+  <p>下图为<a href="http://www.caac.gov.cn"target="_blank">中国民用航空局局</a>发布的<a href="http://www.caac.gov.cn/XXGK/XXGK/BZGF/HYBZ/201709/t20170912_46666.html"target="_blank">《民用航空招收飞行学生体检鉴定规范》</a>关于听力“纯音导气听阀”的标准</p>
+  
+  <img src="./images/file.png"width="1024" height="" style="border: 2px dashed blue"/>
+  <p>百科：纯音导气听阀（也称作纯音气导听阀）是指在进行纯音测听时，通过空气传导的方式，检测被测试者对纯音（单一频率的声音）的听觉敏感度的一种方法。测试时需要把一个特制的探头（通常是一个小型电喇叭或压缩空气泵）放在被测试者的耳朵旁边，逐个频率测试被测试者能听到的最小声音（纯音）的大小（分贝）。纯音导气听阀值正常范围为0-25分贝。</p>
+</body>
+</html>
