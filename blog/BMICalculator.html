@@ -26,6 +26,14 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
+<style>  
+  input[type="text"] {  
+    border: 1px solid #ccc; /* 设置边框 */  
+    background-color: white; /* 设置背景颜色 */  
+    padding: 5px; /* 可选项：添加内边距以使输入框看起来更好看 */  
+    border-radius: 5px; /* 设置圆角半径为5像素 */ 
+  }  
+</style>
 </head>  
 
 <body>  
@@ -45,7 +53,13 @@ var _hmt = _hmt || [];
  <input type="text" id="bmi" name="bmi" readonly><br><br>  
  <button onclick="calculateBMI()">计算BMI</button> 
  
- <p>百科：身体质量指数，是BMI（Body Mass Index）指数，简称体质指数，是国际上常用的衡量人体胖瘦程度以及是否健康的一个标准。<br>对于中国人，通常情况下体质指数不应大于19.0或小于18.5（18.4≦BMI≦19）<br><br>其他资料：<a href="./HearingTest.html"target="_blank">测试人类听力水平</a></p>
+ <br><br>
+ <p>百科：身体质量指数，是BMI（Body Mass Index）指数，简称体质指数，是国际上常用的衡量人体胖瘦程度以及是否健康的一个标准。
+ <br><br>体质指数不应大于19.0或小于18.5（18.4≦BMI≦19），小于18.5为体重不足，大于等于
+24为超重，大于等于28为肥胖。
+<br><br>参考资料：BMI = W /H&sup2;、<a href="http://www.caac.gov.cn/XXGK/XXGK/BZGF/HYBZ/201709/t20170912_46666.html"target="_blank">MH/T 7013-2017</a>
+<br><br>其他资料：<a href="./HearingTest.html"target="_blank">测试人类听力水平</a></p>
+
  <p align="right"style="padding-right: 10%;">开发者：<a href="https://pangxitong.github.io/"target="_blank">庞玺桐</a><br>2023年7月15日</p>
  
  </center> 
