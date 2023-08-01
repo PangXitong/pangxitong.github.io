@@ -1,132 +1,117 @@
-<!--头部-->
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta name="description"content="庞玺桐的博客404页面">
+<head>
     <meta charset="utf-8">
-    <title>404</title> 
-    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,404,错误,调试">
-    <link rel="shortcut icon" href="./blog/images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="https://pangxitong.github.io/blog/css.css">
-    <meta name="applicable-device" content="pc,mobile">
-    <script type="text/javascript" src="./blog/JavaScript.js"></script>
+    <title>404</title>
+    <link rel="stylesheet" type="text/css" href="http://static.cpolar.com/css/fonts/58C9572232FB6CB74.css" />
     <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-    <!--span颜色注释-->
-    <style>
-      span {
-            color: #EDEDED;
-      }
-      span2 {
-            color: #EEFCA9;
-      }
-      span3 {
-             color: red;
-      }
-      span4 {
-             color: black;
-      }
-      span5 {
-             color: #D6B1A6;
-      }
-      span6 {
-             color: #E25DA9;
-      }
-      span7 {
-             color: #848484;
-      }
-      span8 {
-             color: #059CE5;
-      }
-      span9 {
-             color: #B8B8B8;
-      }
-    </style>
-    <!--复制链接-->
-    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script>
-    function shareCopyUrl(that) {
-            var clipboard = new ClipboardJS(that);
-            clipboard.on('success', function (e) {
-            console.info('Text:', e.text);
-            e.clearSelection();
-    }); 
-            clipboard.on('error', function (e) {
-            // console.error('Action:', e.action);
-            // console.error('Trigger:', e.trigger);
-    });
-            // 处理第一次点击不成功
-            clipboard.onClick(event);
-    }
-    </script>
-    <!--固定顶部导航栏-->    
-    <div class="top">
-      <center> 
-        <ul><big>
-          <li><a href="./index.html">庞玺桐的博客
-          <li><a href="https://wtcu.github.io/"target="_blank">WTCU</a></li>
-          <li><a href="./open.html"target="_blank">协议</a></li>
-          <li><a href="./talk.html"target="_blank">评论</a></li>
-          <li id="right"><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li></big>
-          </li>        
-        </ul>
-      </center>      
-    </div>
-  </head>
-  <!--身体-->
-  <body bgcolor="#fff">
-    <!--表头-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1 align="center"><big><big><big><big><big><big><big>404</h1></big></big></big></big></big></big></big>
-    <div id="countdown"style="font-size: 40px;color:#F63A2D"></div><br>
-<script>
-// 定义倒计时时间（单位：秒）
-var timeleft = 10;
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
-// 定义定时器函数，每秒钟更新倒计时时间并显示
-var countdownTimer = setInterval(function() {
-  document.getElementById("countdown").innerHTML = timeleft + " 秒后跳转到首页";
-  timeleft -= 1;
-  
-  // 如果倒计时时间结束，则清除定时器，跳转到指定页面
-  if (timeleft <= 0) {
-    clearInterval(countdownTimer);
-    window.location.href = "index.html";
-  }
-}, 1000);
-</script>
+        body {
+            font-family: "Whitney SSm A", "Whitney SSm B", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+            background-color: #2D72D9;
+            color: #fff;
+            -moz-font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
 
-
-    <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;此页面可以加载证明您于https://pangxitong.github.io的连接正常。
-    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如果在您的设备上，部分信息无法正常显示，请检查您的浏览器是否支持html5，如果您无法验证您的浏览器是否可以运行html5，请检查您的浏览器是否为最新版。
-    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如果您在使用IE浏览器，请更换其他浏览器，因为Microsoft已经停止了对该浏览器的支持。
-    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;我在2023年3月更新了此网页的文件架构，您可能需要重新定位书签的网页。
-    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;或请您检您是否正确输入网址。如果你不能记得正确的网址，您可以点击下方按钮回到博客首页或查看导览。</p><br>
-        <style>
-        .button1 {
-            -webkit-transition-duration: 0.4s;
-            transition-duration: 0.4s;
-            padding: 16px 32px;
+        .error-container {
             text-align: center;
-            background-color: white;
-            color: black;
-            border: 4px solid #0079F2;
-            border-radius:35px;
+            height: 100%;
         }
-        .button1:hover {
-            background-color: #0079F2;
-            color: white;
+
+        @media (max-width: 480px) {
+            .error-container {
+                position: relative;
+                top: 50%;
+                height: initial;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
         }
+
+        .error-container h1 {
+            margin: 0;
+            font-size: 130px;
+            font-weight: 300;
+        }
+
+        @media (min-width: 480px) {
+            .error-container h1 {
+                position: relative;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .error-container h1 {
+                font-size: 220px;
+            }
+        }
+
+        .return {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        @media (min-width: 480px) {
+            .return {
+                position: absolute;
+                width: 100%;
+                bottom: 30px;
+            }
+        }
+
+        .return a {
+            padding-bottom: 1px;
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            -webkit-transition: border-color 0.1s ease-in;
+            transition: border-color 0.1s ease-in;
+        }
+
+        .return a:hover {
+            border-bottom-color: #fff;
+        }
+
     </style>
-    <p align="center"><a href="./index.html"target="_blank"><button class="button1"style="font-size:20px"><big><big>回到首页</big></big></button></a><a href="./map.html"target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<button class="button1"style="font-size:20px"><big><big>导览</big></big></button></a></p><br>
-  </body>
+</head>
+
+<body>
+<div class="error-container">
+    <h1>404
+    <details>
+        <summary style="font-size: 20px;">问题筛查</summary>
+            <center><p align="left"style="font-size: 20px;max-width:600px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;您已经成功连接到pangxitong.github.io，但网页异常；
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;如果在您的设备上，部分信息无法正常显示，请更新浏览器；
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;我在2023年3月更新了此网页的文件架构，您可能需要重新定位网页；
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;请您检您是否正确输入网址。</p><center>
+    </details></h1>
+    
+    
+    <p class="return">Powered by <a href="https://pangxitong.github.io/" target="blank">PangXitong</a> . <a href="https://pangxitong.github.io/" target="blank">Home Page</a> & <a href="./map.html" target="blank">Map</a> .</p>
+</div>
+
+</body>
 </html>
