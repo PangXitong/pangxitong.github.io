@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="https://pangxitong.github.io/blog/images/favicon.ico">
+    <link rel="bookmark" href="https://pangxitong.github.io/blog/images/favicon.ico">
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <title>时间转换</title>
+    <script>
+        function convertToCode() {
+            var year = document.getElementById("year").value;
+            var month = document.getElementById("month").value;
+            var day = document.getElementById("day").value;
+            var hour = document.getElementById("hour").value;
+            var minute = document.getElementById("minute").value;
+            var second = document.getElementById("second").value;
+
+            var date = new Date(year, month - 1, day, hour, minute, second);
+            var timestamp = Math.floor(date.getTime() / 1000);
+
+            document.getElementById("code").value = timestamp;
+        }
+    </script>
+</head>
+<body>
+    <h1>时间（
+Time）转换器</h1>
+    <label for="year">年：</label>
+    <input type="number" id="year" min="1970" max="2099" value="2023">
+
+    <label for="month">月：</label>
+    <input type="number" id="month" min="1" max="12" value="1">
+
+    <label for="day">日：</label>
+    <input type="number" id="day" min="1" max="31" value="1"><br><br>
+
+    <label for="hour">时：</label>
+    <input type="number" id="hour" min="0" max="23" value="0">
+
+    <label for="minute">分：</label>
+    <input type="number" id="minute" min="0" max="59" value="0">
+
+    <label for="second">秒：</label>
+    <input type="number" id="second" min="0" max="59" value="0"><br><br>
+
+    <button onclick="convertToCode()">转换为时间代码</button><br><br>
+    <textarea id="code" rows="2" cols="50" readonly></textarea>
+    
+    
+    <script>
+        function convertToTime() {
+            var timestamp = document.getElementById("timestamp").value;
+            var date = new Date(parseInt(timestamp) * 1000);
+
+            if (!isNaN(date)) {
+                var year = date.getFullYear();
+                var month = ("0" + (date.getMonth() + 1)).slice(-2);
+                var day = ("0" + date.getDate()).slice(-2);
+                var hour = ("0" + date.getHours()).slice(-2);
+                var minute = ("0" + date.getMinutes()).slice(-2);
+                var second = ("0" + date.getSeconds()).slice(-2);
+
+                var time = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+                document.getElementById("time").textContent = time;
+            } else {
+                document.getElementById("time").textContent = "无效的时间代码";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>时间戳（
+Timestamp）转换器</h1>
+    <label for="timestamp">时间代码：</label>
+    <input type="text" id="timestamp" value="0000000000"><br><br>
+
+    <button onclick="convertToTime()">转换为时间显示</button><br><br>
+    <div id="time"></div>
+
+</body>
+</html>
