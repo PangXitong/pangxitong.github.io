@@ -50,6 +50,7 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
+    <!-- 菜单栏 -->
 <center><div style="max-width:1300px;">
   <div class="position-relative js-header-wrapper ">
     <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap" role="banner" >
@@ -62,7 +63,7 @@
   </div>
 </div></center>
 
-
+<!-- 标题 -->
   <main class="font-mktg">
 <div class="p-responsive container-xl text-center mt-7 mt-md-8 mt-lg-9 mb-5 mb-lg-9">
   <h1 class="h2-mktg">庞玺桐的个人博客</h1>
@@ -88,6 +89,45 @@
 </div>
   </div>
 </div>
+
+<!-- 打字显示 -->
+<style>
+  #text {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      border: none;
+      color: #333;
+      white-space: pre-wrap; /* 保留换行符 */
+      display: inline-block; /* 可以和其他元素在同一行上显示 */
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var textContainer = document.getElementById("text");
+      var text = `那些在深夜里睡不着的日子，那些面对深渊想要逃跑的瞬间，在日后看来都是非常珍贵的时刻。他让我们更加真实的面对自己，只有认识他、接受他我们才可能真正的超越。每一个人都必定出发于他的少年时，只是很多年之后，蓦然回首，你是否还会记得年少时的梦呢？年少的梦啊，有些很幸运地实现了，有些被遗忘在了风中。而什么时候有过什么样的一个梦，其实并不是很重要，重要的是，我们曾经为了这个梦，如此热烈的爱过、执着的追求过、勇敢地拼搏过，这是梦的意义也是值得被记住的时光——董卿`;
+      var index = 0;
+      var typingSpeed = 100; // 每个字符的打印速度（毫秒）
+
+      function type() {
+          if (index < text.length) {
+              textContainer.textContent += text.charAt(index);
+              index++;
+              setTimeout(type, typingSpeed);
+
+              // 在每次添加新字符后，滚动到文本底部
+              textContainer.scrollTo(0, textContainer.scrollHeight);
+          }
+      }
+
+      type();
+  });
+</script>
+<center>
+  <pre id="text"style="max-width: 1000px;"align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+  <audio src="./daily.m4a" controls="controls" style="width: auto; min-width: 0;">
+  您的浏览器不支持音频播放器。
+  </audio>
+</center>
 
 	<!-- the top 3 featured -->
 <div class="container-xl mx-auto p-responsive-blog"><div class="homepage-section mt-2 mt-md-5 mb-4 mb-md-6">
