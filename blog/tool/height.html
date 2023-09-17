@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>遗传身高计算器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>遗传身高计算器</h1>
+    <center><p style="text-align: left;max-width: 600px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此程序能根据性别和父母身高身高计算孩子身高理论值，但是此数值仅供参考。虽然遗传对子代身高起主要作用，但是身高还受到疾病、年龄、饮食条件、运动量、作息规律等众多环境因素影响。——庞玺桐2023.9.17开发</p>
+    <div style="text-align: left;max-width: 400px;">
+    <div class="form-group">
+        <label for="gender">性别：</label>
+        <table><tr align="center"><td>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">男</label>
+        </td><td>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">女</label>
+        </td></tr></table>
+    </div>
+    
+    <div class="form-group">
+        <label for="fatherHeight">父亲身高（厘米）：</label>
+        <input type="number" id="fatherHeight" name="fatherHeight">
+    </div>
+    
+    <div class="form-group">
+        <label for="motherHeight">母亲身高（厘米）：</label>
+        <input type="number" id="motherHeight" name="motherHeight">
+    </div>
+    
+    <button onclick="calculateHeight()">计算</button>
+    
+    <div id="result" style="margin-top: 10px;"></div>
+</center>
+</div>
+    <script>
+        function calculateHeight() {
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var fatherHeight = parseInt(document.getElementById('fatherHeight').value);
+            var motherHeight = parseInt(document.getElementById('motherHeight').value);
+            
+            var height;
+            if (gender === "male") {
+                height = (fatherHeight + motherHeight) / 2 + 6.5; // 男孩身高计算公式
+            } else if (gender === "female") {
+                height = (fatherHeight + motherHeight) / 2 - 6.5; // 女孩身高计算公式
+            } else {
+                height = "请输入正确的性别";
+            }
+            
+            document.getElementById('result').textContent = "预计孩子的遗传身高为：" + height + "厘米";
+        }
+    </script>
+</body>
+</html>
