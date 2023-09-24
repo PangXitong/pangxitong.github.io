@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown to HTML Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+
+    .output-container {
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: auto;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script src="./showdown.min.js"></script>
+  <script>
+    function convertMarkdown() {
+      var markdownInput = document.getElementById("markdown-input").value;
+      
+      var converter = new showdown.Converter();
+      var convertedHtml = converter.makeHtml(markdownInput);
+      
+      document.getElementById("html-output").innerText = convertedHtml;
+      document.getElementById("converted-html").innerHTML = convertedHtml;
+    }
+  </script>
+</head>
+<body>
+  <h1>Markdown转换HTML及其预览</h1>
+  
+  <textarea id="markdown-input" cols="30" rows="10"></textarea>
+  <br>
+  <button onclick="convertMarkdown()">进行转换</button>
+  <hr>
+  <h2>HTML代码</h2>
+  <div class="output-container">
+    <pre id="html-output"></pre>
+  </div>
+  
+  <h2>HTML预览</h2>
+  <div class="output-container" id="converted-html"></div>
+</body>
+</html>
