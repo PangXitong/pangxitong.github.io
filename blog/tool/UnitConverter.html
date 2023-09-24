@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>单位转换器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 800px;
+            align-items: center;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        
+        select {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>单位转换器</h1>
+    
+    <div class="form-group">
+        <label for="value">数值：</label>
+        <input type="number" id="value" name="value">
+    </div>
+    
+    <div class="form-group">
+        <label for="quantity">物理量：</label>
+        <select id="quantity" name="quantity">
+            <option value="">请选择</option>
+            <option value="length">长度</option>
+            <option value="area">面积</option>
+            <option value="volume">体积</option>
+            <option value="mass">质量</option>
+            <option value="temperature">温度</option>
+            <option value="pressure">压力</option>
+            <option value="power">功率</option>
+            <option value="energy">能量</option>
+            <option value="density">密度</option>
+            <option value="force">力</option>
+            <option value="time">时间</option>
+            <option value="speed">速度</option>
+            <option value="storage">数据储存</option>
+            <option value="angle">角度</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="fromUnit">转换前单位：</label>
+        <select id="fromUnit" name="fromUnit"></select>
+    </div>
+    
+    <div class="form-group">
+        <label for="toUnit">转换后单位：</label>
+        <select id="toUnit" name="toUnit"></select>
+    </div>
+    
+    <button onclick="convert()">确认</button>
+    
+    <div id="result" style="margin-top: 10px;"></div>
+    
+    <script>
+        var units = {
+            length: ["米", "千米", "英里", "英尺"],
+            area: ["平方米", "公顷", "平方英里", "平方英尺"],
+            volume: ["立方米", "升", "加仑", "立方英尺"],
+            mass: ["克", "千克", "磅", "盎司"],
+            temperature: ["摄氏度", "华氏度", "开尔文"],
+            pressure: ["帕斯卡", "毫米汞柱", "磅力/平方英寸", "巴"],
+            power: ["瓦特", "千瓦", "英制马力", "米制马力"],
+            energy: ["焦耳", "千卡", "英热单位", "英尺磅"],
+            density: ["千克/立方米", "磅/立方英尺", "克/立方厘米"],
+            force: ["牛顿", "千牛", "磅力", "达因"],
+            time: ["秒", "分钟", "小时", "天"],
+            speed: ["米/秒", "千米/小时", "英里/小时", "节"],
+            storage: ["字节", "千字节", "兆字节", "吉字节"],
+            angle: ["度", "弧度", "圆周", "百分度"]
+        };
+
+    //    var units = {
+    //            length: ["米", "千米", "英里", "英尺", "码", "海里", "里", "丈", "尺", "寸", "分", "厘", "毫"],
+    //            area: ["平方米", "公顷", "平方英里", "平方英尺", "顷", "亩", "平方尺", "平方寸"],
+    //            volume: ["立方米", "升", "加仑", "立方英尺"],
+    //            mass: ["克", "千克", "磅", "盎司", "吨", "克拉", "担", "斤", "两", "钱"],
+    //            temperature: ["摄氏度", "华氏度", "开尔文", "兰氏度", "列氏度"],
+    //            pressure: ["帕斯卡", "毫米汞柱", "磅力/平方英寸", "巴"],
+    //            power: ["瓦特", "千瓦", "英制马力", "米制马力"],
+    //            energy: ["焦耳", "千卡", "英热单位", "英尺磅"],
+    //            density: ["千克/立方米", "磅/立方英尺", "克/立方厘米"],
+    //            force: ["牛顿", "千牛", "磅力", "达因"],
+    //            time: ["秒", "分钟", "小时", "天", "年", "周"],
+    //            speed: ["米/秒", "千米/小时", "英里/小时", "节", "光速", "马赫"],
+    //            storage: ["字节", "千字节", "兆字节", "吉字节"],
+    //            angle: ["度", "弧度", "圆周", "百分度"]
+    //            };
+        
+        var quantitySelect = document.getElementById('quantity');
+        var fromUnitSelect = document.getElementById('fromUnit');
+        var toUnitSelect = document.getElementById('toUnit');
+        
+        quantitySelect.addEventListener('change', updateUnits);
+        
+        function updateUnits() {
+            var selectedQuantity = quantitySelect.value;
+            
+            // 清空转换前单位和转换后单位的选项
+            fromUnitSelect.innerHTML = "";
+            toUnitSelect.innerHTML = "";
+            
+            // 如果用户还没有选择物理量，则不添加任何选项
+            if (selectedQuantity === "") {
+                return;
+            }
+            
+            // 根据所选物理量，添加对应的单位选项
+            for (var i = 0; i < units[selectedQuantity].length; i++) {
+                var unit = units[selectedQuantity][i];
+                
+                var option1 = document.createElement('option');
+                option1.text = unit;
+                fromUnitSelect.add(option1);
+                
+                var option2 = document.createElement('option');
+                option2.text = unit;
+                toUnitSelect.add(option2);
+            }
+        }
+        
+        function convert() {
+            var value = parseFloat(document.getElementById('value').value);
+            var fromUnit = fromUnitSelect.value;
+            var toUnit = toUnitSelect.value;
+            var result;
+            
+            // 如果用户还没有选择物理量，则不进行任何转换
+            if (quantitySelect.value === "") {
+                return;
+            }
+            
+            // 根据所选的物理量和单位进行单位转换计算
+            switch (quantitySelect.value) {
+                case "length":
+                    result = convertLength(value, fromUnit, toUnit);
+                    break;
+                case "area":
+                    result = convertArea(value, fromUnit, toUnit);
+                    break;
+                case "volume":
+                    result = convertVolume(value, fromUnit, toUnit);
+                    break;
+                case "mass":
+                    result = convertMass(value, fromUnit, toUnit);
+                    break;
+                case "temperature":
+                    result = convertTemperature(value, fromUnit, toUnit);
+                    break;
+                case "pressure":
+                    result = convertPressure(value, fromUnit, toUnit);
+                    break;
+                case "power":
+                    result = convertPower(value, fromUnit, toUnit);
+                    break;
+                case "energy":
+                    result = convertEnergy(value, fromUnit, toUnit);
+                    break;
+                case "density":
+                    result = convertDensity(value, fromUnit, toUnit);
+                    break;
+                case "force":
+                    result = convertForce(value, fromUnit, toUnit);
+                    break;
+                case "time":
+                    result = convertTime(value, fromUnit, toUnit);
+                    break;
+                case "speed":
+                    result = convertSpeed(value, fromUnit, toUnit);
+                    break;
+                case "storage":
+                    result = convertStorage(value, fromUnit, toUnit);
+                    break;
+                case "angle":
+                    result = convertAngle(value, fromUnit, toUnit);
+                    break;
+                default:
+                    result = "";
+                    break;
+            }
+            
+            document.getElementById('result').textContent = "转换结果：" + result;
+        }
+        
+        // 编写各个物理量的单位转换函数
+        function convertLength(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "米":
+                    switch (toUnit) {
+                        case "千米":
+                            // TODO: 编写从米到千米的转换逻辑
+                            return value / 1000;
+                        case "分米":
+                            // TODO: 编写从米到分米的转换逻辑
+                            return value * 10;
+                        case "厘米":
+                            // TODO: 编写从米到厘米的转换逻辑
+                            return value * 100;
+                        case "毫米":
+                            // TODO: 编写从米到毫米的转换逻辑
+                            return value * 1000;
+                        case "码":
+                            // TODO: 编写从米到码的转换逻辑
+                            return value * 1.0936133;
+                        case "英里":
+                            // TODO: 编写从米到英里的转换逻辑
+                            return value * 0.00062137119;
+                        case "海里":
+                            // TODO: 编写从米到海里的转换逻辑
+                            return value * 0.0005399568;
+                        case "里":
+                            // TODO: 编写从米到里的转换逻辑
+                            return value * 0.002;
+                        case "丈":
+                            // TODO: 编写从米到丈的转换逻辑
+                            return value * 3.3333333;
+                        case "尺":
+                            // TODO: 编写从米到尺的转换逻辑
+                            return value * 3.2808399;
+                        case "寸":
+                            // TODO: 编写从米到寸的转换逻辑
+                            return value * 39.3700787;
+                        case "分":
+                            // TODO: 编写从米到分的转换逻辑
+                            return value * 393.7007874;
+                        case "厘":
+                            // TODO: 编写从米到厘的转换逻辑
+                            return value * 3937.007874;
+                        case "毫":
+                            // TODO: 编写从米到毫的转换逻辑
+                            return value * 39370.07874;
+                        default:
+                            return value;
+                    }
+                case "千米":
+                    // TODO: 补充从千米到其他单位的转换逻辑
+                    switch (toUnit) {
+                        case "米":
+                            return value * 1000;
+                        case "分米":
+                            return value * 10000;
+                        case "厘米":
+                            return value * 100000;
+                        case "毫米":
+                            return value * 1000000;
+                        case "码":
+                            return value * 1093.6133;
+                        case "英里":
+                            return value * 0.62137119;
+                        case "海里":
+                            return value * 0.5399568;
+                        case "里":
+                            return value * 2;
+                        case "丈":
+                            return value * 3333.3333;
+                        case "尺":
+                            return value * 3280.8399;
+                        case "寸":
+                            return value * 39370.0787;
+                        case "分":
+                            return value * 393700.7874;
+                        case "厘":
+                            return value * 3937007.874;
+                        case "毫":
+                            return value * 39370078.74;
+                        default:
+                            return value;
+                    }
+                // TODO: 补充其他单位到其他单位的转换逻辑
+                // ...
+                default:
+                    return value;
+            }
+        }
+
+
+        
+        function convertArea(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "平方米":
+                    switch (toUnit) {
+                        case "公顷":
+                            return value / 10000;
+                        case "平方英里":
+                            return value * 3.86102e-7;
+                        case "平方英尺":
+                            return value * 10.7639;
+                        default:
+                            return value;
+                    }
+                case "公顷":
+                    switch (toUnit) {
+                        case "平方米":
+                            return value * 10000;
+                        case "平方英里":
+                            return value * 0.00386102;
+                        case "平方英尺":
+                            return value * 107639.104;
+                        default:
+                            return value;
+                    }
+                case "平方英里":
+                    switch (toUnit) {
+                        case "平方米":
+                            return value / 3.86102e-7;
+                        case "公顷":
+                            return value / 0.00386102;
+                        case "平方英尺":
+                            return value * 2.788e+7;
+                        default:
+                            return value;
+                    }
+                case "平方英尺":
+                    switch (toUnit) {
+                        case "平方米":
+                            return value / 10.7639;
+                        case "公顷":
+                            return value / 107639.104;
+                        case "平方英里":
+                            return value / 2.788e+7;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertVolume(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "升":
+                    switch (toUnit) {
+                        case "立方米":
+                            // TODO: 编写从升到立方米的转换逻辑
+                            return value / 1000;
+                        case "毫升":
+                            // TODO: 编写从升到毫升的转换逻辑
+                            return value * 1000;
+                        default:
+                            return value;
+                    }
+                case "立方米":
+                    switch (toUnit) {
+                        case "升":
+                            // TODO: 编写从立方米到升的转换逻辑
+                            return value * 1000;
+                        case "毫升":
+                            // TODO: 编写从立方米到毫升的转换逻辑
+                            return value * 1000000;
+                        default:
+                            return value;
+                    }
+                case "毫升":
+                    switch (toUnit) {
+                        case "升":
+                            // TODO: 编写从毫升到升的转换逻辑
+                            return value / 1000;
+                        case "立方米":
+                            // TODO: 编写从毫升到立方米的转换逻辑
+                            return value / 1000000;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertMass(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "克":
+                    switch (toUnit) {
+                        case "千克":
+                            // TODO: 编写从克到千克的转换逻辑
+                            return value / 1000;
+                        case "磅":
+                            // TODO: 编写从克到磅的转换逻辑
+                            return value * 0.00220462;
+                        default:
+                            return value;
+                    }
+                case "千克":
+                    switch (toUnit) {
+                        case "克":
+                            // TODO: 编写从千克到克的转换逻辑
+                            return value * 1000;
+                        case "磅":
+                            // TODO: 编写从千克到磅的转换逻辑
+                            return value * 2.20462;
+                        default:
+                            return value;
+                    }
+                case "磅":
+                    switch (toUnit) {
+                        case "克":
+                            // TODO: 编写从磅到克的转换逻辑
+                            return value / 0.00220462;
+                        case "千克":
+                            // TODO: 编写从磅到千克的转换逻辑
+                            return value / 2.20462;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertTemperature(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "摄氏度":
+                    switch (toUnit) {
+                        case "华氏度":
+                            // TODO: 编写从摄氏度到华氏度的转换逻辑
+                            return value * 9 / 5 + 32;
+                        case "开氏度":
+                            // TODO: 编写从摄氏度到开氏度的转换逻辑
+                            return value + 273.15;
+                        default:
+                            return value;
+                    }
+                case "华氏度":
+                    switch (toUnit) {
+                        case "摄氏度":
+                            // TODO: 编写从华氏度到摄氏度的转换逻辑
+                            return (value - 32) * 5 / 9;
+                        case "开氏度":
+                            // TODO: 编写从华氏度到开氏度的转换逻辑
+                            return (value - 32) * 5 / 9 + 273.15;
+                        default:
+                            return value;
+                    }
+                case "开氏度":
+                    switch (toUnit) {
+                        case "摄氏度":
+                            // TODO: 编写从开氏度到摄氏度的转换逻辑
+                            return value - 273.15;
+                        case "华氏度":
+                            // TODO: 编写从开氏度到华氏度的转换逻辑
+                            return (value - 273.15) * 9 / 5 + 32;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertPressure(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "帕斯卡":
+                    switch (toUnit) {
+                        case "千帕":
+                            // TODO: 编写从帕斯卡到千帕的转换逻辑
+                            return value / 1000;
+                        case "巴":
+                            // TODO: 编写从帕斯卡到巴的转换逻辑
+                            return value / 100000;
+                        default:
+                            return value;
+                    }
+                case "千帕":
+                    switch (toUnit) {
+                        case "帕斯卡":
+                            // TODO: 编写从千帕到帕斯卡的转换逻辑
+                            return value * 1000;
+                        case "巴":
+                            // TODO: 编写从千帕到巴的转换逻辑
+                            return value / 100;
+                        default:
+                            return value;
+                    }
+                case "巴":
+                    switch (toUnit) {
+                        case "帕斯卡":
+                            // TODO: 编写从巴到帕斯卡的转换逻辑
+                            return value * 100000;
+                        case "千帕":
+                            // TODO: 编写从巴到千帕的转换逻辑
+                            return value * 100;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertPower(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "瓦特":
+                    switch (toUnit) {
+                        case "千瓦":
+                            // TODO: 编写从瓦特到千瓦的转换逻辑
+                            return value / 1000;
+                        case "马力":
+                            // TODO: 编写从瓦特到马力的转换逻辑
+                            return value * 0.00134102;
+                        default:
+                            return value;
+                    }
+                case "千瓦":
+                    switch (toUnit) {
+                        case "瓦特":
+                            // TODO: 编写从千瓦到瓦特的转换逻辑
+                            return value * 1000;
+                        case "马力":
+                            // TODO: 编写从千瓦到马力的转换逻辑
+                            return value * 1.34102;
+                        default:
+                            return value;
+                    }
+                case "马力":
+                    switch (toUnit) {
+                        case "瓦特":
+                            // TODO: 编写从马力到瓦特的转换逻辑
+                            return value / 0.00134102;
+                        case "千瓦":
+                            // TODO: 编写从马力到千瓦的转换逻辑
+                            return value / 1.34102;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertEnergy(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "焦耳":
+                    switch (toUnit) {
+                        case "千焦":
+                            // TODO: 编写从焦耳到千焦的转换逻辑
+                            return value / 1000;
+                        case "卡":
+                            // TODO: 编写从焦耳到卡的转换逻辑
+                            return value * 0.239006;
+                        default:
+                            return value;
+                    }
+                case "千焦":
+                    switch (toUnit) {
+                        case "焦耳":
+                            // TODO: 编写从千焦到焦耳的转换逻辑
+                            return value * 1000;
+                        case "卡":
+                            // TODO: 编写从千焦到卡的转换逻辑
+                            return value * 239.006;
+                        default:
+                            return value;
+                    }
+                case "卡":
+                    switch (toUnit) {
+                        case "焦耳":
+                            // TODO: 编写从卡到焦耳的转换逻辑
+                            return value / 0.239006;
+                        case "千焦":
+                            // TODO: 编写从卡到千焦的转换逻辑
+                            return value / 239.006;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertDensity(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "千克/立方米":
+                    switch (toUnit) {
+                        case "克/立方厘米":
+                            // TODO: 编写从千克/立方米到克/立方厘米的转换逻辑
+                            return value * 0.001;
+                        case "磅/立方英尺":
+                            // TODO: 编写从千克/立方米到磅/立方英尺的转换逻辑
+                            return value * 0.0624279606;
+                        default:
+                            return value;
+                    }
+                case "克/立方厘米":
+                    switch (toUnit) {
+                        case "千克/立方米":
+                            // TODO: 编写从克/立方厘米到千克/立方米的转换逻辑
+                            return value * 1000;
+                        case "磅/立方英尺":
+                            // TODO: 编写从克/立方厘米到磅/立方英尺的转换逻辑
+                            return value * 0.0624279606 * 1000;
+                        default:
+                            return value;
+                    }
+                case "磅/立方英尺":
+                    switch (toUnit) {
+                        case "千克/立方米":
+                            // TODO: 编写从磅/立方英尺到千克/立方米的转换逻辑
+                            return value / 0.0624279606;
+                        case "克/立方厘米":
+                            // TODO: 编写从磅/立方英尺到克/立方厘米的转换逻辑
+                            return value / 0.0624279606 / 1000;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertForce(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "牛顿":
+                    switch (toUnit) {
+                        case "千牛":
+                            // TODO: 编写从牛顿到千牛的转换逻辑
+                            return value / 1000;
+                        case "磅力":
+                            // TODO: 编写从牛顿到磅力的转换逻辑
+                            return value * 0.224808943;
+                        default:
+                            return value;
+                    }
+                case "千牛":
+                    switch (toUnit) {
+                        case "牛顿":
+                            // TODO: 编写从千牛到牛顿的转换逻辑
+                            return value * 1000;
+                        case "磅力":
+                            // TODO: 编写从千牛到磅力的转换逻辑
+                            return value * 0.224808943 * 1000;
+                        default:
+                            return value;
+                    }
+                case "磅力":
+                    switch (toUnit) {
+                        case "牛顿":
+                            // TODO: 编写从磅力到牛顿的转换逻辑
+                            return value / 0.224808943;
+                        case "千牛":
+                            // TODO: 编写从磅力到千牛的转换逻辑
+                            return value / 0.224808943 / 1000;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertTime(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "秒":
+                    switch (toUnit) {
+                        case "分钟":
+                            // TODO: 编写从秒到分钟的转换逻辑
+                            return value / 60;
+                        case "小时":
+                            // TODO: 编写从秒到小时的转换逻辑
+                            return value / 3600;
+                        default:
+                            return value;
+                    }
+                case "分钟":
+                    switch (toUnit) {
+                        case "秒":
+                            // TODO: 编写从分钟到秒的转换逻辑
+                            return value * 60;
+                        case "小时":
+                            // TODO: 编写从分钟到小时的转换逻辑
+                            return value / 60;
+                        default:
+                            return value;
+                    }
+                case "小时":
+                    switch (toUnit) {
+                        case "秒":
+                            // TODO: 编写从小时到秒的转换逻辑
+                            return value * 3600;
+                        case "分钟":
+                            // TODO: 编写从小时到分钟的转换逻辑
+                            return value * 60;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertSpeed(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "米/秒":
+                    switch (toUnit) {
+                        case "千米/小时":
+                            // TODO: 编写从米/秒到千米/小时的转换逻辑
+                            return value * 3.6;
+                        case "英里/小时":
+                            // TODO: 编写从米/秒到英里/小时的转换逻辑
+                            return value * 2.23693629;
+                        default:
+                            return value;
+                    }
+                case "千米/小时":
+                    switch (toUnit) {
+                        case "米/秒":
+                            // TODO: 编写从千米/小时到米/秒的转换逻辑
+                            return value / 3.6;
+                        case "英里/小时":
+                            // TODO: 编写从千米/小时到英里/小时的转换逻辑
+                            return value / 1.609344;
+                        default:
+                            return value;
+                    }
+                case "英里/小时":
+                    switch (toUnit) {
+                        case "米/秒":
+                            // TODO: 编写从英里/小时到米/秒的转换逻辑
+                            return value / 2.23693629;
+                        case "千米/小时":
+                            // TODO: 编写从英里/小时到千米/小时的转换逻辑
+                            return value * 1.609344;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertStorage(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "字节":
+                    switch (toUnit) {
+                        case "千字节":
+                            // TODO: 编写从字节到千字节的转换逻辑
+                            return value / 1024;
+                        case "兆字节":
+                            // TODO: 编写从字节到兆字节的转换逻辑
+                            return value / (1024 * 1024);
+                        default:
+                            return value;
+                    }
+                case "千字节":
+                    switch (toUnit) {
+                        case "字节":
+                            // TODO: 编写从千字节到字节的转换逻辑
+                            return value * 1024;
+                        case "兆字节":
+                            // TODO: 编写从千字节到兆字节的转换逻辑
+                            return value / 1024;
+                        default:
+                            return value;
+                    }
+                case "兆字节":
+                    switch (toUnit) {
+                        case "字节":
+                            // TODO: 编写从兆字节到字节的转换逻辑
+                            return value * (1024 * 1024);
+                        case "千字节":
+                            // TODO: 编写从兆字节到千字节的转换逻辑
+                            return value * 1024;
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+        
+        function convertAngle(value, fromUnit, toUnit) {
+            switch (fromUnit) {
+                case "弧度":
+                    switch (toUnit) {
+                        case "角度":
+                            // TODO: 编写从弧度到角度的转换逻辑
+                            return value * (180 / Math.PI);
+                        default:
+                            return value;
+                    }
+                case "角度":
+                    switch (toUnit) {
+                        case "弧度":
+                            // TODO: 编写从角度到弧度的转换逻辑
+                            return value * (Math.PI / 180);
+                        default:
+                            return value;
+                    }
+                default:
+                    return value;
+            }
+        }
+
+    </script>
+</body>
+</html>
