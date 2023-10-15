@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>被加密的导览</title>
+   <!--百度统计-->
+   <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+  <script>
+    function checkPassword() {
+      var input = document.getElementById("passwordInput").value;
+      var encodedInput = btoa(input); 
+      var encodedPassword = "NTUxNzkxMzQ="; 
+      
+      if (encodedInput === encodedPassword) {
+        document.getElementById("content").style.display = "block";
+      } else {
+        alert("密码错误，请重新输入！");
+      }
+    }
+
+    function shareCopyUrl(element) {
+      var text = element.getAttribute("data-clipboard-text");
+      alert("已复制链接：" + text);
+    }
+  </script>
+  <style>
+    #content {
+      display: none; 
+    }
+  </style>
+</head>
+<body>
+  <h1>被加密的导览</h1>
+  <input type="password" id="passwordInput" placeholder="请输入密码">
+  <button onclick="checkPassword()">提交</button>
+
+  <div id="content">
+    <ul>
+      <li>Cloudrive：<a href="http://341qwc20wv96.ngrok.xiaomiqiu123.top" target="_blank">http://341qwc20wv96.ngrok.xiaomiqiu123.top</a>
+        <button type="button"><a href="javascript:;" onclick="shareCopyUrl(this)" data-clipboard-text="http://341qwc20wv96.ngrok.xiaomiqiu123.top">复制</a></button>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
