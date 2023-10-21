@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>抽签程序</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>抽签程序</h1>
+  <p>点击下面的按钮进行抽签：</p>
+
+  <button onclick="drawLottery()">抽签</button>
+
+  <h2 class="result" id="result"></h2>
+
+  <script>
+    function drawLottery() {
+      var candidates = [
+        '刘宸明', '李若琪', '于思源', '张佳迪', '段泓宇', '吕承阳', '宋佳玥', '胡馨予', '刘峪', '金美涵',
+        '徐颢天', '王烁涵', '李浩特', '李丽娜', '郑毅', '马悦', '杨嘉琳', '阮振硕', '庞玺桐', '朱泓澎',
+        '李夷然', '牛子文', '高赫阳', '朱祉彦', '杨嘉莹', '郑孟莹', '李沈思', '仲昭熙', '史策', '李津铭',
+        '张健羽', '徐鼎凯', '赵赫', '苏佳月', '刘长裕', '杨宝婷', '王泓尧', '孙润泽', '王琨博', '魏馨蕊',
+        '刘妍鸿', '杨帆', '程潆灏', '姜凯童', '李佳瑞', '江楠', '曹语轩', '刘嘉文'
+      ];
+
+      var resultElement = document.getElementById('result');
+      var randomIndex = Math.floor(Math.random() * candidates.length);
+      var winner = candidates[randomIndex];
+
+      resultElement.innerHTML = '抽中的人是：' + winner;
+      
+      // 添加特效
+      var duration = 1000; // 特效持续时间（毫秒）
+      var startTime = Date.now();
+
+      function animate() {
+  var currentTime = Date.now();
+  var elapsed = currentTime - startTime;
+  var rotation = (elapsed / duration * 360) % 360; // 每过一定时间旋转360度，并取余数以避免溢出
+
+  resultElement.style.transform = 'rotate(' + rotation + 'deg)';
+
+  if (elapsed < duration) {
+    requestAnimationFrame(animate);
+  } else {
+    startPulsating(); // 转完一圈后启动文本放大缩小效果
+  }
+}
+
+function startPulsating() {
+  var scaleFactor = 1.6; // 文本放大的比例
+  var pulsateDuration = 1000; // 文本放大缩小一次的持续时间（毫秒）
+  var startTime = Date.now();
+
+  function pulsate() {
+    var currentTime = Date.now();
+    var elapsed = currentTime - startTime;
+    var scale;
+
+    if (elapsed <= pulsateDuration / 2) {
+      // 前半段时间，文本逐渐放大
+      scale = 1 + (scaleFactor - 1) * (elapsed / (pulsateDuration / 2));
+    } else {
+      // 后半段时间，文本逐渐缩小回初始大小
+      scale = scaleFactor - (scaleFactor - 1) * ((elapsed - pulsateDuration / 2) / (pulsateDuration / 2));
+    }
+
+    resultElement.style.transform = 'rotate(360deg) scale(' + scale + ')';
+
+    if (elapsed < pulsateDuration) {
+      requestAnimationFrame(pulsate);
+    }
+  }
+
+  pulsate();
+}
+
+animate();
+}
+  </script>
+</body>
+</html>
