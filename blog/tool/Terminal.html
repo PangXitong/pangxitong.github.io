@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oldssi's Terminal</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: #fff;
+            font-family: monospace;
+        }
+        
+        .terminal {
+            width: 600px;
+            height: 400px;
+            background-color: #000;
+            border-radius: 10px;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+
+        .command-line {
+            display: flex;
+            align-items: center;
+        }
+                
+        .command-line input {
+            flex: 1;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+            font-family: monospace;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .output-line {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .output-line .command {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .output-line .output {
+            flex-basis: 100%;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .dollar-sign {
+            color: #fff;
+            font-family: monospace;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div>Welcome to Oldsai's Terminal</div>
+        <div>Enter '/help' for help</div>
+        <div class="command-line">
+            <span class="dollar-sign">></span>
+            <input type="text" id="command-input" autofocus />
+        </div>
+    </div>
+
+    <script>
+        const commandInput = document.getElementById('command-input');
+        commandInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                handleCommand(commandInput.value);
+                commandInput.value = '';
+            }
+        });
+        
+        function handleCommand(command) {
+            const terminal = document.querySelector('.terminal');
+            
+            const outputLine = document.createElement('div');
+            outputLine.className = 'output-line';
+            const commandDiv = document.createElement('div');
+            commandDiv.className = 'command';
+            commandDiv.textContent = '> ' + command;
+            outputLine.appendChild(commandDiv);
+            
+            if (command === '/help') {
+                const outputDiv = document.createElement('div');
+                outputDiv.className = 'output';
+                outputDiv.textContent = 'Available commands:\n- /help: Show available commands\n- /about: Show information about this page\n';
+                outputLine.appendChild(outputDiv);
+            } else if (command === '/about') {
+                // 创建一个a元素
+                var link = document.createElement('a');
+                link.href = 'https://www.oldsai.cn'; // 设置链接的href属性
+                link.textContent = 'Home Page'; // 设置链接的文本内容
+                link.style.color = 'blue'; // 设置链接文本的颜色为红色
+                // 显示输出
+                const outputDiv = document.createElement('div');
+                outputDiv.className = 'output';
+                outputDiv.textContent = 'About Programs:\n-This is a terminal developed by Pang Xitong (alias Oldsai) for executing certain programs.\n-This program is currently under development\n-';
+                outputDiv.appendChild(link);//显示连接
+                outputLine.appendChild(outputDiv);
+            } else {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'output';
+                errorDiv.textContent = 'Command not found,Enter /help for help';
+                outputLine.appendChild(errorDiv);
+            }
+            
+            const commandLine = document.querySelector('.command-line');
+            terminal.insertBefore(outputLine, commandLine);
+            
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+    </script>
+</body>
+</html>
