@@ -215,7 +215,7 @@
                                     type="text"
                                     class="form-control"
                                     id="template_button"
-                                    placeholder="默认值：“DECRYPT”"
+                                    placeholder="默认值：“解密”"
                                 />
                             </div>
 
@@ -1360,13 +1360,13 @@ exports.init = init;
                     },
                     is_remember_enabled: JSON.stringify(isRememberEnabled),
                     js_staticrypt: getScriptAsString("staticrypt"),
-                    template_button: templateButton ? templateButton : "DECRYPT",
+                    template_button: templateButton ? templateButton : "解密",
                     template_color_primary: templateColorPrimary || "#4CAF50",
                     template_color_secondary: templateColorSecondary || "#76B852",
                     template_instructions: templateInstructions || "",
-                    template_placeholder: templatePlaceholder || "Password",
-                    template_remember: templateRemember || "Remember me",
-                    template_title: templateTitle || "Protected Page",
+                    template_placeholder: templatePlaceholder || "密码",
+                    template_remember: templateRemember || "记住我",
+                    template_title: templateTitle || "受保护的页面",
                 };
 
                 document.getElementById("encrypted_html_display").textContent = encryptedMsg;

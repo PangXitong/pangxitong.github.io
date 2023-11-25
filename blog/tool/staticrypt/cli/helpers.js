@@ -434,48 +434,48 @@ function parseCommandLineArguments() {
             .option("t", {
                 alias: "template",
                 type: "string",
-                describe: "Path to custom HTML template with password prompt.",
+                describe: "带有密码提示的自定义HTML模板的路径。",
                 default: PASSWORD_TEMPLATE_DEFAULT_PATH,
             })
             .option("template-button", {
                 type: "string",
-                describe: 'Label to use for the decrypt button. Default: "DECRYPT".',
-                default: "DECRYPT",
+                describe: '用于解密按钮的标签。默认值：“解密”。',
+                default: "解密",
             })
             .option("template-color-primary", {
                 type: "string",
-                describe: "Primary color (button...)",
+                describe: "原色（按钮…）",
                 default: "#4CAF50",
             })
             .option("template-color-secondary", {
                 type: "string",
-                describe: "Secondary color (page background...)",
+                describe: "次要颜色（页面背景…）",
                 default: "#76B852",
             })
             .option("template-instructions", {
                 type: "string",
-                describe: "Special instructions to display to the user.",
+                describe: "向用户显示的特殊说明。",
                 default: "",
             })
             .option("template-error", {
                 type: "string",
-                describe: "Error message to display on entering wrong password.",
-                default: "Bad password!",
+                describe: "输入错误密码时显示的错误消息。",
+                default: "密码错误！",
             })
             .option("template-placeholder", {
                 type: "string",
-                describe: "Placeholder to use for the password input.",
-                default: "Password",
+                describe: "用于密码输入的占位符。",
+                default: "密码",
             })
             .option("template-remember", {
                 type: "string",
-                describe: 'Label to use for the "Remember me" checkbox.',
-                default: "Remember me",
+                describe: '用于“记住我”复选框的标签。',
+                default: "记住我",
             })
             .option("template-title", {
                 type: "string",
-                describe: "Title for the output HTML page.",
-                default: "Protected Page",
+                describe: "输出HTML页面的标题。",
+                default: "受保护的页面",
             })
     );
 }
