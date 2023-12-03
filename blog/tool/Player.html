@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>音乐播放器</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    #dropzone {
+      width: 500px;
+      height: 300px;
+      border: 2px dashed #ccc;
+      text-align: center;
+      line-height: 300px;
+      font-size: 20px;
+      margin: 0 auto;
+      background-color: #fff;
+      color: #999;
+      border-radius: 8px;
+    }
+
+    #player {
+      text-align: center;
+      position: relative;
+      background-color: #fff;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    #player::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url('') no-repeat center center;
+      background-size: cover;
+      filter: blur(5px);
+      z-index: -1;
+    }
+
+    #player img {
+      width: 200px;
+      height: 300px;
+      margin-right: 20px;
+      border-radius: 10px;
+      border: 2px dashed #ccc;
+    }
+
+    #player .info {
+      margin-bottom: 10px;
+      text-align: left;
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 20px;
+      width: calc(100% - 240px);
+    }
+
+    #player .progress {
+      width: 100%;
+      height: 20px;
+      background-color: #ccc;
+      margin: 0 auto;
+      position: relative;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 0;
+    }
+
+    #player .progress-bar {
+      width: 0;
+      height: 20px;
+      background-color: #00a0e9;
+      position: relative;
+      top: 0;
+      left: 0;
+      border-radius: 8px;
+    }
+
+    #player #timeDisplay {
+      text-align: center;
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #uploadButton {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #00a0e9;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #pauseButton {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #00a0e9;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #timerButton {
+      padding: 8px 16px;
+      background-color: #00a0e9;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #timerInput {
+      width: 60px;
+      padding: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #timerLabel {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <center><h2>Oldsai音乐播放器</h2></center>
+  <center><p>此程序由庞玺桐开发，有定时关闭功能</p></center>
+  <div id="dropzone">
+    拖动音频文件到此处
+  </div>
+  <div id="player" style="display:none;">
+    <img id="cover" src="" style="width: 200px; height: 200px;">
+    <div class="info">
+      <div>
+        <span id="title"></span> - <span id="artist"></span>
+      </div>
+      <div>
+        专辑: <span id="album"></span>
+      </div>
+      <div>
+        歌词: <span id="lyrics"></span>
+      </div>
+      <div class="progress" onclick="seek(event)">
+        <div class="progress-bar"></div>
+        <div id="timeDisplay">00:00 / 00:00</div>
+      </div>
+      <div>
+        <button id="pauseButton" onclick="pauseMusic()">暂停</button>
+      </div>
+      <div>
+        <label id="timerLabel" for="timerInput">定时关闭（分钟）:</label>
+        <input type="number" id="timerInput" min="1" step="1">
+        <button id="timerButton" onclick="setTimer()">确定</button>
+      </div>
+      <input type="file" id="fileInput" style="display:none;" onchange="handleFileSelect(event)">
+      <button id="uploadButton" onclick="document.getElementById('fileInput').click()">点击上传图片</button>
+    </div>
+  </div>
+
+  <script>
+    var dropzone = document.getElementById('dropzone');
+    var player = document.getElementById('player');
+    var cover = document.getElementById('cover');
+    var title = document.getElementById('title');
+    var artist = document.getElementById('artist');
+    var album = document.getElementById('album');
+    var lyrics = document.getElementById('lyrics');
+    var progressBar = document.querySelector('.progress-bar');
+    var timerInput = document.getElementById('timerInput');
+    var audio;
+
+    dropzone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      dropzone.style.border = '2px dashed #00a0e9';
+    });
+
+    dropzone.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      dropzone.style.border = '2px dashed #ccc';
+    });
+
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.style.display = 'none';
+      player.style.display = 'block';
+      dropzone.style.border = '2px dashed #ccc';
+
+      var file = e.dataTransfer.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        audio = new Audio();
+        audio.src = e.target.result;
+        audio.controls = true;
+        audio.loop = true;
+        audio.play();
+
+        cover.src = ''; // 设置音乐封面图片
+        title.textContent = file.name; // 设置音乐名称
+        artist.textContent = ''; // 设置音乐作者
+        album.textContent = ''; // 设置音乐专辑
+        lyrics.textContent = ''; // 设置音乐歌词
+
+        setInterval(function() {
+          var progress = (audio.currentTime / audio.duration) * 100;
+          progressBar.style.width = progress + '%';
+
+          updateTimeDisplay();
+        }, 1000);
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    function pauseMusic() {
+      if (audio.paused) {
+        audio.play();
+        document.getElementById('pauseButton').textContent = '暂停';
+      } else {
+        audio.pause();
+        document.getElementById('pauseButton').textContent = '播放';
+      }
+    }
+
+    function setTimer() {
+      var minutes = parseInt(timerInput.value);
+      setTimeout(function() {
+        audio.pause();
+      }, minutes * 60 * 1000);
+    }
+
+    function handleFileSelect(evt) {
+      var files = evt.target.files; // FileList object
+
+      // use the FileReader to load the image and show it as the cover
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        cover.src = e.target.result;
+      };
+      reader.readAsDataURL(files[0]);
+    }
+
+    function seek(event) {
+      var percent = event.offsetX / this.offsetWidth;
+      audio.currentTime = percent * audio.duration;
+      progressBar.style.width = percent * 100 + '%';
+      updateTimeDisplay();
+    }
+
+    function formatTime(time) {
+      var minutes = Math.floor(time / 60);
+      var seconds = Math.floor(time % 60);
+      return (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    }
+
+    function updateTimeDisplay() {
+      var currentTime = formatTime(audio.currentTime);
+      var duration = formatTime(audio.duration);
+      document.getElementById('timeDisplay').textContent = currentTime + ' / ' + duration;
+    }
+  </script>
+</body>
+</html>
