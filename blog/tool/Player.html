@@ -13,7 +13,7 @@
       height: 300px;
       border: 2px dashed #ccc;
       text-align: center;
-      line-height: 300px;
+      line-height: 260px;
       font-size: 20px;
       margin: 0 auto;
       background-color: #fff;
@@ -135,6 +135,16 @@
       display: inline-block;
       margin-right: 10px;
     }
+
+    #selectFileButton {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #00a0e9;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -143,6 +153,9 @@
   <center><p>此程序由庞玺桐开发，有定时关闭功能</p></center>
   <div id="dropzone">
     拖动音频文件到此处
+    <div>
+      <button id="selectFileButton" onclick="selectFile()">选择文件</button>
+    </div>
   </div>
   <div id="player" style="display:none;">
     <img id="cover" src="" style="width: 200px; height: 200px;">
@@ -246,16 +259,36 @@
     }
 
     function handleFileSelect(evt) {
-      var files = evt.target.files; // FileList object
-
-      // use the FileReader to load the image and show it as the cover
+      var file = evt.target.files[0];
+      
       var reader = new FileReader();
       reader.onload = function(e) {
-        cover.src = e.target.result;
-      };
-      reader.readAsDataURL(files[0]);
-    }
+        audio = new Audio();
+        audio.src = e.target.result;
+        audio.controls = true;
+        audio.loop = true;
+        audio.play();
 
+        cover.src = ''; // 设置音乐封面图片
+        title.textContent = file.name; // 设置音乐名称
+        artist.textContent = ''; // 设置音乐作者
+        album.textContent = ''; // 设置音乐专辑
+        lyrics.textContent = ''; // 设置音乐歌词
+
+        setInterval(function() {
+          var progress = (audio.currentTime / audio.duration) * 100;
+          progressBar.style.width = progress + '%';
+
+          updateTimeDisplay();
+        }, 1000);
+      };
+
+      reader.readAsDataURL(file);
+
+      dropzone.style.display = 'none';
+      document.getElementById('selectFileButton').style.display = 'none';
+      player.style.display = 'block';
+    }
     function seek(event) {
       var percent = event.offsetX / this.offsetWidth;
       audio.currentTime = percent * audio.duration;
@@ -273,6 +306,15 @@
       var currentTime = formatTime(audio.currentTime);
       var duration = formatTime(audio.duration);
       document.getElementById('timeDisplay').textContent = currentTime + ' / ' + duration;
+    }
+
+    function selectFile() {
+      var fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.style.display = 'none';
+      fileInput.addEventListener('change', handleFileSelect);
+      document.body.appendChild(fileInput);
+      fileInput.click();
     }
   </script>
 </body>
