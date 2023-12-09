@@ -1,0 +1,117 @@
+<!--头部-->
+<html lang="zh-CN">
+  <head>
+    <meta name="description"content="庞玺桐的博客">
+    <meta charset="utf-8">
+    <title>总结我的2022</title> 
+    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,总结我的2022,总结我的2022,年度总结,跨年,2023,新年,春节,传统文化,百度统计,Gitalk">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css.css">
+    <meta name="applicable-device" content="pc,mobile">
+    <script type="text/javascript" src="./JavaScript.js"></script>
+    <!--百度统计-->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+      
+
+    <!--span颜色注释-->
+    <style>
+      span {
+            color: #EDEDED;
+      }
+      span2 {
+            color: #EEFCA9;
+      }
+      span3 {
+             color: red;
+      }
+      span4 {
+             color: black;
+      }
+      span5 {
+             color: #D6B1A6;
+      }
+      span6 {
+             color: #E25DA9;
+      }
+      span7 {
+             color: #848484;
+      }
+      span8 {
+             color: #059CE5;
+      }
+      span9 {
+             color: #B8B8B8;
+      }
+    </style>
+    <!--复制链接-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+    function shareCopyUrl(that) {
+            var clipboard = new ClipboardJS(that);
+            clipboard.on('success', function (e) {
+            console.info('Text:', e.text);
+            e.clearSelection();
+    }); 
+            clipboard.on('error', function (e) {
+            // console.error('Action:', e.action);
+            // console.error('Trigger:', e.trigger);
+    });
+            // 处理第一次点击不成功
+            clipboard.onClick(event);
+    }
+    </script>
+    <!--固定顶部导航栏-->    
+    <div class="top">
+      <center> 
+        <ul><big>
+          <li><a href="https://oldsai.cn/">庞玺桐的博客首页
+          <li><a href="https://wtcu.github.io/"target="_blank">WTCU</a></li>
+          <li><a href="../open.html"target="_blank">协议</a></li>
+          <li id="right"><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li></big>
+          </li>        
+        </ul>
+      </center>      
+    </div>
+  </head>
+  <!--身体-->
+  <body bgcolor="#fff">
+    <!--表头-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 align="center"><big><big><big><big>2023年度总结</h1></big></big></big></big>
+    
+    <center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=29412405&auto=1&height=32"></iframe></center>
+    <p align="left"class="container"style="width:900px;">
+      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2022年即将逝去，这一年我经历了：
+暂未发布，敬请期待</p><br><br><br>
+<!--评论-->
+<center><div id="gitalk-container"style="width:800px;"></div></center>
+  <link rel="stylesheet" href="./F1/gitalk.css">
+  <script src="./F1/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+  <script>
+const gitalk = new Gitalk({
+  clientID: 'b2de3d132f1cc875b717',
+  clientSecret: 'e22e40f64a0e6e2a2243b8d1ad28a92d2761edfb',
+  repo: 'PangXitong',      // The repository of store comments,
+  owner: 'PangXitong',
+  admin: ['PangXitong'],
+  id: 'bug',      // Ensure uniqueness and length less than 50
+  // distractionFreeMode: false  // Facebook-like distraction free mode
+  proxy:'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+})
+gitalk.render('gitalk-container')
+</script>
+<!--底部导航栏-->
+<include src="bottom.html"></include>  </body>
+</html>
