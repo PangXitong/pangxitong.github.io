@@ -727,8 +727,40 @@ data-plan-costs="{&quot;free&quot;:{&quot;price&quot;:0},&quot;pro&quot;:{&quot;
   </div>
 </div>
 </main>
-<!--底部-->
+<!--订阅邮件-->
 
+    <script>
+        function submitForm() {
+            var emailInput = document.getElementById("email");
+            var submitButton = document.getElementById("submit-button");
+
+            // 将按钮文本更改为“正在订阅...”
+            submitButton.innerHTML = "正在订阅...";
+
+            // 提交表单
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // 将按钮文本更改为“订阅成功！”
+                        submitButton.innerHTML = "订阅成功！";
+                        emailInput.value = "";
+                    } else {
+                        alert('发生错误！');
+                    }
+                }
+            };
+            xhr.open('POST', 'http://localhost:1001/subscribe', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('email=' + emailInput.value);
+        }
+    </script>
+    <form style="text-align: center;">
+      <label for="email" style="display: block; margin-bottom: 10px; font-size: 18px;">订阅邮件与庞玺桐联系</label>
+      <input type="email" id="email" placeholder="请输入邮箱地址" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 300px; max-width: 100%; margin-bottom: 10px;"required>
+      <button type="button" id="submit-button" onclick="submitForm()"style="background-color: #333; color: #fff; padding: 10px 20px; border-radius: 5px; border: none; font-size: 16px; cursor: pointer;">订阅邮件</button>
+    </form>
+<!--底部-->
 <p id="oldsai"></p>
 <footer role="contentinfo" class="footer pt-6 position-relative" >
   <div class="container-xl p-responsive">
