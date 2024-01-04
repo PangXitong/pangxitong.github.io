@@ -60,67 +60,73 @@
 
   <script>
     function drawLottery() {
-      var candidates = [
-        '刘宸明', '李若琪', '于思源', '张佳迪', '段泓宇',  '宋佳玥', '刘峪', '金美涵',
-        '徐颢天', '王烁涵', '李浩特', '李丽娜',  '马悦',  '阮振硕', '庞玺桐', '朱泓澎',
-        '李夷然', '牛子文', '高赫阳', '朱祉彦', '杨嘉莹', '郑孟莹', '李沈思', '仲昭熙', '史策', '李津铭',
-        '张健羽', '徐鼎凯', '赵赫', '苏佳月', '刘长裕', '杨宝婷', '王泓尧', '孙润泽', '王琨博', '魏馨蕊',
-        '刘妍鸿', '杨帆', '程潆灏', '姜凯童', '李佳瑞', '江楠', '曹语轩', '刘嘉文', '杨嘉琳'
-      ];
+  var candidates = [
+    '刘宸明', '李若琪', '于思源', '张佳迪', '段泓宇',  '宋佳玥', '刘峪', '金美涵',
+    '徐颢天', '王烁涵', '李浩特', '李丽娜',  '马悦',  '阮振硕', '庞玺桐', '朱泓澎',
+    '李夷然', '牛子文', '高赫阳', '朱祉彦', '杨嘉莹', '郑孟莹', '李沈思', '仲昭熙', '史策', '李津铭',
+    '张健羽', '徐鼎凯', '赵赫', '苏佳月', '刘长裕', '杨宝婷', '王泓尧', '孙润泽', '王琨博', '魏馨蕊',
+    '刘妍鸿', '杨帆', '程潆灏', '姜凯童', '李佳瑞', '江楠', '曹语轩', '刘嘉文', '杨嘉琳'
+  ];
 
-      var resultElement = document.getElementById('result');
-      var randomIndex = Math.floor(Math.random() * candidates.length);
-      var winner = candidates[randomIndex];
+  var resultElement = document.getElementById('result');
+  var winners = [];
 
-      resultElement.innerHTML = '抽中的人是：' + winner;
-      
-      // 添加特效
-      var duration = 500; // 特效持续时间（毫秒）
-      var startTime = Date.now();
-
-      function animate() {
-  var currentTime = Date.now();
-  var elapsed = currentTime - startTime;
-  var rotation = (elapsed / duration * 360) % 360; // 每过一定时间旋转360度，并取余数以避免溢出
-
-  resultElement.style.transform = 'rotate(' + rotation + 'deg)';
-
-  if (elapsed < duration) {
-    requestAnimationFrame(animate);
-  } else {
-    startPulsating(); // 转完一圈后启动文本放大缩小效果
+  for (var i = 0; i < 4; i++) {
+    var randomIndex = Math.floor(Math.random() * candidates.length);
+    var winner = candidates[randomIndex];
+    winners.push(winner);
+    candidates.splice(randomIndex, 1);
   }
-}
 
-function startPulsating() {
-  var scaleFactor = 1.6; // 文本放大的比例
-  var pulsateDuration = 1000; // 文本放大缩小一次的持续时间（毫秒）
+  resultElement.innerHTML = '抽中的人是：' + winners.join(', ');
+  
+  // 添加特效
+  var duration = 500; // 特效持续时间（毫秒）
   var startTime = Date.now();
 
-  function pulsate() {
+  function animate() {
     var currentTime = Date.now();
     var elapsed = currentTime - startTime;
-    var scale;
+    var rotation = (elapsed / duration * 0) % 360; // 每过一定时间旋转360度，并取余数以避免溢出
 
-    if (elapsed <= pulsateDuration / 2) {
-      // 前半段时间，文本逐渐放大
-      scale = 1 + (scaleFactor - 1) * (elapsed / (pulsateDuration / 2));
+    resultElement.style.transform = 'rotate(' + rotation + 'deg)';
+
+    if (elapsed < duration) {
+      requestAnimationFrame(animate);
     } else {
-      // 后半段时间，文本逐渐缩小回初始大小
-      scale = scaleFactor - (scaleFactor - 1) * ((elapsed - pulsateDuration / 2) / (pulsateDuration / 2));
-    }
-
-    resultElement.style.transform = 'rotate(360deg) scale(' + scale + ')';
-
-    if (elapsed < pulsateDuration) {
-      requestAnimationFrame(pulsate);
+      startPulsating(); // 转完一圈后启动文本放大缩小效果
     }
   }
 
-  pulsate();
-}
+  function startPulsating() {
+    var scaleFactor = 1.6; // 文本放大的比例
+    var pulsateDuration = 1000; // 文本放大缩小一次的持续时间（毫秒）
+    var startTime = Date.now();
 
-animate();
+    function pulsate() {
+      var currentTime = Date.now();
+      var elapsed = currentTime - startTime;
+      var scale;
+
+      if (elapsed <= pulsateDuration / 2) {
+        // 前半段时间，文本逐渐放大
+        scale = 1 + (scaleFactor - 1) * (elapsed / (pulsateDuration / 2));
+      } else {
+        // 后半段时间，文本逐渐缩小回初始大小
+        scale = scaleFactor - (scaleFactor - 1) * ((elapsed - pulsateDuration / 2) / (pulsateDuration / 2));
+      }
+
+      resultElement.style.transform = 'rotate(360deg) scale(' + scale + ')';
+
+      if (elapsed < pulsateDuration) {
+        requestAnimationFrame(pulsate);
+      }
+    }
+
+    pulsate();
+  }
+
+  animate();
 }
   </script>
 </body>
