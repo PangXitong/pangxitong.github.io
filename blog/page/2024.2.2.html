@@ -52,6 +52,39 @@
         </ul>
       </center>      
     </div>
+    <div class="web_notice" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 99999;
+    ">
+    <div style="position: fixed;top: 50%;left: 50%;width: 550px;background: #FFF;transform: translate(-50%, -50%);border-radius: 40px;padding: 50px 40px;">
+        <h3 style="font-weight: bold;text-align: center;font-size: 30px;">网站通知
+            <div style="
+		font-size: 16px;
+		margin-top: 26px;
+		line-height: 30px;
+		color: black">鉴于李丽娜同学一意孤行，对参与者毫无尊重，庞玺桐中止了与其合作，并卸下一切相关责任，你好自为之。</div>
+            <a style="
+		display: block;
+		background: #98a3ff;
+		color: #FFF;
+		text-align: center;
+		font-weight: bold;
+		font-size: 19px;
+		line-height: 60px;
+		margin: 0 auto;
+		margin-top: 45px;
+		border-radius: 32px;
+		width: 80%;
+		" onclick="javascript:document.querySelector('.web_notice').remove()">
+                我知道了</a>
+    </div>
+</div>
+        
   </head>
   <!--身体-->
   <body bgcolor="#fff">
@@ -62,16 +95,36 @@
     <br>
     <h1 align="center"><big><big><big><big>2024小年联欢会</h1></big></big></big></big>
     <p align="center"><big><big>高三（十）班——2024.2.2</big></big></p>
+    <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;长春市第八中学2021级2024届10班在2024年2月2日举办小年联欢会</p><br>
+    <h1 align="center">一、齐唱歌曲暖场</h1>
+    <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;为活跃班级氛围，开启联欢会，请各位唱歌</p><br>
     <style>
-      iframe {
-          width: 1000px;
-          height: 600px;
+      .hidden {
+          display: none;
       }
     </style>
-    <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;长春市第八中学2021级2024届10班在2024年2月2日举办小年联欢会</p><br>
-    <h1 align="center">一、齐唱《春风十里报新年》暖场</h1>
-    <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;为活跃班级氛围，开启联欢会，请各位齐唱《春风十里报新年》</p><br>
-    <center><iframe src="//player.bilibili.com/player.html?aid=966323295&bvid=BV1yW4y1c7Kq&cid=1406144409&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center>
+    <center><button onclick="toggleElements()">切换背景音乐（有/无）</button>
+    <div id="element1">请在下方点击音乐自行播放<center><iframe style="width: 1000px;height: 600px;" src="//player.bilibili.com/player.html?aid=881417329&bvid=BV1BK4y1q7Sd&cid=1412309539&p=1&autoplay=0&muted=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </center></iframe></div>
+    <div id="element2" class="hidden"> 《春风十里报新年》<center><iframe style="width: 1000px;height: 600px;" src="//player.bilibili.com/player.html?aid=966323295&bvid=BV1yW4y1c7Kq&cid=1406144409&p=1&autoplay=0&muted=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></center></div>
+    </center>
+    <script>
+        function toggleElements() {
+            var element1 = document.getElementById("element1");
+            var element2 = document.getElementById("element2");
+
+            if (element1.style.display === "none") {
+                element1.style.display = "block";
+                element2.style.display = "none";
+            } else {
+                element1.style.display = "none";
+                element2.style.display = "block";
+            }
+        }
+    </script>
+    <center>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=1960650720&auto=0&height=32"></iframe>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=1960650735&auto=0&height=32"></iframe>
+    </center>
     <h1 align="center">二、各同学表演</h1>
     <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;这是联欢会的主要环节。</p><br><br><br>
     <h1 align="center">三、抽签</h1>
@@ -176,7 +229,7 @@
     </script>
     <h1 align="center">四、展望</h1>
     <p align="left"class="container"style="width:900px;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;分别，是为了更好的相聚，高中时光固然美好，但我们不能永远止步于高中之时。三年的时光转瞬即逝，不觉间又要到了分别时刻，还有136天我们就要分开了，那就让我们一起在最后的时光，绽放出属于自己的光芒，高考加油！</p><br>
-    <center><iframe src="//player.bilibili.com/player.html?aid=878873041&bvid=BV16N4y1p7c9&cid=1406115612&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center>
+    <center><iframe style="width: 1000px;height: 600px;"src="//player.bilibili.com/player.html?aid=878873041&bvid=BV16N4y1p7c9&cid=1406115612&p=1&autoplay=0&muted=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></center>
     
 <!--底部导航栏-->
 <link rel="stylesheet" type="text/css" href="./css.css">
