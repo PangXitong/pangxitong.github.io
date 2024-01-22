@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>图片切割器</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 1em;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    #result {
+      margin-top: 1em;
+    }
+
+    .download-link {
+      display: block;
+      margin-bottom: 0.5em;
+    }
+  </style>
+</head>
+<body><center>
+  <div style="text-align: left;max-width: 800px;">
+    <h1>图片切割器</h1>
+    <p>此程序能将图片水平切割成任意份数。</p>
+    <form id="form">
+      <input type="file" accept="image/*" id="image-input">
+      <label for="parts">你想把图片切成多少份？</label>
+      <input type="number" id="parts">
+      <button type="submit">切割图片</button>
+    </form>
+  </div></center>
+  <center><div style="
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
+  <a target="_blank" href="./blog/open.html"><a href="https://ipw.cn/ssl/?site=oldsai.cn" title="本站支持SSL安全访问" target='_blank'><img style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问" src="../images/ssl-s1.svg"></a>
+  <a target="_blank" href="../open.html"><span9>Copyright</span9></a>&nbsp;©&nbsp;2022-2023&nbsp;PangXitong.&nbsp;&nbsp;All rights reserved. Open source project by <a target="_blank" href="https://github.com/PangXitong"><span9>PangXitong</span9></a>. 
+  </div></center>
+
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('form');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const imageInput = document.getElementById('image-input');
+      const parts = document.getElementById('parts').value;
+
+      if (!imageInput.files[0]) {
+        alert('请选择一张图片。');
+        return;
+      }
+
+      if (parts <= 0) {
+        alert('请输入有效的份数。');
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const image = new Image();
+
+        image.onload = () => {
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+
+          canvas.width = image.width;
+          canvas.height = image.height;
+
+          context.drawImage(image, 0, 0);
+
+          const imageData = context.getImageData(0, 0, image.width, image.height);
+          const width = imageData.width / parts;
+          const height = imageData.height;
+
+          for (let i = 0; i < parts; i++) {
+            const subImage = context.getImageData(i * width, 0, width, height);
+            const subCanvas = document.createElement('canvas');
+            const subContext = subCanvas.getContext('2d');
+
+            subCanvas.width = width;
+            subCanvas.height = height;
+
+            subContext.putImageData(subImage, 0, 0);
+
+            const downloadLink = document.createElement('a');
+            downloadLink.classList.add('download-link');
+            downloadLink.href = subCanvas.toDataURL();
+            downloadLink.download = `part_${i + 1}.png`;
+            downloadLink.textContent = `第 ${i + 1} 部分`;
+
+            result.appendChild(downloadLink);
+          }
+
+          alert('图片切割完成。');
+        };
+
+        image.src = reader.result;
+      };
+
+      reader.readAsDataURL(imageInput.files[0]);
+    });
+  </script>
+</body>
+</html>
