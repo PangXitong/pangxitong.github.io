@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>联欢会抽签</title>
+  <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>抽签</h1>
+  <p>剩余项数：<span id="remainingItems"></span></p>
+  <button onclick="draw()">抽签</button>
+  <p id="result"></p>
+
+  <script>
+    // 抽签内容列表
+    var drawList = [
+      "模仿张x鸣老师",
+      "模仿王错老师",
+      "发表新年致辞",
+      "才艺表演",
+      "才艺表演",
+      "平板支撑三十秒 ，全班读秒",
+      "说出今年最糗的事情",
+      "男：连续俯卧撑5个；女：连续蹲起5个",
+      "含一口水与男主持人深情对视30秒",
+      "绕口令：流利地读出以下内容：老龙和老农\n老龙恼怒闹老农，\n老农恼怒闹老龙。\n农恼龙怒农更恼，\n龙恼农怒龙怕农。",
+      "原地大象转10圈之后走直线",
+      "对着在场一名同学深情唱《世上只有妈妈好》",
+      "随着主持人念场景，做出符合场景的表演",
+      "深情朗诵骆宾王的《鹅》",
+      "做一段广播体操",
+      "做一个特别正式的自我介绍",
+      "按节拍朗读最炫民族风：苍茫的天涯是我的爱，绵绵的青山脚下花正开\n什么样的节奏是最呀最摇摆，什么样的歌声才是最开怀\n弯弯的河水从天上来，流向那万紫千红一片海\n哗啦啦的歌谣是我们的期待，一路边走边唱才是最自在\n我们要唱就要唱得最痛快，你是我天边最美的云彩\n让我用心把你留下来，悠悠的唱着最炫的民族风\n让爱卷走所有的尘埃，你是我心中最美的云彩\n斟满美酒让你留下来，永远都唱着最炫的民族风\n是整片天空最美的姿态",
+      "才艺表演",
+      "在希沃白板上简笔画一只小鸡",
+      "在白板上作画，主题为《快乐假期》",
+      "喊麦：我姓石 无论何时\n与你相识我都值\n我姓石 执笔写词\n犹如骏马在奔驰\n我姓石 心往神驰\n执笔再忆落笔执\n我姓石 高见远识\n人如其名很务实 \n或者 \n惊雷\n惊雷 这通天修为\n天塌地陷紫金锤\n紫电 这玄真火焰\n九天悬剑惊天变\n乌云 驰骋沙场\n呼啸 烟雨顿\n多情自古空余恨\n手持了弯月刃",
+      "你现在是个模特，走个T台吧（要很有范儿的走哦，要和路过的朋友打招呼哦）",
+      "“用《好汉歌》的曲调演唱《演员》
+简单简单点呐
+说话的方式简单点呐 
+诶嘿诶嘿简单点呐
+说话的方式简单点呐 
+没意见没意见呐
+我只想看你怎么圆呐 
+嘿 嘿 太表面呐 
+像没天赋的演员呐 
+递进情绪请省略啊 
+你又不是个演员啊 
+别设计那些情节啊 
+你又不是个演员啊 
+别设计那些情节啊”",
+      "找一个搭档，深情念白以下台词： A：你无情你残酷你无理取闹!
+B：那你就不无情!?不残酷!?不无理取闹!?
+A：我哪里无情!?哪里残酷!?哪里无理取闹!
+B：你哪里不无情!?哪里不残酷!?哪里不无理取闹!?
+A：我就算在怎么无情再怎么残酷再怎么无理取闹也不会比你更无情更残酷更无理取闹!
+B：我会比你无情!?比你残酷!?比你无理取闹!?你才是我见过最无情最残暴最无理取闹的人!
+A：哼我相对没你无情没你残酷没你无理取闹!
+B：好，既然你说我无情我残酷我无理取闹我就无情给你看残酷给你看无理取闹给你看!",
+      "模仿迈克尔杰克逊，高唱《beat it》",
+      "说出班主任的5个优点",
+      "说出班主任的5个优点",
+      "说一个土味情话",
+      "新年致辞",
+      "对未来的规划"
+    ];
+
+    // 已抽过的索引列表
+    var drawnIndexes = [];
+
+    function draw() {
+      if (drawnIndexes.length === drawList.length) {
+        // 所有抽签都已经抽过
+        document.getElementById("result").innerText = "已抽完所有内容，请等待页面自动刷新...";
+        setTimeout(function() {
+          location.reload(); // 刷新页面
+        }, 3000);
+      } else {
+        var randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * drawList.length); // 随机生成索引
+        } while (drawnIndexes.includes(randomIndex)); // 如果已经抽过，则重新生成
+
+        drawnIndexes.push(randomIndex); // 将抽到的索引加入已抽过的列表
+        document.getElementById("result").innerText = drawList[randomIndex]; // 显示抽签结果
+        document.getElementById("remainingItems").innerText = drawList.length - drawnIndexes.length; // 更新剩余项数
+      }
+    }
+  </script>
+</body>
+</html>
