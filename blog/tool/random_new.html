@@ -61,17 +61,17 @@
   <script>
     function drawLottery() {
   var candidates = [
-    '刘宸明', '李若琪', '于思源', '张佳迪', '段泓宇',  '宋佳玥', '金美涵','李津铭',
+    '刘宸明', '李丽娜','李若琪', '于思源', '张佳迪', '段泓宇',  '宋佳玥', '金美涵','李津铭','李丽娜',
     '徐颢天', '王烁涵', '李丽娜',  '马悦',  '阮振硕', '庞玺桐', '朱泓澎','史策', 
-    '李夷然', '牛子文', '高赫阳', '朱祉彦', '杨嘉莹', '郑孟莹', '李沈思', '仲昭熙', 
-    '张健羽', '徐鼎凯', '赵赫', '苏佳月', '刘长裕', '杨宝婷', '王泓尧', '孙润泽', 
-    '刘妍鸿', '杨帆', '程潆灏', '姜凯童', '李佳瑞', '江楠', '曹语轩','王琨博'
+    '李夷然', '牛子文', '高赫阳', '李丽娜','朱祉彦', '杨嘉莹', '郑孟莹', '李沈思', '仲昭熙', 
+    '张健羽', '徐鼎凯', '赵赫', '苏佳月', '李丽娜','刘长裕', '杨宝婷', '王泓尧', '孙润泽', 
+    '刘妍鸿', '杨帆', '程潆灏', '姜凯童', '李佳瑞', '江楠', '李丽娜','曹语轩','王琨博', 
   ];
 
   var resultElement = document.getElementById('result');
   var winners = [];
 
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 1; i++) {
     var randomIndex = Math.floor(Math.random() * candidates.length);
     var winner = candidates[randomIndex];
     winners.push(winner);
@@ -129,5 +129,10 @@
   animate();
 }
   </script>
+    <p style="position: fixed;bottom: 40px;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">版权声明：庞玺桐负责技术支持，名单为在校学生名单<br>抽签规则：各位变量（var）被抽出的概率相等，每次抽签都是独立重复事件（函数：Math.random()），可能出现一个变量被抽两次。</p>
+  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+  <a target="_blank" href="./blog/open.html"><a href="https://ipw.cn/ssl/?site=oldsai.cn" title="本站支持SSL安全访问" target='_blank'><img style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问" src="../images/ssl-s1.svg"></a>
+  <a target="_blank" href="../open.html"><span9>Copyright</span9></a>&nbsp;©&nbsp;2022-2023&nbsp;PangXitong.&nbsp;&nbsp;All rights reserved. Open source project by <a target="_blank" href="https://github.com/PangXitong"><span9>PangXitong</span9></a>. 
+  </div></center>
 </body>
 </html>
