@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>网址导航</title>
+    <link rel="bookmark" href="../images/favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-gap: 10px;
+        }
+        
+        .box {
+            display: flex;
+            align-items: center;
+            height: 80px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .box:hover {
+            background-color: #e6e6e6;
+        }
+        
+        .icon {
+            width: 64px;
+            height: 64px;
+            margin-right: 10px;
+            text-align: left;
+        }
+        
+        .text {
+            font-size: 16px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        a:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <center>
+      <!--搜索引擎-->
+      <div class="container">
+          <h1>多搜索引擎搜索</h1>
+          <center><p style="max-width: 1000px;font-size: 120%;">默认使用百度搜索，您也可以选择其他搜索引擎进行搜索，此网页可以帮助全方位多角度的查询资料。</p></center>
+          <div>
+              <div class="search-engine" onclick="changeSearchEngine('https://www.baidu.com/s?wd=', this)">百度</div>
+              <div class="search-engine" onclick="changeSearchEngine('https://www.bing.com/search?q=', this)">Bing</div>
+              <div class="search-engine" onclick="changeSearchEngine('https://baike.baidu.com/item/', this)">百度百科</div>  
+              <div class="search-engine" onclick="changeSearchEngine('https://github.com/search?q=', this)">GitHub</div>  
+              <div class="search-engine" onclick="changeSearchEngine('https://www.yandex.com/search?text=', this)">Yandex</div>  
+              <div class="search-engine" onclick="changeSearchEngine('https://www.sohu.com/search?q=', this)">搜狐</div>  
+              <div class="search-engine" onclick="changeSearchEngine('https://www.163.com/search?keyword=', this)">网易有道</div>  
+              <div class="search-engine" onclick="changeSearchEngine('https://quark.sm.cn/s?q=', this)">夸克</div>  
+              <div class="search-engine" onclick="changeSearchEngine('https://www.google.com/search?q=', this)">Google</div>
+              <div class="search-engine" onclick="changeSearchEngine('https://search.yahoo.com/search?p=', this)">Yahoo</div>
+              <div class="search-engine" onclick="changeSearchEngine('https://www.aol.com/search?q=', this)">AOL</div>  
+              <!-- 添加其他搜索引擎 -->
+          </div>
+          <div>
+              <form id="searchForm" onsubmit="submitForm(event)">
+                  <input type="text" id="searchTerm" placeholder="请输入搜索内容">
+                  <button type="submit" id="searchButton">搜索</button>
+              </form>
+          </div>
+      </div>
+    
+
+    <script>
+      var searchEngineUrl = 'https://www.baidu.com/s?wd='; // 默认使用百度搜索
+
+      function changeSearchEngine(url, element) {
+          // 移除其他搜索引擎的选中状态
+          var searchEngines = document.getElementsByClassName('search-engine');
+          for (var i = 0; i < searchEngines.length; i++) {
+              searchEngines[i].classList.remove('selected');
+          }
+
+          // 设置选中搜索引擎的样式
+          element.classList.add('selected');
+
+          searchEngineUrl = url;
+      }
+
+      function submitForm(event) {
+          event.preventDefault(); // 阻止表单默认提交行为
+
+          var searchTerm = document.getElementById('searchTerm').value;
+          var searchUrl = searchEngineUrl + encodeURIComponent(searchTerm);
+          window.open(searchUrl, '_blank'); // 在新标签页中打开搜索结果页面
+      }
+  </script>
+    <style>
+
+        .search-engine {
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #ddd;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .search-engine.selected {
+            background-color: #333;
+            color: #fff;
+        }
+
+        #searchForm {
+            margin-top: 20px;
+        }
+
+        #searchTerm {
+            border-radius: 20px;
+            padding: 10px;
+            border: none;
+            width: 400px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+        }
+
+        #searchButton {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+    </style>
+      <h1>常用网址导航</h1>
+      <center><p style="max-width: 1000px;font-size: 120%;">这个网页是庞玺桐常用的网站，可能不能满足常人日常需求</p></center>
+      <div class="grid-container"style="max-width:1200px;">
+
+        <div class="box" onclick="window.open('https://www.baidu.com', '_blank')">
+            <img class="icon" src="https://www.baidu.com/favicon.ico" alt="图标">
+            <span class="text">百度</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.qq.com', '_blank')">
+            <img class="icon" src="https://mat1.gtimg.com/www/icon/favicon2.ico" alt="图标">
+            <span class="text">腾讯</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.taobao.com', '_blank')">
+            <img class="icon" src="https://img.alicdn.com/tps/i3/T1OjaVFl4dXXa.JOZB-114-114.png" alt="图标">
+            <span class="text">淘宝<!-- <br><small>中国最大的在线购物平台</small>--></span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.apple.com', '_blank')">
+            <img class="icon" src="https://www.icloud.com/favicon.ico" alt="图标">
+            <span class="text">Apple</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://developer.apple.com', '_blank')">
+            <img class="icon" src="https://www.icloud.com/favicon.ico" alt="图标">
+            <span class="text">Apple Developer</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.icloud.com', '_blank')">
+            <img class="icon" src="https://www.icloud.com/favicon.ico" alt="图标">
+            <span class="text">iCloud</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://gzzp.jlipedu.cn/eedu_base/', '_blank')">
+            <img class="icon" src="https://gzzp.jlipedu.cn/eedu_base/images/chooseLogin/logo.png" alt="图标">
+            <span class="text">吉林省综合素质评价</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://gkbm.jleea.com.cn/login.aspx', '_blank')">
+            <img class="icon" src="https://gkbm.jleea.com.cn/images/xlogo_old.jpg" alt="图标">
+            <span class="text">吉林省普通高考考生服务平台</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://github.com', '_blank')">
+            <img class="icon" src="https://github.com/fluidicon.png" alt="图标">
+            <span class="text">Github</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://zhtj.youth.cn/zhtj/signin', '_blank')">
+            <img class="icon" src="https://zhtj.youth.cn/zhtj/static/img/web_logo.png" alt="图标">
+            <span class="text">智慧团建</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.office.com', '_blank')">
+            <svg class="icon" id="image-2" alt="Image-2" width="72" height="72" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Microsoft 365 徽标">
+                <path d="M20.0842 3.02588L19.8595 3.16179C19.5021 3.37799 19.1654 3.61972 18.8512 3.88385L19.4993 3.42798H25L26 11L21 16L16 19.4754V23.4829C16 26.2819 17.4629 28.8774 19.8574 30.3268L25.1211 33.5129L14 40.0002H11.8551L7.85737 37.5804C5.46286 36.131 4 33.5355 4 30.7365V17.2606C4 14.4607 5.46379 11.8645 7.85952 10.4154L19.8595 3.15687C19.9339 3.11189 20.0088 3.06823 20.0842 3.02588Z" fill="url(#paint0_radial_2994_8373)"></path>
+                <path d="M20.0842 3.02588L19.8595 3.16179C19.5021 3.37799 19.1654 3.61972 18.8512 3.88385L19.4993 3.42798H25L26 11L21 16L16 19.4754V23.4829C16 26.2819 17.4629 28.8774 19.8574 30.3268L25.1211 33.5129L14 40.0002H11.8551L7.85737 37.5804C5.46286 36.131 4 33.5355 4 30.7365V17.2606C4 14.4607 5.46379 11.8645 7.85952 10.4154L19.8595 3.15687C19.9339 3.11189 20.0088 3.06823 20.0842 3.02588Z" fill="url(#paint1_linear_2994_8373)"></path>
+                <path d="M32 19V23.4803C32 26.2793 30.5371 28.8748 28.1426 30.3242L16.1426 37.5878C13.6878 39.0737 10.6335 39.1273 8.1355 37.7487L19.8573 44.844C22.4039 46.3855 25.5959 46.3855 28.1426 44.844L40.1426 37.5803C42.5371 36.1309 43.9999 33.5354 43.9999 30.7364V27.5L42.9999 26L32 19Z" fill="url(#paint2_radial_2994_8373)"></path>
+                <path d="M32 19V23.4803C32 26.2793 30.5371 28.8748 28.1426 30.3242L16.1426 37.5878C13.6878 39.0737 10.6335 39.1273 8.1355 37.7487L19.8573 44.844C22.4039 46.3855 25.5959 46.3855 28.1426 44.844L40.1426 37.5803C42.5371 36.1309 43.9999 33.5354 43.9999 30.7364V27.5L42.9999 26L32 19Z" fill="url(#paint3_linear_2994_8373)"></path>
+                <path d="M40.1405 10.4153L28.1405 3.15678C25.6738 1.66471 22.6021 1.61849 20.0979 3.01811L19.8595 3.16231C17.4638 4.61143 16 7.20757 16 10.0075V19.4914L19.8595 17.1568C22.4051 15.6171 25.5949 15.6171 28.1405 17.1568L40.1405 24.4153C42.4613 25.8192 43.9076 28.2994 43.9957 30.9985C43.9986 30.9113 44 30.824 44 30.7364V17.2605C44 14.4606 42.5362 11.8644 40.1405 10.4153Z" fill="url(#paint4_radial_2994_8373)"></path>
+                <path d="M40.1405 10.4153L28.1405 3.15678C25.6738 1.66471 22.6021 1.61849 20.0979 3.01811L19.8595 3.16231C17.4638 4.61143 16 7.20757 16 10.0075V19.4914L19.8595 17.1568C22.4051 15.6171 25.5949 15.6171 28.1405 17.1568L40.1405 24.4153C42.4613 25.8192 43.9076 28.2994 43.9957 30.9985C43.9986 30.9113 44 30.824 44 30.7364V17.2605C44 14.4606 42.5362 11.8644 40.1405 10.4153Z" fill="url(#paint5_linear_2994_8373)"></path>
+                <path d="M4.00428 30.9984C4.00428 30.9984 4.00428 30.9984 4.00428 30.9984Z" fill="url(#paint6_radial_2994_8373)"></path>
+                <path d="M4.00428 30.9984C4.00428 30.9984 4.00428 30.9984 4.00428 30.9984Z" fill="url(#paint7_linear_2994_8373)"></path>
+                <defs>
+                    <radialGradient id="paint0_radial_2994_8373" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.4186 10.6383) rotate(110.528) scale(33.3657 58.1966)">
+                        <stop offset="0.06441" stop-color="#AE7FE2"></stop>
+                        <stop offset="1" stop-color="#0078D4"></stop>
+                    </radialGradient>
+                    <linearGradient id="paint1_linear_2994_8373" x1="17.5119" y1="37.8685" x2="12.7513" y2="29.6347" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#114A8B"></stop>
+                        <stop offset="1" stop-color="#0078D4" stop-opacity="0"></stop>
+                    </linearGradient>
+                    <radialGradient id="paint2_radial_2994_8373" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(10.4299 36.3511) rotate(-8.36717) scale(31.0503 20.5108)">
+                        <stop offset="0.133928" stop-color="#D59DFF"></stop>
+                        <stop offset="1" stop-color="#5E438F"></stop>
+                    </radialGradient>
+                    <linearGradient id="paint3_linear_2994_8373" x1="40.3566" y1="25.3768" x2="35.2552" y2="32.6916" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#493474"></stop>
+                        <stop offset="1" stop-color="#8C66BA" stop-opacity="0"></stop>
+                    </linearGradient>
+                    <radialGradient id="paint4_radial_2994_8373" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(41.0552 26.504) rotate(-165.772) scale(24.9228 41.9552)">
+                        <stop offset="0.0584996" stop-color="#50E6FF"></stop>
+                        <stop offset="1" stop-color="#436DCD"></stop>
+                    </radialGradient>
+                    <linearGradient id="paint5_linear_2994_8373" x1="16.9758" y1="3.05655" x2="24.4868" y2="3.05655" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#2D3F80"></stop>
+                        <stop offset="1" stop-color="#436DCD" stop-opacity="0"></stop>
+                    </linearGradient>
+                    <radialGradient id="paint6_radial_2994_8373" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(41.0552 26.504) rotate(-165.772) scale(24.9228 41.9552)">
+                        <stop offset="0.0584996" stop-color="#50E6FF"></stop>
+                        <stop offset="1" stop-color="#436DCD"></stop>
+                    </radialGradient>
+                    <linearGradient id="paint7_linear_2994_8373" x1="16.9758" y1="3.05655" x2="24.4868" y2="3.05655" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#2D3F80"></stop>
+                        <stop offset="1" stop-color="#436DCD" stop-opacity="0"></stop>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span class="text">Office</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.microsoft.com/zh-cn/', '_blank')">
+            <img class="icon" src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/Link-List-Icons-Microsoft-365?wid=40&hei=40" alt="图标">
+            <span class="text">Microsoft</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://yeah.net', '_blank')">
+            <img class="icon" src="https://mail.163.com/favicon.ico" alt="图标">
+            <span class="text">网易邮箱yeah</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://music.163.com', '_blank')">
+            <img class="icon" src="https://s1.music.126.net/style/favicon.ico?v20180823" alt="图标">
+            <span class="text">网易云音乐</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://mhzf.caac.gov.cn/#/index', '_blank')">
+            <img class="icon" src="https://mhzf.caac.gov.cn/web-static/images/h3.png" alt="图标">
+            <span class="text">民航招飞</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.apple.com', '_blank')">
+            <img class="icon" src="http://bgc.cafuc.edu.cn/zfxt/favicon.ico" alt="图标">
+            <span class="text">中飞院政审</span>
+        </div>
+
+        <div class="box" onclick="window.open('http://117.133.137.53:8090/#/login', '_blank')">
+            <img class="icon" src="http://117.133.137.53:8090/ghLogo.ico" alt="图标">
+            <span class="text">国航政审</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.oldsai.cn', '_blank')">
+            <img class="icon" src="https://www.oldsai.cn/blog/images/favicon.ico" alt="图标">
+            <span class="text">庞玺桐博客</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://yiyan.baidu.com', '_blank')">
+            <img class="icon" src="https://nlp-eb.cdn.bcebos.com/logo/favicon.ico" alt="图标">
+            <span class="text">文心一言</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://dash.cloudflare.com', '_blank')">
+            <img class="icon" src="https://dash.cloudflare.com/favicon-128.png" alt="图标">
+            <span class="text">Cloudflare</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.douyin.com', '_blank')">
+            <img class="icon" src="https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/favicon.png" alt="图标">
+            <span class="text">抖音</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://weixin.qq.com', '_blank')">
+            <img class="icon" src="https://res.wx.qq.com/a/wx_fed/assets/res/OTE0YTAw.png" alt="图标">
+            <span class="text">微信</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.natfrp.com', '_blank')">
+            <img class="icon" src="https://www.natfrp.com/favicon.ico?v=2" alt="图标">
+            <span class="text">Sakura Frp</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://www.aconvert.com', '_blank')">
+            <img class="icon" src="" alt="图标">
+            <span class="text">格式转换</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://im.qq.com/index/', '_blank')">
+            <img class="icon" src="https://qzonestyle.gtimg.cn/qzone/qzact/act/external/tiqq/logo.png" alt="图标">
+            <span class="text">QQ</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://fanyi.baidu.com', '_blank')">
+            <img class="icon" src="https://fanyi-cdn.cdn.bcebos.com/static/translation/img/header/logo_e835568.png" alt="图标">
+            <span class="text">百度翻译</span>
+        </div>
+
+        <div class="box" onclick="window.open('https://pan.baidu.com', '_blank')">
+            <img class="icon" src="https://nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" alt="图标">
+            <span class="text">百度网盘</span>
+        </div>
+      </div>
+    </center>
+</body>
+</html>
