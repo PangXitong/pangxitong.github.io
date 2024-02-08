@@ -1086,8 +1086,35 @@ data-plan-costs="{&quot;free&quot;:{&quot;price&quot;:0},&quot;pro&quot;:{&quot;
   </div>
 </div>
 </main>
-<!--订阅邮件-->
 
+<!--友链提交--><center>
+<h1 style="display: block; margin-bottom: 10px; font-size: 25px;">友链提交表单</h1>
+<div style="text-align: left;max-width: 400px;">
+  <p style="display: block; margin-bottom: 10px; font-size: 18px;"><big>第一步</big>&#160;&#160;在你的网站中添加我的友链</p>
+  <p style="display: block; margin-bottom: 10px; font-size: 18px;"><big>第二步</big>&#160;&#160;填写下列表单，然后点击按钮发送请求</p>
+</div></center>
+<form id="linkForm" style="text-align: center;">
+    <input type="text" id="websiteUrl" placeholder="请输入您的网址" name="websiteUrl"style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 300px; max-width: 100%; margin-bottom: 10px;">
+    <input type="button" value="发送请求" onclick="sendEmail()"style="background-color: #333; color: #fff; padding: 10px 20px; border-radius: 5px; border: none; font-size: 16px; cursor: pointer;">
+</form>
+
+<script>
+function sendEmail() {
+    var websiteUrl = document.getElementById('websiteUrl').value;
+    if(websiteUrl === '') {
+        alert('请输入网址！');
+        return;
+    }
+    var emailBody = encodeURIComponent(websiteUrl + ' 已添加您的友链oldsai.cn，请您审核后添加我的友链');
+    var subject = encodeURIComponent('友链添加请求');
+    var email = 'pangxitong@yeah.net';
+    var mailtoLink = 'mailto:' + email + '?subject=' + subject + '&body=' + emailBody;
+    window.location.href = mailtoLink;
+}
+</script>
+<br><br><br>
+<!--订阅邮件-->
+<!--
     <script>
         function submitForm() {
             var emailInput = document.getElementById("email");
@@ -1118,7 +1145,28 @@ data-plan-costs="{&quot;free&quot;:{&quot;price&quot;:0},&quot;pro&quot;:{&quot;
       <label for="email" style="display: block; margin-bottom: 10px; font-size: 18px;">订阅邮件与庞玺桐联系</label>
       <input type="email" id="email" placeholder="请输入邮箱地址" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 300px; max-width: 100%; margin-bottom: 10px;"required>
       <button type="button" id="submit-button" onclick="submitForm()"style="background-color: #333; color: #fff; padding: 10px 20px; border-radius: 5px; border: none; font-size: 16px; cursor: pointer;">订阅邮件</button>
-    </form>
+    </form>-->
+<form id="linkForm" style="text-align: center;">
+  <label for="email" style="display: block; margin-bottom: 10px; font-size: 18px;">订阅邮件与庞玺桐联系</label>
+    <input type="email" id="websiteUrl1" placeholder="请输入邮箱地址" name="websiteUrl1"style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 300px; max-width: 100%; margin-bottom: 10px;">
+    <input type="button" value="订阅邮件" onclick="sendEmail1()"style="background-color: #333; color: #fff; padding: 10px 20px; border-radius: 5px; border: none; font-size: 16px; cursor: pointer;">
+</form>
+
+<script>
+function sendEmail1() {
+    var websiteUrl1 = document.getElementById('websiteUrl1').value;
+    if(websiteUrl1 === '') {
+        alert('请输入网址！');
+        return;
+    }
+    var emailBody = encodeURIComponent(websiteUrl1 + '订阅Oldsai的邮件');
+    var subject = encodeURIComponent('友链添加请求');
+    var email = 'pangxitong@yeah.net';
+    var mailtoLink = 'mailto:' + email + '?subject=' + subject + '&body=' + emailBody;
+    window.location.href = mailtoLink;
+}
+</script>
+<br><br><br>
 <!--底部-->
 <p id="oldsai"></p>
 <footer role="contentinfo" class="footer pt-6 position-relative" >
