@@ -106,6 +106,34 @@
     </nav>
   </div>
 </header>
+<!--padding属性用于设置元素的内边距-->
+<style>
+    .element {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    /* 
+    html {
+    font-size: 16px; 基础字体大小 
+    }
+    */
+    body {
+        font-size: 1rem; /* 使用rem单位相对于根元素的字体大小 */
+        min-font-size: 10px; /* 设置字体的最小大小为10px */
+    }
+
+</style>
+<!--
+<div class="element">
+    你的内容
+</div>
+margin属性用于设置元素的外边距
+<style>
+    .element {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+</style>-->
 
 
 <center><div style="max-width:1300px;">
@@ -122,7 +150,7 @@
 
 <!-- 标题 -->
 <main class="font-mktg">
-  <div class="p-responsive container-xl text-center mt-7 mt-md-8 mt-lg-9 mb-5 mb-lg-9">
+  <div class="p-responsive container-xl text-center mt-7 mt-md-8 mt-lg-9 mb-5 mb-lg-9"class="element">
     <h1 class="h2-mktg">庞玺桐的个人博客</h1>
     <div class="mt-4 mb-n5">
     <h2 id="billing-frequency-header" class="h6-mktg mb-3">一个中国青年学生</h2>
@@ -181,12 +209,12 @@
   });
 </script>
 <center>
-  <pre id="text"style="max-width: 1000px;"align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
+  <pre id="text"style="max-width: 1000px;"align="left"class="element">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</pre>
   <!-- <audio src="./blog/daily.m4a" controls="controls" style="width: auto; min-width: 0;">您的浏览器不支持音频播放器。</audio> -->
 </center>
 
 	<!-- the top 3 featured -->
-<div class="container-xl mx-auto p-responsive-blog">
+<div class="container-xl mx-auto p-responsive-blog element">
   <div class="homepage-section mt-2 mt-md-5 mb-4 mb-md-6">
 	  <div class="d-flex flex-wrap gutter gutter-spacious">
       <div class="col-12 col-lg-7">
@@ -678,7 +706,7 @@
 <br><br><br>
  <!-- 前进 -->
  <center>
-  <div class="homepage-section homepage-section-category-seven-five"style="max-width:1200px;text-align: left">
+  <div class="homepage-section homepage-section-category-seven-five element"style="max-width:1200px;text-align: left">
     <br>
     <hr style="border-top: 5px solid black;max-width: 1200px;align-items: center;">
     <h2 class="h6-mktg section-heading">Items</h2>
@@ -805,11 +833,13 @@
   </div>-->
   <br>
 <!-- 小工具 -->
+<div class="element">
   <hr style="border-top: 5px solid black;max-width: 1200px;align-items: center;">
   <h2 class="h6-mktg section-heading"style="max-width: 1200px;text-align:left">精选小工具</h2>
   <hr style="height: 1px;max-width: 1200px;align-items: center;">
+</div>
 <center>
-<div class="d-sm-flex flex-wrap gutter-spacious mt-md-6"style="max-width: 1200px;text-align: left">
+<div class="d-sm-flex flex-wrap gutter-spacious mt-md-6 element"style="max-width: 1200px;text-align: left">
 	<article class="col-sm-6"><div class="py-4 d-flex flex-column featured-bottom-article">
     <a href="./blog/tool/BMICalculator.html" class="d-block col-12 position-relative rounded-2 mb-4 overflow-hidden tease-thumbnail">
       <svg aria-hidden="true" width="1032" height="548" class="width-full height-auto d-block" style="visibility: hidden; pointer-events: none;"></svg>
@@ -861,7 +891,7 @@
 <p id="nzzj"></p>
   <br>
   <center>
-    <div class="homepage-section homepage-section-category-seven-five"style="max-width:1200px;text-align: left">
+    <div class="homepage-section homepage-section-category-seven-five element"style="max-width:1200px;text-align: left">
 
       <hr style="border-top: 5px solid black;max-width: 1200px;align-items: center;">
       <h2 class="h6-mktg section-heading"><big>年终总结</big></h2>
@@ -911,7 +941,7 @@
 <br>
   <!--赞助售卖-->
 <center>
-  <div class="homepage-section homepage-section-category-hero-four"style="max-width:1200px;text-align: left">
+  <div class="homepage-section homepage-section-category-hero-four element"style="max-width:1200px;text-align: left">
     <hr style="border-top: 5px solid black;max-width: 1200px;align-items: center;">
     <h2 class="h6-mktg section-heading">赞助售卖</h2>
     <hr style="height: 1px;max-width: 1200px;align-items: center;">
@@ -1048,33 +1078,30 @@
       
 
 <!-- GitHub卡片 -->
-<div class="container-xl mx-auto p-responsive-blog"><div class="homepage-section mt-2 mt-md-5 mb-4 mb-md-6">
-  <div style="text-align: center; display: flex; justify-content: space-around;">
-    <picture style="">
-      <source
-        srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true"
-        media="(prefers-color-scheme: dark)"
-      />
-      <source
-        srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true"
-        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-      />
-      <img src="https://api.oldsai.cn/api?username=PangXitong&show_icons=true" />
-    </picture>
-    <picture>
-      <source
-        srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true&locale=cn"
-        media="(prefers-color-scheme: dark)"
-      />
-      <source
-        srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true&locale=cn"
-        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-      />
-      <img src="https://api.oldsai.cn/api?username=PangXitong&show_icons=true&locale=cn" />
-    </picture>
+<div class="container-xl mx-auto p-responsive-blog">
+  <div class="homepage-section mt-2 mt-md-5 mb-4 mb-md-6">
+    <div style="text-align: center; display: flex; justify-content: space-around; flex-wrap: wrap;">
+      <picture style="flex-basis: 45%; margin-bottom: 1rem;">
+        <source srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true"
+          media="(prefers-color-scheme: dark)" />
+        <source srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true"
+          media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
+        <img src="https://api.oldsai.cn/api?username=PangXitong&show_icons=true" />
+      </picture>
+      <picture style="flex-basis: 45%; margin-bottom: 1rem;">
+        <source
+          srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true&locale=cn"
+          media="(prefers-color-scheme: dark)" />
+        <source
+          srcset="https://api.oldsai.cn/api?username=PangXitong&show_icons=true&locale=cn"
+          media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
+        <img src="https://api.oldsai.cn/api?username=PangXitong&show_icons=true&locale=cn" />
+      </picture>
+    </div>
+    <br>
   </div>
-  <br>
 </div>
+
 <!--评论-->
 <p id="comment"></p>
   <div class="text-center my-7 mb-md-9">
