@@ -1,67 +1,108 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
- <title>体质指数计算器</title>  
- <script type="text/javascript">  
- // 定义一个函数用于计算BMI值  
- function calculateBMI() {  
- // 获取输入框中的值  
- var height = parseFloat(document.getElementById("height").value);  
- var weight = parseFloat(document.getElementById("weight").value);  
-  
- // 计算BMI值  
- var bmi = weight / (height * height);  
-  
- // 将BMI值显示在下方的文本框中  
- document.getElementById("bmi").value = bmi.toFixed(2);  
- }  
- </script>  
- <!--百度统计-->
-    <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-<style>  
-  input[type="text"] {  
-    border: 1px solid #ccc; /* 设置边框 */  
-    background-color: white; /* 设置背景颜色 */  
-    padding: 5px; /* 可选项：添加内边距以使输入框看起来更好看 */  
-    border-radius: 5px; /* 设置圆角半径为5像素 */ 
-  }  
-</style>
-</head>  
+<!DOCTYPE html>
+<html>
 
-<body>  
- <center><h1>体质指数计算器（BMI Calculator）</h1> </center> 
- 
- <center><table><tr align="center"><td>
- <p>请输入您的身高（单位：米）:</p>  
- <input type="text" id="height" name="height"><br><br>  
- 
- </td><td>
- 
- <p>请输入您的体重（单位：千克）:</p>  
- <input type="text" id="weight" name="weight"><br><br>  
- </td></tr></table></center>
- 
- <center><p>您的BMI值为：</p>  
- <input type="text" id="bmi" name="bmi" readonly><br><br>  
- <button onclick="calculateBMI()">计算BMI</button> 
- 
- <br><br>
- <p>百科：身体质量指数，是BMI（Body Mass Index）指数，简称体质指数，是国际上常用的衡量人体胖瘦程度以及是否健康的一个标准。
- <br><br>体质指数不应大于24.0或小于18.5（18.4≦BMI≦24），小于18.5为体重不足，大于等于
-24为超重，大于等于28为肥胖。
-<br><br>参考资料：BMI = W /H&sup2;、<a href="http://www.caac.gov.cn/XXGK/XXGK/BZGF/HYBZ/201709/t20170912_46666.html"target="_blank">MH/T 7013-2017</a>
-<br><br>其他资料：<a href="./HearingTest.html"target="_blank">测试人类听力水平</a></p>
+<head>
+  <title>体质指数计算器（BMI Calculator）</title>
+  <script type="text/javascript">
+    // 定义一个函数用于计算BMI值
+    function calculateBMI() {
+      // 获取输入框中的值
+      var height = parseFloat(document.getElementById("height").value);
+      var weight = parseFloat(document.getElementById("weight").value);
 
- <p align="right"style="padding-right: 10%;">开发者：<a href="https://pangxitong.github.io/"target="_blank">庞玺桐</a><br>2023年7月15日</p>
- 
- </center> 
-</body>  
+      // 判断身高值是否大于100，如果是则除以100
+      if (height > 100) {
+        height = height / 100;
+      }
+
+      // 判断体重值是否大于100，如果是则弹出确认框
+      if (weight > 100) {
+        var confirm = window.confirm("请确认您的输入单位为千克 \n\n1. 点击“取消”自动将斤换算为千克\n\n2. 如果你输入的就是千克，请点击“好”以继续");
+        if (confirm) {
+          // 用户确认单位为千克，继续计算
+        } else {
+          // 用户选择输入单位为斤，将体重值除以2
+          weight = weight / 2;
+        }
+      }
+
+      // 计算BMI值
+      var bmi = weight / (height * height);
+
+      // 判断BMI值是否在健康范围内
+      var status;
+      if (bmi < 18.4) {
+        status = "偏瘦";
+      } else if (bmi >= 18.4 && bmi <= 24) {
+        status = "健康";
+      } else {
+        status = "肥胖";
+      }
+
+      // 将BMI值和健康状况显示在下方的文本框中
+      document.getElementById("bmi").value = bmi.toFixed(2);
+      document.getElementById("status").value = status;
+
+      // 根据健康状况设置文本框的颜色
+      if (status === "健康") {
+        document.getElementById("status").style.color = "green";
+      } else if (status === "偏瘦") {
+        document.getElementById("status").style.color = "blue";
+      } else {
+        document.getElementById("status").style.color = "red";
+      }
+    }
+  </script>
+  <style>
+    input[type="text"] {
+      border: 1px solid #ccc; /* 设置边框 */
+      background-color: white; /* 设置背景颜色 */
+      padding: 5px; /* 可选项：添加内边距以使输入框看起来更好看 */
+      border-radius: 5px; /* 设置圆角半径为5像素 */
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <h1>体质指数计算器（BMI Calculator）</h1>
+  </center>
+
+  <center>
+    <table>
+      <tr align="center">
+        <td>
+          <p>请输入您的身高（单位：米）:</p>
+          <input type="text" id="height" name="height">
+          <br><br>
+        </td>
+        <td>
+          <p>请输入您的体重（单位：千克）:</p>
+          <input type="text" id="weight" name="weight">
+          <br><br>
+        </td>
+      </tr>
+    </table>
+  </center>
+
+  <center>
+    <p>您的BMI值为：</p>
+    <input type="text" id="bmi" name="bmi" readonly><br><br>
+
+    <p>您的健康状况：</p>
+    <input type="text" id="status" name="status" readonly><br><br>
+
+    <button onclick="calculateBMI()">计算BMI</button>
+
+    <br><br>
+    <p>百科：身体质量指数，是BMI（Body Mass Index）指数，简称体质指数，是国际上常用的衡量人体胖瘦程度以及是否健康的一个标准。
+      <br><br>体质指数不应大于24.0或小于18.5（18.4≦BMI≦24），小于18.5为体重不足，大于等于 24为超重，大于等于28为肥胖。
+      <br><br>参考资料：BMI = W /H&sup2;、<a href="http://www.caac.gov.cn/XXGK/XXGK/BZGF/HYBZ/201709/t20170912_46666.html" target="_blank">MH/T 7013-2017</a>
+      <br><br>其他资料：<a href="./HearingTest.html" target="_blank">测试人类听力水平</a></p>
+
+    <p align="right" style="padding-right: 10%;">开发者：<a href="https://pangxitong.github.io/" target="_blank">庞玺桐</a><br>2023年7月15日</p>
+
+  </center>
+</body>
+
 </html>
