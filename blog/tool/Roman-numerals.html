@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>罗马数字转换器</title>
+    <style>
+        input, button {
+            margin: 10px 0;
+        }
+    </style>
+    <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+    <div class="container"style="max-width: 500px;align-items: center;text-align:left">
+        <h2>罗马数字转换器</h2>
+        <div>
+            <label for="arabicInput">输入阿拉伯数字:</label>
+            <input type="number" id="arabicInput" min="1" max="3999" placeholder="1-3999"style="width:100px">
+            <button onclick="convertArabicToRoman()">转换为罗马数字</button>
+            <p>罗马数字: <span id="romanOutput"></span></p>
+        </div>
+        <hr style="width: 500px;">
+        <div>
+            <label for="romanInput">输入罗马数字:</label>
+            <input type="text" id="romanInput" pattern="[IVXLCDM]+" title="请输入有效的罗马数字">
+            <button onclick="convertRomanToArabic()">转换为阿拉伯数字</button>
+            <p>阿拉伯数字: <span id="arabicOutput"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function intToRoman(num) {
+            var val = [
+                1000, 900, 500, 400,
+                100, 90, 50, 40,
+                10, 9, 5, 4,
+                1
+            ];
+            var syb = [
+                "M", "CM", "D", "CD",
+                "C", "XC", "L", "XL",
+                "X", "IX", "V", "IV",
+                "I"
+            ];
+            var romanNum = '';
+            for (var i = 0; i < val.length; i++) {
+                while (num >= val[i]) {
+                    romanNum += syb[i];
+                    num -= val[i];
+                }
+            }
+            return romanNum;
+        }
+
+        function romanToInt(s) {
+            var roman = {
+                'M': 1000,
+                'D': 500,
+                'C': 100,
+                'L': 50,
+                'X': 10,
+                'V': 5,
+                'I': 1
+            };
+            var num = 0, i = 0;
+            while (i < s.length) {
+                if (i + 1 < s.length && roman[s[i]] < roman[s[i + 1]]) {
+                    num += roman[s[i + 1]] - roman[s[i]];
+                    i += 2;
+                } else {
+                    num += roman[s[i]];
+                    i++;
+                }
+            }
+            return num;
+        }
+
+        function convertArabicToRoman() {
+            var num = document.getElementById('arabicInput').value;
+            document.getElementById('romanOutput').textContent = intToRoman(num);
+        }
+
+        function convertRomanToArabic() {
+            var roman = document.getElementById('romanInput').value.toUpperCase();
+            document.getElementById('arabicOutput').textContent = romanToInt(roman);
+        }
+    </script>
+    <a target="_blank" href="./open.html"><span9>Copyright</span9></a>&nbsp;©&nbsp;2022-2024&nbsp;PangXitong.&nbsp;&nbsp;All rights reserved. Open source project by <a target="_blank" href="http://github.com/PangXitong"><span9>PangXitong</span9></a>. 
+</body>
+</html>
