@@ -1,0 +1,741 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>添加照片参数</title>
+    <link href="https://cdn.staticfile.org/mdui/1.0.2/css/mdui.min.css" rel="stylesheet">
+    <link href="./photomark.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/mdui/1.0.2/js/mdui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+    <script src="./logo.js"></script>
+    <script>
+        var $ = mdui.$;
+        var langLib;
+        var langType = window.navigator.language.toLowerCase();
+
+        $.ajax({
+            url: `./${langType}.json`,
+            async: false,
+            dataType: 'json',
+            success: res => {
+                langLib = res;
+            },
+            error: () => {
+                $.ajax({
+                    url: './en-us.json',
+                    async: false,
+                    dataType: 'json',
+                    success: res => {
+                        langLib = res;
+                    }
+                });
+                mdui.snackbar({
+                    message: 'Failed to load localization data',
+                    position: 'right-top'
+                });
+            }
+        });
+
+        function getI18n(item) {
+            var i18nItem = null;
+            if (typeof langLib[item] != 'undefined') {
+                i18nItem = langLib[item];
+            }
+            return i18nItem;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="mdui-container">
+        <div id="main-flex" class="mdui-row-xs-1 mdui-row-sm-2">
+            <div id="photo-col" class="mdui-col">
+
+                <br />
+                <div id="photo-area" class="mdui-color-grey-200 mdui-ripple mdui-img-rounded mdui-valign"
+                    style="height: 256px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+                    onclick="chooseFile()">
+                    <div class="mdui-center" style="text-align: center;">
+                        <div id="photo-tip">
+                            <h1>
+                                <script>document.write(getI18n('drag_your_photo_to_here'))</script>
+                            </h1>
+                            <p>
+                                <script>document.write(getI18n('or_click_here_to_choose_a_file'))</script>
+                            </p>
+                        </div>
+                        <p id="photo-info" class="mdui-hidden">未知</p>
+                    </div>
+                </div>
+                <div id="photo-container">
+                    <div id="photo-canvas-div" class="mdui-ripple mdui-hidden" style="padding: 4px;">
+                        <canvas id="photo-canvas" class="mdui-hidden"></canvas>
+                        <img id="photo-preview" class="mdui-img-rounded mdui-shadow-3" onclick="chooseFile()">
+                    </div>
+                </div>
+            </div>
+            <div id="info-col" class="mdui-col">
+                <h1 style="font-size: xx-large;"><big>照片下方添加相机参数</big></h1>
+                <div class="mdui-row-xs-2">
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('logo_type'))</script>
+                            </label>
+                            <select id="logo-select" class="mdui-select mdui-textfield-input">
+                                <option value="none">
+                                    <script>document.write(getI18n('none'))</script>
+                                </option>
+                                <option value="hasselblad">
+                                    <script>document.write(getI18n('hasselbled'))</script>
+                                </option>
+                                <option value="leica">
+                                    <script>document.write(getI18n('leica'))</script>
+                                </option>
+                                <option value="nikon">
+                                    <script>document.write(getI18n('nikon'))</script>
+                                </option>
+                                <option value="oneplus">
+                                    <script>document.write(getI18n('oneplus'))</script>
+                                </option>
+                                <option value="xiaomi">
+                                    <script>document.write(getI18n('xiaomi'))</script>
+                                </option>
+                                <option value="zeiss">
+                                    <script>document.write(getI18n('zeiss'))</script>
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('fonts'))</script>
+                            </label>
+                            <select id="font-select" class="mdui-select mdui-textfield-input">
+                                <option class="mi-sans" value="1">MiSans</option>
+                                <option class="harmony-sans" value="2">HarmonyOS Sans</option>
+                                <option class="oppo-sans" value="3">OPPOSans</option>
+                                <option class="sf-pro" value="4">SF Pro Display</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-row-xs-2">
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('image_scale'))</script>
+                            </label>
+                            <select id="zoom-select" class="mdui-select mdui-textfield-input">
+                                <option value="1">
+                                    <script>document.write(getI18n('original_size'))</script>
+                                </option>
+                                <option value="2">2x</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mdui-col">
+                        <div class="mdui-textfield">
+                            <label class="mdui-textfield-label">
+                                <script>document.write(getI18n('export_quality'))</script>
+                            </label>
+                            <select id="quality-select" class="mdui-select mdui-textfield-input">
+                                <option value="100">100%</option>
+                                <option value="80">80%</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('device_name'))</script>
+                    </label>
+                    <input id="device-input" class="mdui-textfield-input" type="text" onclick="showModelEditor()"
+                        readonly />
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('time'))</script>
+                    </label>
+                    <input id="time-input" class="mdui-textfield-input" type="text" readonly />
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('lens_info'))</script>
+                    </label>
+                    <input id="lens-input" class="mdui-textfield-input" type="text" readonly />
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">
+                        <script>document.write(getI18n('location'))</script>
+                    </label>
+                    <input id="location-input" class="mdui-textfield-input" type="text" readonly />
+                </div>
+                <div class="mdui-typo">
+                    <a onclick="getLocation()" style="cursor: pointer;">
+                        <script>document.write(getI18n('use_current_location'))</script>
+                    </a> | <a onclick="matchModel()" style="cursor: pointer;">
+                        <script>document.write(getI18n('match_model'))</script>
+                    </a>
+                </div>
+                <br />
+                <div class="mdui-float-right">
+                    <button id="preview-btn" class="mdui-btn mdui-ripple mdui-hidden" onclick="drawImage(true)"
+                        disabled>
+                        <script>document.write(getI18n('preview'))</script>
+                    </button>
+                    <button id="save-btn" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink"
+                        onclick="drawImage()" disabled>
+                        <script>document.write(getI18n('save'))</script>
+                    </button>
+                </div>
+                <br /><br /><br /><br />
+                <div class="mdui-typo" style="opacity: .8;">
+                    <p style="margin: 0;">
+                        <script>document.write(getI18n('not_for_commercial_use'))</script>
+                    </p>
+                    <p style="margin: 0;">项目改编自 LTDSA  | <a onclick="getContributors()" style="cursor: pointer;">
+                            <script>document.write(getI18n('contributors'))</script>
+                        </a> | <a onclick="getFAQ()" style="cursor: pointer;">
+                            <script>document.write(getI18n('faq'))</script>
+                        </a>
+                    </p>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+    <p style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">© 2024 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/">吉ICP备2024017023号-1</a><a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a></p>
+    <script>
+        var $ = mdui.$;
+        var photoFile;
+        var photoCanvas = document.querySelector('#photo-canvas');
+        var photoCtx = photoCanvas.getContext('2d');
+        var photoExif;
+
+        const fontList = [null, 'MiSans', 'HarmonyOS Sans', 'OPPOSans', 'SF Pro Display'];
+
+        Date.prototype.format = function (fmt) {
+            var o = {
+                "M+": this.getMonth() + 1,
+                "d+": this.getDate(),
+                "h+": this.getHours(),
+                "m+": this.getMinutes(),
+                "s+": this.getSeconds(),
+                "q+": Math.floor((this.getMonth() + 3) / 3),
+                "S": this.getMilliseconds()
+            };
+            if (/(y+)/.test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            }
+            for (var k in o) {
+                if (new RegExp("(" + k + ")").test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+
+        function changeToDFM(du) {
+            du = String(du);
+            const arr1 = du.split(".");
+            const d = arr1[0];
+            let tp = "0." + arr1[1]
+            tp = String(tp * 60); // 进行强制类型转换
+            const arr2 = tp.split(".");
+            const f = arr2[0];
+            tp = "0." + arr2[1];
+            tp = tp * 60;
+            const m = tp.toFixed(0); // 保留两位小数
+            const dfm = d + "°" + f + "'" + m + "\"";
+            return dfm;
+        }
+
+        function chooseFile() {
+            var fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.click();
+
+            fileInput.onchange = (e) => {
+                console.log(e);
+                if (navigator.userAgent.indexOf('Safari/') > -1) {
+                    readImage(e.target.files[0]);
+                } else {
+                    readImage(e.path[0].files[0]);
+                }
+            }
+        }
+
+        function previewImage() {
+            $.showOverlay();
+            var imageHeight;
+            var exportQuality = Number($('#quality-select').val()) / 100;
+            photoCanvas.toBlob(canvasBlob => {
+                imageHeight = `${document.body.clientWidth * .85 / photoCanvas.width * photoCanvas.height}px`;
+                $.hideOverlay();
+                mdui.dialog({
+                    content: `<img src="${URL.createObjectURL(canvasBlob)}" width="100%" height="${imageHeight}" />`,
+                    cssClass: 'preview-dialog',
+                    buttons: [
+                        {
+                            text: getI18n('cancel')
+                        },
+                        {
+                            text: getI18n('save'),
+                            onClick: () => {
+                                saveImage();
+                            }
+                        }
+                    ]
+                });
+            }, 'image/jpg', exportQuality);
+        }
+
+        function saveImage() {
+            $('#save-btn').text(getI18n('saving'));
+            document.querySelector('#save-btn').disabled = true;
+            var exportQuality = Number($('#quality-select').val()) / 100;
+            photoCanvas.toBlob(canvasBlob => {
+                var imageLink = document.createElement('a');
+                imageLink.download = `photomark_${new Date().format('yyyyMMddhhmmss')}.jpg`;
+                imageLink.href = URL.createObjectURL(canvasBlob);
+                imageLink.click();
+                $('#save-btn').text(getI18n('save'));
+                document.querySelector('#save-btn').disabled = false;
+            }, 'image/jpg', exportQuality);
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                mdui.snackbar({
+                    message: getI18n('getting_location'),
+                    position: 'right-top'
+                });
+                navigator.geolocation.getCurrentPosition(e => {
+                    console.log(e);
+                    const coords = e.coords || {};
+                    const { latitude, longitude } = coords;
+                    console.log(latitude, longitude);
+                    $('#location-input').val(`${changeToDFM(latitude)}N ${changeToDFM(longitude)}E`);
+                    drawImage(true);
+                }, () => {
+                    mdui.snackbar({
+                        message: getI18n('cant_get_your_location'),
+                        position: 'right-top'
+                    });
+                });
+            } else {
+                mdui.snackbar({
+                    messsge: getI18n('geolocation_is_not_supported_by_this_browser'),
+                    position: 'right-top'
+                });
+            }
+        }
+
+        function matchModel() {
+            if (photoExif.Make && photoExif.Model) {
+                mdui.snackbar({
+                    message: getI18n('matching'),
+                    position: 'right-top'
+                });
+                $.ajax({
+                    url: './model.json',
+                    dataType: 'json',
+                    success: res => {
+                        if (res[photoExif.Make] && res[photoExif.Make][photoExif.Model]) {
+                            $('#device-input').val(res[photoExif.Make][photoExif.Model]);
+                            drawImage(true);
+                        } else {
+                            mdui.snackbar({
+                                message: getI18n('model_not_found'),
+                                position: 'right-top'
+                            });
+                        }
+                    },
+                    error: () => {
+                        mdui.snackbar({
+                            message: getI18n('cannot_get_model_list'),
+                            position: 'right-top'
+                        });
+                    }
+                });
+            } else {
+                mdui.snackbar({
+                    message: getI18n('cannot_match_unknown_model'),
+                    position: 'right-top'
+                });
+            }
+        }
+
+        function drawImage(preview) {
+            if (typeof preview == 'undefined') preview = false;
+            var reader = new FileReader();
+            reader.onload = (e) => {
+                var photoImage = new Image();
+                photoImage.src = e.target.result;
+                photoImage.onload = () => {
+                    var photoWidth = photoImage.width;
+                    var photoHeight = photoImage.height;
+
+                    if (parseInt($('#zoom-select').val()) == 2) {
+                        photoWidth = photoWidth * 2;
+                        photoHeight = photoHeight * 2;
+                    }
+
+                    photoCanvas.width = photoWidth;
+                    photoCanvas.height = photoHeight + 614;
+
+                    photoCtx.fillStyle = 'white';
+                    photoCtx.fillRect(0, 0, photoCanvas.width, photoCanvas.height);
+                    photoCtx.drawImage(photoImage, 0, 0, photoWidth, photoHeight);
+
+                    photoCtx.font = `bold 120px ${fontList[parseInt($('#font-select').val())]}`;
+                    photoCtx.fillStyle = 'black';
+
+                    var specLength = photoCtx.measureText($('#lens-input').val()).width;
+
+                    photoCtx.fillText($('#device-input').val(), 200, photoHeight + 282);
+                    //photoCtx.fillText($('#lens-input').val(), photoImage.width - 1820, photoImage.height + 282);
+                    photoCtx.fillText($('#lens-input').val(), photoWidth - specLength - 200, photoHeight + 282);
+
+
+                    photoCtx.font = `normal 82px ${fontList[parseInt($('#font-select').val())]}`;
+                    photoCanvas.style.letterSpacing = '1px';
+                    photoCtx.fillStyle = '#727272';
+                    photoCtx.fillText($('#time-input').val(), 200, photoHeight + 434);
+                    photoCtx.fillText($('#location-input').val(), photoWidth - specLength - 200, photoHeight + 434);
+
+                    if ($('#logo-select').val() != 'none') {
+                        var logoImage = new Image();
+                        logoImage.src = logoList[$('#logo-select').val()];
+
+                        logoImage.onload = () => {
+                            photoCtx.drawImage(logoImage, photoWidth - specLength - 600, photoHeight + 190, 250, 250);
+
+                            photoCtx.moveTo(photoWidth - specLength - 280, photoHeight + 190);
+                            photoCtx.lineTo(photoWidth - specLength - 280, photoHeight + 440);
+                            photoCtx.lineWidth = 10;
+                            photoCtx.strokeStyle = '#cccccc';
+                            photoCtx.stroke();
+
+                            if (preview) {
+                                //previewImage();
+                                var exportQuality = Number($('#quality-select').val()) / 100;
+                                photoCanvas.toBlob(canvasBlob => {
+                                    if (photoCanvas.height > photoCanvas.width) {
+                                        $('#photo-preview').attr('width', '60%');
+                                        $('#photo-preview').attr('height', '100%');
+                                    } else {
+                                        $('#photo-preview').attr('width', '100%');
+                                        $('#photo-preview').attr('height', '60%');
+                                    }
+                                    $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
+                                }, 'image/jpg', exportQuality);
+                            } else {
+                                saveImage();
+                            }
+                        }
+                    } else {
+                        if (preview) {
+                            //previewImage();
+                            var exportQuality = Number($('#quality-select').val()) / 100;
+                            photoCanvas.toBlob(canvasBlob => {
+                                if (photoCanvas.height > photoCanvas.width) {
+                                    $('#photo-preview').attr('width', '60%');
+                                    $('#photo-preview').attr('height', '100%');
+                                } else {
+                                    $('#photo-preview').attr('width', '100%');
+                                    $('#photo-preview').attr('height', '60%');
+                                }
+                                $('#photo-preview').attr('src', URL.createObjectURL(canvasBlob));
+                            }, 'image/jpg', exportQuality);
+                        } else {
+                            saveImage();
+                        }
+                    }
+                }
+            };
+
+            reader.readAsDataURL(photoFile);
+        }
+
+        function readImage(file) {
+            photoFile = file;
+            console.log(photoFile);
+            if (photoFile.type.indexOf('image') == -1) {
+                mdui.snackbar({
+                    message: getI18n('please_select_a_image_file'),
+                    position: 'right-top'
+                });
+                return;
+            }
+
+            $('#photo-tip').addClass('mdui-hidden');
+            $('#photo-info').text(getI18n('loading'));
+            $('#photo-info').removeClass('mdui-hidden');
+
+            var reader = new FileReader();
+            reader.onload = (e) => {
+                var photoImage = new Image();
+                photoImage.src = e.target.result;
+                photoImage.onload = () => {
+                    $('#photo-info').html(`${photoFile.name}<br />${photoImage.width}x${photoImage.height}`);
+
+                    $('#device-input').val('Unknown');
+                    $('#time-input').val('Unknown');
+                    $('#lens-input').val('Unknown');
+                    $('#location-input').val('Unknown');
+
+                    exifr.parse(e.target.result).then(res => {
+                        console.log(res);
+                        photoExif = res;
+                        if (res.Model) $('#device-input').val(res.Model);
+                        if (res['39424'] && typeof res['39424'] == 'string') $('#device-input').val(res['39424']); // Xiaomi
+                        if (res.CreateDate) $('#time-input').val(new Date(res.CreateDate).format('yyyy.MM.dd hh:mm:ss'));
+
+                        if (res.FocalLength) $('#lens-input').val(`${parseInt(res.FocalLength)}mm`);
+                        if (res.FocalLengthIn35mmFormat) $('#lens-input').val(`${parseInt(res.FocalLengthIn35mmFormat)}mm`);
+                        if (res.FNumber) $('#lens-input').val(`${$('#lens-input').val()} f/${res.FNumber.toFixed(1)}`);
+                        if (res.ExposureTime) $('#lens-input').val(`${$('#lens-input').val()} 1/${parseInt(res.ExposureTime ** -1)}`);
+                        if (res.ISO) $('#lens-input').val(`${$('#lens-input').val()} ISO${res.ISO}`);
+                        //if (res.FocalLength && res.FNumber && res.ExposureTime && res.ISO) $('#lens-input').val(`${parseInt(res.FocalLength)}mm f/${res.FNumber.toFixed(1)} 1/${parseInt(res.ExposureTime ** -1)} ISO${res.ISO}`);
+                        if (res.GPSLatitude && res.GPSLatitudeRef && res.GPSLongitude && res.GPSLongitudeRef) $('#location-input').val(`${res.GPSLatitude[0]}°${res.GPSLatitude[1]}'${parseInt(res.GPSLatitude[2])}"${res.GPSLatitudeRef} ${res.GPSLongitude[0]}°${res.GPSLongitude[1]}'${parseInt(res.GPSLongitude[2])}"${res.GPSLongitudeRef}`);
+
+                        mdui.mutation();
+
+                        $('#photo-area').addClass('mdui-hidden');
+                        $('#photo-canvas-div').removeClass('mdui-hidden');
+                        drawImage(true);
+                    });
+
+                    if (navigator.userAgent.indexOf('Mobile') > -1 && navigator.userAgent.indexOf('Safari/') > -1 && photoFile.size > 1024 ** 2 * 5) {
+                        mdui.snackbar({
+                            message: getI18n('this_image_cannot_be_saved_in_safari'),
+                            position: 'right-top'
+                        });
+                    }
+                }
+            }
+
+            reader.readAsDataURL(photoFile);
+
+            document.querySelector('#save-btn').disabled = false;
+            document.querySelector('#preview-btn').disabled = false;
+            $('#save-btn').text(getI18n('save'));
+        }
+
+        function showModelEditor() {
+            if ($('#device-input').val() == 'Unknown') {
+                var deviceMake = photoExif.Make || '';
+                mdui.dialog({
+                    title: getI18n('model_editor'),
+                    content: `<div class="mdui-textfield mdui-textfield-floating-label"><label class="mdui-textfield-label">${getI18n('camera_manufactor')}</label><input id="editor-make" class="mdui-textfield-input" type="text" value="${deviceMake}" /></div><div class="mdui-textfield mdui-textfield-floating-label"><label class="mdui-textfield-label">${getI18n('camera_model')}</label><input id="editor-model" class="mdui-textfield-input" type="text" /></div>`,
+                    buttons: [
+                        {
+                            text: getI18n('cancel')
+                        },
+                        {
+                            text: getI18n('ok'),
+                            close: false,
+                            onClick: () => {
+                                if ($('#editor-make').val() != '' && $('#editor-model').val() != '') {
+                                    photoExif.Make = $('#editor-make').val();
+                                    photoExif.Model = $('#editor-model').val();
+                                    $('#device-input').val(photoExif.Model);
+                                    drawImage(true);
+                                    history.back();
+                                } else {
+                                    mdui.snackbar({
+                                        message: getI18n('please_fill_in_each_blank'),
+                                        position: 'right-top'
+                                    });
+                                }
+                            }
+                        }
+                    ]
+                });
+            } else {
+                mdui.snackbar({
+                    message: getI18n('you_can_only_edit_unknown_model'),
+                    position: 'right-top'
+                });
+            }
+        }
+
+        function getFAQ() {
+            var faqContent;
+            $.ajax({
+                url: `./faq_${langType}.html`,
+                async: false,
+                success: res => {
+                    faqContent = res;
+                },
+                error: () => {
+                    $.ajax({
+                        url: './faq_en-us.html',
+                        async: false,
+                        success: res => {
+                            faqContent = res;
+                        }
+                    });
+                    mdui.snackbar({
+                        message: getI18n('failed_to_load_faq_content'),
+                        position: 'right-top'
+                    });
+                }
+            });
+
+            mdui.dialog({
+                title: getI18n('faq'),
+                content: faqContent,
+                buttons: [
+                    {
+                        text: getI18n('ok')
+                    }
+                ]
+            });
+        }
+
+        function getContributors() {
+            $.showOverlay();
+            $.ajax({
+                url: 'https://api.github.com/repos/LTDSA/Photomark/contributors',
+                dataType: 'json',
+                complete: () => {
+                    $.hideOverlay();
+                },
+                success: res => {
+                    var listLayout = '';
+                    res.forEach(i => {
+                        listLayout += `<div class="mdui-list-item"><div class="mdui-list-item-avatar"><img src="${i.avatar_url}"/></div><div class="mdui-list-item-content"><div class="mdui-list-item-title">${i.login}</div><div class="mdui-list-item-text">${i.contributions} ${getI18n('contributions')}</div></div></div>`
+                    });
+                    mdui.dialog({
+                        title: getI18n('contributors'),
+                        content: `<div class="mdui-list">${listLayout}</div>`,
+                        buttons: [
+                            {
+                                text: getI18n('ok')
+                            }
+                        ]
+                    });
+                },
+                error: () => {
+                    mdui.snackbar({
+                        message: 'Cannot load contributors',
+                        position: 'right-top'
+                    });
+                }
+            });
+        }
+
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            $('body').addClass('mdui-theme-layout-dark');
+            $('#photo-area').removeClass('mdui-color-grey-200');
+            $('#photo-area').addClass('mdui-color-grey-700');
+        } else {
+            $('body').removeClass('mdui-theme-layout-dark');
+            $('#photo-area').removeClass('mdui-color-grey-700');
+            $('#photo-area').addClass('mdui-color-grey-200');
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+            if (e.matches) {
+                $('body').addClass('mdui-theme-layout-dark');
+                $('#photo-area').removeClass('mdui-color-grey-200');
+                $('#photo-area').addClass('mdui-color-grey-700');
+            } else {
+                $('body').removeClass('mdui-theme-layout-dark');
+                $('#photo-area').removeClass('mdui-color-grey-700');
+                $('#photo-area').addClass('mdui-color-grey-200');
+            }
+        });
+
+        $('#photo-area').on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                $('#photo-area').addClass('mdui-color-grey-800');
+                $('#photo-area').removeClass('mdui-color-grey-700');
+            } else {
+                $('#photo-area').addClass('mdui-color-grey-300');
+                $('#photo-area').removeClass('mdui-color-grey-200');
+            }
+        });
+
+        $('#photo-area').on('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                $('#photo-area').removeClass('mdui-color-grey-800');
+                $('#photo-area').addClass('mdui-color-grey-700');
+            } else {
+                $('#photo-area').removeClass('mdui-color-grey-300');
+                $('#photo-area').addClass('mdui-color-grey-200');
+            }
+
+            console.log(e);
+
+            readImage(e.dataTransfer.files[0]);
+        });
+
+        $('#photo-preview').on('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        $('#photo-canvas-div').on('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            console.log(e);
+
+            readImage(e.dataTransfer.files[0]);
+        });
+
+        $('#font-select').on('change', () => {
+            $('body').removeClass('harmony-sans');
+            $('body').removeClass('oppo-sans');
+            $('body').removeClass('sf-pro');
+            switch (parseInt($('#font-select').val())) {
+                case 1:
+                    //$('body').removeClass('harmony-sans');
+                    break;
+                case 2:
+                    $('body').addClass('harmony-sans');
+                    break;
+                case 3:
+                    $('body').addClass('oppo-sans');
+                    break;
+                case 4:
+                    $('body').addClass('sf-pro');
+                    break;
+            }
+
+            mdui.snackbar({
+                message: getI18n('changing_font_please_wait'),
+                position: 'right-top'
+            });
+
+            drawImage(true);
+        });
+
+        $('#logo-select').on('change', () => {
+            drawImage(true);
+        });
+
+        $('#zoom-select').on('change', () => {
+            drawImage(true);
+        });
+    </script>
+</body>
+
+</html>
