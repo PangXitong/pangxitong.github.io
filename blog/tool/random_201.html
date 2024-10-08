@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>抽签程序</title>
+  <meta charset="UTF-8">
+  <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>抽签程序</h1>
+  <p>点击下面的按钮进行抽签：</p>
+
+  <button onclick="drawLottery()">抽签</button>
+
+  <h2 class="result" id="result"></h2>
+
+  <script>
+    function drawLottery() {
+  var candidates = [
+    '商亮', '李柏澳', '徐浩柏', '李仕全',
+    '唐健强', '李昊哲', '李天一', '肖贺',
+    '王家旭', '徐文瑞', '高宇航', '井晓胜',
+    '齐皓楠', '闫鼎恒', '黄梓航', '王英凯',
+    '陈翰阳', '张淞博', '吴俣辰', '郭萧寒',
+    '张悦天', '李东岳', '陈冠名', '路炜杰',
+    '朱俊豪', '冀帅奇', '孙钰昊', '黄锦灿',
+    '庞玺桐', '戴立喆', '赵宝轩', '刘煜杰',
+    '段拓宇', '姚思甫', '宋远博', '魏子栋',
+    '薛浩然', '洪宇泽', '姜缘畅', '孙泽岭',
+  ];
+
+  var resultElement = document.getElementById('result');
+  var winners = [];
+
+  for (var i = 0; i < 1; i++) {
+    var randomIndex = Math.floor(Math.random() * candidates.length);
+    var winner = candidates[randomIndex];
+    winners.push(winner);
+    candidates.splice(randomIndex, 1);
+  }
+
+  resultElement.innerHTML = '抽中的人是：' + winners.join(', ');
+  
+  // 添加特效
+  var duration = 500; // 特效持续时间（毫秒）
+  var startTime = Date.now();
+
+  function animate() {
+    var currentTime = Date.now();
+    var elapsed = currentTime - startTime;
+    var rotation = (elapsed / duration * 0) % 360; // 每过一定时间旋转360度，并取余数以避免溢出
+
+    resultElement.style.transform = 'rotate(' + rotation + 'deg)';
+
+    if (elapsed < duration) {
+      requestAnimationFrame(animate);
+    } else {
+      startPulsating(); // 转完一圈后启动文本放大缩小效果
+    }
+  }
+
+  function startPulsating() {
+    var scaleFactor = 1.6; // 文本放大的比例
+    var pulsateDuration = 1000; // 文本放大缩小一次的持续时间（毫秒）
+    var startTime = Date.now();
+
+    function pulsate() {
+      var currentTime = Date.now();
+      var elapsed = currentTime - startTime;
+      var scale;
+
+      if (elapsed <= pulsateDuration / 2) {
+        // 前半段时间，文本逐渐放大
+        scale = 1 + (scaleFactor - 1) * (elapsed / (pulsateDuration / 2));
+      } else {
+        // 后半段时间，文本逐渐缩小回初始大小
+        scale = scaleFactor - (scaleFactor - 1) * ((elapsed - pulsateDuration / 2) / (pulsateDuration / 2));
+      }
+
+      resultElement.style.transform = 'rotate(360deg) scale(' + scale + ')';
+
+      if (elapsed < pulsateDuration) {
+        requestAnimationFrame(pulsate);
+      }
+    }
+
+    pulsate();
+  }
+
+  animate();
+}
+  </script>
+    <p style="position: fixed;bottom: 40px;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">版权声明：庞玺桐负责技术支持，名单为在校学生名单<br>抽签规则：各位变量（var）被抽出的概率相等，每次抽签都是独立重复事件（函数：Math.random()），可能出现一个变量被抽两次。</p>
+  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+
+© 2024 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
+<a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
+  </div></center>
+</body>
+</html>
