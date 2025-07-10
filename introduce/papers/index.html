@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <title>跳转页面</title>
 </head>
+
 <body>
+  <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
   <script>
     // 自动跳转
     window.location.href = "../papers.html";
-    
+
     // 手动跳转
     function manualRedirect() {
       window.location.href = "../papers.html";
     }
   </script>
-  
+
   <h1>正在跳转...</h1>
-  
+
   <button onclick="manualRedirect()">手动跳转</button>
-  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-    © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-  </div></center>
+  <center>
+    <div
+      style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+      © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+          src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+          height="15" />吉公网安备22017202000465号</a>
+    </div>
+  </center>
 </body>
+
 </html>

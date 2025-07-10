@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <title>抽签程序</title>
   <meta charset="UTF-8">
   <!--百度统计-->
   <script>
     var _hmt = _hmt || [];
-    (function() {
+    (function () {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-    </script>
+  </script>
   <style>
     .result {
       font-size: 20px;
@@ -20,14 +21,15 @@
     }
   </style>
   <script>
-    window.onload = function() {
+    window.onload = function () {
       alert("2024届10班已毕业，请注意个人隐私");
     };
-    </script>
-    
+  </script>
+
 </head>
+
 <body>
-  <h1>抽签程序（<a href="./random_new.html"target="_blank">新版</a>）</h1>
+  <h1>抽签程序（<a href="./random_new.html" target="_blank">新版</a>）</h1>
   <p>点击下面的按钮进行抽签：</p>
 
   <button onclick="drawLottery()">抽签</button>
@@ -51,9 +53,15 @@
       resultElement.innerHTML = '抽中的人是：' + winner;
     }
   </script>
-  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-    © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-  </div></center>
+  <center>
+    <div
+      style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+      © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+          src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+          height="15" />吉公网安备22017202000465号</a>
+    </div>
+  </center>
 </body>
+
 </html>

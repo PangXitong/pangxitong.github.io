@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta name="description"content="庞玺桐的博客">
-    <meta charset="utf-8">
+
+<head>
+	<meta name="description" content="庞玺桐的博客">
+	<meta charset="utf-8">
 	<title>高考倒计时（庞玺桐）</title>
-    <meta name="keywords"content="高考倒计时">
-    <link rel="shortcut icon" href="./images/favicon.ico">
-    <!--百度统计-->
-    <script>
+	<meta name="keywords" content="高考倒计时">
+	<link rel="shortcut icon" href="./images/favicon.ico">
+	<!--百度统计-->
+	<script>
 		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
 		})();
-		</script>
-		
+	</script>
+
 	<style>
 		span1 {
 			text-decoration: underline;
 		}
+
 		body {
 			font-family: Arial, sans-serif;
 			background-color: #E0FFFF;
@@ -43,6 +45,7 @@
 			flex-wrap: wrap;
 			margin-top: 50px;
 		}
+
 		.container1 {
 			justify-content: center;
 			align-items: center;
@@ -94,7 +97,7 @@
 			color: #06c;
 			text-decoration: none;
 		}
-		
+
 		a {
 			color: #0079F2;
 			text-decoration: none;
@@ -106,292 +109,327 @@
 <body>
 	<h1><big>高三·十班</big></h1>
 	<p align="center">此页面为长春市第八中学2021级10班网页</p>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	<!--2021级（2024毕业）-->
-	<div class="container1"style="max-width=auto">
-	<h1>2021级数据统计</h1>
-	<div class="container"style="max-width=auto">
-		<div class="item">
-		<big><big><div class="downtime1"></div></big></big>
+	<div class="container1" style="max-width=auto">
+		<h1>2021级数据统计</h1>
+		<div class="container" style="max-width=auto">
+			<div class="item">
+				<big><big>
+						<div class="downtime1"></div>
+					</big></big>
 
-<script>
-function timeDuration(time1, time2) {
-  var duration = (time2.getTime() - time1.getTime()) / 1000; // its unit is second
-  var day = Math.floor(duration / (3600 * 24));
-  var hour = Math.floor((duration % (3600 * 24)) / 3600);
-  var minute = Math.floor((duration % 3600) / 60);
-  var second = Math.floor(duration % 60);
-  return { day: day, hour: hour, minute: minute, second: second };
-}
+				<script>
+					function timeDuration(time1, time2) {
+						var duration = (time2.getTime() - time1.getTime()) / 1000; // its unit is second
+						var day = Math.floor(duration / (3600 * 24));
+						var hour = Math.floor((duration % (3600 * 24)) / 3600);
+						var minute = Math.floor((duration % 3600) / 60);
+						var second = Math.floor(duration % 60);
+						return { day: day, hour: hour, minute: minute, second: second };
+					}
 
-setInterval(function() {
-  // timestamp is seconds in php but milliseconds in js, difference of 1000 times.
-  var start_timestamp = 1717689600 * 1000;
-  var duration = timeDuration(new Date(start_timestamp), new Date());
-  var text =
-    duration.day +
-    "天" +
-    duration.hour +
-    "小时" +
-    duration.minute +
-    "分" +
-    duration.second +
-    "秒";
-  document.querySelector(".downtime1").innerText = text;
-});
-</script>
+					setInterval(function () {
+						// timestamp is seconds in php but milliseconds in js, difference of 1000 times.
+						var start_timestamp = 1717689600 * 1000;
+						var duration = timeDuration(new Date(start_timestamp), new Date());
+						var text =
+							duration.day +
+							"天" +
+							duration.hour +
+							"小时" +
+							duration.minute +
+							"分" +
+							duration.second +
+							"秒";
+						document.querySelector(".downtime1").innerText = text;
+					});
+				</script>
 
-		<h2>高考倒计时</h2>
-		</div>
-		<div class="item">
-		<style>
-		/* 第一个进度条样式 */
-		#progressbar1 {
-		    width: 400px;
-		    height: 30px;
-		    border: 1px solid #555;
-		    background-color: #eee;
-		}
-		#progress1 {
-		    width: 0%;
-		    height: 100%;
-		    background-color: #007bff;
-		}
-		</style>
-		<div id="progressbar1">
-		    <div id="progress1"></div>
-		</div><script>
-		// 第一个进度条相关变量
-		const startDate1 = new Date(2021, 8, 1); // 注意月份需要减一
-		const endDate1 = new Date(2024, 6, 7);
-		const totalDays1 = (endDate1 - startDate1) / (24 * 60 * 60 * 1000);
-		const current1 = new Date();
-		const currentDays1 = (current1 - startDate1) / (24 * 60 * 60 * 1000);
-		const percentage1 = currentDays1 / totalDays1 * 100;
-		
-		// 更新第一个进度条宽度和文本内容
-		const progress1 = document.querySelector('#progress1');
-		progress1.style.width = `${percentage1}%`;
-		progress1.innerHTML = `${Math.round(percentage1)}%`;
-		</script>
+				<h2>高考倒计时</h2>
+			</div>
+			<div class="item">
+				<style>
+					/* 第一个进度条样式 */
+					#progressbar1 {
+						width: 400px;
+						height: 30px;
+						border: 1px solid #555;
+						background-color: #eee;
+					}
 
-		<h2>高中进度条</h2>
-		</div>
-		<div class="item">
-		<br>
-		<center><details><summary>关于我们的更多信息（点击展开）</summary><ol><li>
-		暂无信息1
-        </li>
-        <li>
-        暂无信息2
-        </li></ol></details></center>
+					#progress1 {
+						width: 0%;
+						height: 100%;
+						background-color: #007bff;
+					}
+				</style>
+				<div id="progressbar1">
+					<div id="progress1"></div>
+				</div>
+				<script>
+					// 第一个进度条相关变量
+					const startDate1 = new Date(2021, 8, 1); // 注意月份需要减一
+					const endDate1 = new Date(2024, 6, 7);
+					const totalDays1 = (endDate1 - startDate1) / (24 * 60 * 60 * 1000);
+					const current1 = new Date();
+					const currentDays1 = (current1 - startDate1) / (24 * 60 * 60 * 1000);
+					const percentage1 = currentDays1 / totalDays1 * 100;
+
+					// 更新第一个进度条宽度和文本内容
+					const progress1 = document.querySelector('#progress1');
+					progress1.style.width = `${percentage1}%`;
+					progress1.innerHTML = `${Math.round(percentage1)}%`;
+				</script>
+
+				<h2>高中进度条</h2>
+			</div>
+			<div class="item">
+				<br>
+				<center>
+					<details>
+						<summary>关于我们的更多信息（点击展开）</summary>
+						<ol>
+							<li>
+								暂无信息1
+							</li>
+							<li>
+								暂无信息2
+							</li>
+						</ol>
+					</details>
+				</center>
+			</div>
 		</div>
 	</div>
-	</div>
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	<!--2022级（2025毕业）-->
-	<div class="container1"style="max-width=auto">
-	<h1>2022级数据统计</h1>
-	<div class="container"style="max-width=auto">
-		<div class="item">
-		<big><big><div class="downtime2"></div></big></big>
-		<script>
-		function timeDuration(time1, time2) {
-		  var duration = (time2.getTime() - time1.getTime()) / 1000; // its unit is second
-		  var day = Math.floor(duration / (3600 * 24));
-		  var hour = Math.floor((duration % (3600 * 24)) / 3600);
- 		 var minute = Math.floor((duration % 3600) / 60);
- 		 var second = Math.floor(duration % 60);
- 		 return { day: day, hour: hour, minute: minute, second: second };
-		}
-		
-		setInterval(function() {
-		  // timestamp is seconds in php but milliseconds in js, difference of 1000 times.
-		  var start_timestamp = 1749225600 * 1000;
- 		 var duration = timeDuration(new Date(start_timestamp), new Date());
- 		 var text =
-  		  duration.day +
- 		   "天" +
-  		  duration.hour +
-  		  "小时" +
-  		  duration.minute +
-  		  "分" +
-  		  duration.second +
- 		   "秒";
- 		 document.querySelector(".downtime2").innerText = text;
-		});
-		</script>
+	<div class="container1" style="max-width=auto">
+		<h1>2022级数据统计</h1>
+		<div class="container" style="max-width=auto">
+			<div class="item">
+				<big><big>
+						<div class="downtime2"></div>
+					</big></big>
+				<script>
+					function timeDuration(time1, time2) {
+						var duration = (time2.getTime() - time1.getTime()) / 1000; // its unit is second
+						var day = Math.floor(duration / (3600 * 24));
+						var hour = Math.floor((duration % (3600 * 24)) / 3600);
+						var minute = Math.floor((duration % 3600) / 60);
+						var second = Math.floor(duration % 60);
+						return { day: day, hour: hour, minute: minute, second: second };
+					}
 
-		<h2>高考倒计时</h2>
-		</div>
-		<div class="item">
+					setInterval(function () {
+						// timestamp is seconds in php but milliseconds in js, difference of 1000 times.
+						var start_timestamp = 1749225600 * 1000;
+						var duration = timeDuration(new Date(start_timestamp), new Date());
+						var text =
+							duration.day +
+							"天" +
+							duration.hour +
+							"小时" +
+							duration.minute +
+							"分" +
+							duration.second +
+							"秒";
+						document.querySelector(".downtime2").innerText = text;
+					});
+				</script>
 
-		<style>
+				<h2>高考倒计时</h2>
+			</div>
+			<div class="item">
 
-		/* 第二个进度条样式 */
-		#progressbar2 {
-		    width: 400px;
-		    height: 30px;
-		    border: 1px solid #555;
- 		   background-color: #eee;
-		}
-		#progress2 {
-		    width: 0%;
-		    height: 100%;
-		    background-color: #dc3545;
-		}
-		</style>
+				<style>
+					/* 第二个进度条样式 */
+					#progressbar2 {
+						width: 400px;
+						height: 30px;
+						border: 1px solid #555;
+						background-color: #eee;
+					}
 
-		<div id="progressbar2">
-		    <div id="progress2"></div>
-		</div>
-		
-		<script>
-		
-		// 第二个进度条相关变量
-		const startDate2 = new Date(2022, 8, 1); // 注意月份需要减一
-		const endDate2 = new Date(2025, 6, 7);
-		const totalDays2 = (endDate2 - startDate2) / (24 * 60 * 60 * 1000);
-		const current2 = new Date();
-		const currentDays2 = (current2 - startDate2) / (24 * 60 * 60 * 1000);
-		const percentage2 = currentDays2 / totalDays2 * 100;
+					#progress2 {
+						width: 0%;
+						height: 100%;
+						background-color: #dc3545;
+					}
+				</style>
 
-		// 更新第二个进度条宽度和文本内容
-		const progress2 = document.querySelector('#progress2');
-		progress2.style.width = `${percentage2}%`;
-		progress2.innerHTML = `${Math.round(percentage2)}%`;
-		</script>
+				<div id="progressbar2">
+					<div id="progress2"></div>
+				</div>
 
-	    <h2>高中进度条</h2>
-		</div>
-		<div class="item">
-		<br>
-		<center><details><summary>关于我们的更多信息（点击展开）</summary><ol><li>
-		暂无信息1
-        </li>
-        <li>
-        暂无信息2
-        </li></ol></details></center>
-		</div>
-	</div>
-	</div>
-	
-	
-	
-	
-		<!--2023级（2026毕业）-->
-	<div class="container1"style="max-width=auto">
-	<h1>2023级数据统计</h1>
-	<div class="container"style="max-width=auto">
-		<div class="item">
-		<big><big><div class="downtime3"></div></big></big>
+				<script>
 
-		<script>
-		function timeDuration(time1, time2) {
-		  var duration = (time2.getTime() - time1.getTime()) / 1000; // its unit is second
-		  var day = Math.floor(duration / (3600 * 24));
-		  var hour = Math.floor((duration % (3600 * 24)) / 3600);
- 		 var minute = Math.floor((duration % 3600) / 60);
- 		 var second = Math.floor(duration % 60);
- 		 return { day: day, hour: hour, minute: minute, second: second };
-		}
-		
-		setInterval(function() {
-		  // timestamp is seconds in php but milliseconds in js, difference of 1000 times.
- 		 var start_timestamp = 1780761600 * 1000;
-  		var duration = timeDuration(new Date(start_timestamp), new Date());
- 		 var text =
- 		   duration.day +
- 		   "天" +
- 		   duration.hour +
- 		   "小时" +
- 		   duration.minute +
-  		  "分" +
-  		  duration.second +
-  		  "秒";
- 		 document.querySelector(".downtime3").innerText = text;
-		});
-		</script>
-		<h2>高考倒计时</h2>
-		</div>
-		<div class="item">
-		<style>
+					// 第二个进度条相关变量
+					const startDate2 = new Date(2022, 8, 1); // 注意月份需要减一
+					const endDate2 = new Date(2025, 6, 7);
+					const totalDays2 = (endDate2 - startDate2) / (24 * 60 * 60 * 1000);
+					const current2 = new Date();
+					const currentDays2 = (current2 - startDate2) / (24 * 60 * 60 * 1000);
+					const percentage2 = currentDays2 / totalDays2 * 100;
 
-		/* 第三个进度条样式 */
-		#progressbar3 {
-		    width: 400px;
-		    height: 30px;
- 		   border: 1px solid #555;
- 		   background-color: #eee;
-		}
-		#progress3 {
-		    width: 0%;
-		    height: 100%;
- 		   background-color: #28a745;
-		}
-		</style>
-		
-		<div id="progressbar3">
- 		   <div id="progress3"></div>
-		</div>
-		
-		<script>
+					// 更新第二个进度条宽度和文本内容
+					const progress2 = document.querySelector('#progress2');
+					progress2.style.width = `${percentage2}%`;
+					progress2.innerHTML = `${Math.round(percentage2)}%`;
+				</script>
 
-		// 第三个进度条相关变量
-		const startDate3 = new Date(2023, 8, 1); // 注意月份需要减一
-		const endDate3 = new Date(2026, 6, 7);
-		const totalDays3 = (endDate3 - startDate3) / (24 * 60 * 60 * 1000);
-		const current3 = new Date();
-		const currentDays3 = (current3 - startDate3) / (24 * 60 * 60 * 1000);
-		const percentage3 = currentDays3 / totalDays3 * 100;
-
-		// 更新第三个进度条宽度和文本内容
-		const progress3 = document.querySelector('#progress3');
-		progress3.style.width = `${percentage3}%`;
-		progress3.innerHTML = `${Math.round(percentage3)}%`;
-		</script>
-
-	    <h2>高中进度条</h2>
-		</div>
-		
-		<div class="item">
-		<br>
-		<center><details><summary>关于我们的更多信息（点击展开）</summary><ol><li>
-		暂无信息1
-        </li>
-        <li>
-        暂无信息2
-        </li></ol></details></center>
+				<h2>高中进度条</h2>
+			</div>
+			<div class="item">
+				<br>
+				<center>
+					<details>
+						<summary>关于我们的更多信息（点击展开）</summary>
+						<ol>
+							<li>
+								暂无信息1
+							</li>
+							<li>
+								暂无信息2
+							</li>
+						</ol>
+					</details>
+				</center>
+			</div>
 		</div>
 	</div>
+
+
+
+
+	<!--2023级（2026毕业）-->
+	<div class="container1" style="max-width=auto">
+		<h1>2023级数据统计</h1>
+		<div class="container" style="max-width=auto">
+			<div class="item">
+				<big><big>
+						<div class="downtime3"></div>
+					</big></big>
+
+				<script>
+					function timeDuration(time1, time2) {
+						var duration = (time2.getTime() - time1.getTime()) / 1000; // its unit is second
+						var day = Math.floor(duration / (3600 * 24));
+						var hour = Math.floor((duration % (3600 * 24)) / 3600);
+						var minute = Math.floor((duration % 3600) / 60);
+						var second = Math.floor(duration % 60);
+						return { day: day, hour: hour, minute: minute, second: second };
+					}
+
+					setInterval(function () {
+						// timestamp is seconds in php but milliseconds in js, difference of 1000 times.
+						var start_timestamp = 1780761600 * 1000;
+						var duration = timeDuration(new Date(start_timestamp), new Date());
+						var text =
+							duration.day +
+							"天" +
+							duration.hour +
+							"小时" +
+							duration.minute +
+							"分" +
+							duration.second +
+							"秒";
+						document.querySelector(".downtime3").innerText = text;
+					});
+				</script>
+				<h2>高考倒计时</h2>
+			</div>
+			<div class="item">
+				<style>
+					/* 第三个进度条样式 */
+					#progressbar3 {
+						width: 400px;
+						height: 30px;
+						border: 1px solid #555;
+						background-color: #eee;
+					}
+
+					#progress3 {
+						width: 0%;
+						height: 100%;
+						background-color: #28a745;
+					}
+				</style>
+
+				<div id="progressbar3">
+					<div id="progress3"></div>
+				</div>
+
+				<script>
+
+					// 第三个进度条相关变量
+					const startDate3 = new Date(2023, 8, 1); // 注意月份需要减一
+					const endDate3 = new Date(2026, 6, 7);
+					const totalDays3 = (endDate3 - startDate3) / (24 * 60 * 60 * 1000);
+					const current3 = new Date();
+					const currentDays3 = (current3 - startDate3) / (24 * 60 * 60 * 1000);
+					const percentage3 = currentDays3 / totalDays3 * 100;
+
+					// 更新第三个进度条宽度和文本内容
+					const progress3 = document.querySelector('#progress3');
+					progress3.style.width = `${percentage3}%`;
+					progress3.innerHTML = `${Math.round(percentage3)}%`;
+				</script>
+
+				<h2>高中进度条</h2>
+			</div>
+
+			<div class="item">
+				<br>
+				<center>
+					<details>
+						<summary>关于我们的更多信息（点击展开）</summary>
+						<ol>
+							<li>
+								暂无信息1
+							</li>
+							<li>
+								暂无信息2
+							</li>
+						</ol>
+					</details>
+				</center>
+			</div>
+		</div>
 	</div>
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 	<div class="desc">
 		<p>注释：本页面所有的“XXXX级”表示的都是入学年份</p>
 		<p>声明：此页面将从2021级开始对高中的每一个年级进行倒计时，每年6月10日更新页面</p>
-		<p>此页面由班级团支书<a href="https://pangxitong.github.io/"target="_blank">庞玺桐</a>开发，为庞玺桐的个人博客的附属页面【<a href="https://github.com/PangXitong/pangxitong.github.io/blob/main/blog/10.html"target="_blank">查看源代码</a>】</p>
-		<p>使用此页面即代表您同意<a href="./open.html"target="_blank">《开源协议与版权声明》</a>，网站的运行维护完全由庞玺桐提供</p>
+		<p>此页面由班级团支书<a href="https://pangxitong.github.io/" target="_blank">庞玺桐</a>开发，为庞玺桐的个人博客的附属页面【<a
+				href="https://github.com/PangXitong/pangxitong.github.io/blob/main/blog/10.html"
+				target="_blank">查看源代码</a>】</p>
+		<p>使用此页面即代表您同意<a href="./open.html" target="_blank">《开源协议与版权声明》</a>，网站的运行维护完全由庞玺桐提供</p>
 		<p><small><span>
-© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a><a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
+					© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/"
+						class="Link--secondary">吉ICP备2024017023号-1</a><a
+						href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+							src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+							height="15" />吉公网安备22017202000465号</a>
 	</div>
 </body>
 

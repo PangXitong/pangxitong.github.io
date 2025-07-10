@@ -1,117 +1,123 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="./blog/images/favicon.ico">
-    <link rel="bookmark" href="./blog/images/favicon.ico">
-<link rel="stylesheet" href="style.css" media="(min-width: 1001px)" type="text/css" />
-    <link rel="stylesheet" href="mobile.css" media="(max-width: 1000px)" type="text/css" />
-    <meta name="applicable-device" content="pc,mobile">
-    <!--百度统计-->
-    <script>
+  <link rel="bookmark" href="./blog/images/favicon.ico">
+  <link rel="stylesheet" href="style.css" media="(min-width: 1001px)" type="text/css" />
+  <link rel="stylesheet" href="mobile.css" media="(max-width: 1000px)" type="text/css" />
+  <meta name="applicable-device" content="pc,mobile">
+  <!--百度统计-->
+  <script>
     var _hmt = _hmt || [];
-    (function() {
+    (function () {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-    </script>
-    <!-- 渐变背景 -->
-    <style>
+  </script>
+  <!-- 渐变背景 -->
+  <style>
     #canvas-basic {
-        position: fixed;
-        display: block;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -999;
+      position: fixed;
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -999;
     }
-    </style>
-    <!-- 渐变背景初始化 -->
-    <canvas id="canvas-basic"></canvas> 
-    <script src="./granim.min.js"></script>
-    <script>
+  </style>
+  <!-- 渐变背景初始化 -->
+  <canvas id="canvas-basic"></canvas>
+  <script src="./granim.min.js"></script>
+  <script>
     var granimInstance = new Granim({
-        element: '#canvas-basic',
-        direction: 'left-right',
-        isPausedWhenNotInView: true,
-        states : {
-            "default-state": {
-                gradients: [
-                     ['#fff1eb', '#ace0f9'],
-                     ['#d4fc79', '#96e6a1'],
-                     ['#a1c4fd', '#c2e9fb'],
-                     ['#a8edea', '#fed6e3'],
-                     ['#9890e3', '#b1f4cf'],
-                     ['#a1c4fd', '#c2e9fb'],
-                     ['#fff1eb', '#ace0f9'],
-                    ['#a18cd1', '#fbc2eb']
-                ]
-            }
+      element: '#canvas-basic',
+      direction: 'left-right',
+      isPausedWhenNotInView: true,
+      states: {
+        "default-state": {
+          gradients: [
+            ['#fff1eb', '#ace0f9'],
+            ['#d4fc79', '#96e6a1'],
+            ['#a1c4fd', '#c2e9fb'],
+            ['#a8edea', '#fed6e3'],
+            ['#9890e3', '#b1f4cf'],
+            ['#a1c4fd', '#c2e9fb'],
+            ['#fff1eb', '#ace0f9'],
+            ['#a18cd1', '#fbc2eb']
+          ]
         }
+      }
     });
-    </script>
-<style>
-    
+  </script>
+  <style>
     a {
-     color: #0079F2;
-     text-decoration: none;
-     -webkit-tap-highlight-color: transparent;
+      color: #0079F2;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .translate{
-     padding-top: 5%;
-     padding-right: 5%;
-     color:black
+
+    .translate {
+      padding-top: 5%;
+      padding-right: 5%;
+      color: black
     }
+
     p {
-     line-height: 1.6;
-     /*间距*/
-     color: #334555;
-     /*颜色*/
-     font-family: 'Open Sans', sans-serif;
-     /*字体*/
-     font-weight: normal;
-     /*粗细*/
-     word-spacing: normal;
-     /*单词间距*/
-     text-decoration: none;
-     /*修饰文字(none正常，underline下划线，overline上划线，line-through删除线 blink闪烁(只支持IE6,7,搜狐))*/
-     letter-spacing: normal;
-     /*字符间距(normal默认，length长度单位)*/
+      line-height: 1.6;
+      /*间距*/
+      color: #334555;
+      /*颜色*/
+      font-family: 'Open Sans', sans-serif;
+      /*字体*/
+      font-weight: normal;
+      /*粗细*/
+      word-spacing: normal;
+      /*单词间距*/
+      text-decoration: none;
+      /*修饰文字(none正常，underline下划线，overline上划线，line-through删除线 blink闪烁(只支持IE6,7,搜狐))*/
+      letter-spacing: normal;
+      /*字符间距(normal默认，length长度单位)*/
     }
+
     h1 {
-     line-height: normal;
-     /*大小*/
-     color: #2C3E50;
-     /*颜色*/
-     font-family: STXingkai;
-     /*字体*/
-     font-weight: 600;
-     /*粗细*/
-     word-spacing: normal;
-     /*单词间距*/
-     text-decoration: none;
-     /*修饰文字(none正常，underline下划线，overline上划线，line-through删除线*/
-     letter-spacing: normal;
-     /*字符间距(normal默认，length长度单位)*/
+      line-height: normal;
+      /*大小*/
+      color: #2C3E50;
+      /*颜色*/
+      font-family: STXingkai;
+      /*字体*/
+      font-weight: 600;
+      /*粗细*/
+      word-spacing: normal;
+      /*单词间距*/
+      text-decoration: none;
+      /*修饰文字(none正常，underline下划线，overline上划线，line-through删除线*/
+      letter-spacing: normal;
+      /*字符间距(normal默认，length长度单位)*/
     }
+
     /*固定在底部，用<div>执行*/
-    .bottom{
-     position: absolute;
-     text-align: center;
-     width: 100%;
-     position: fixed; /*固定在底部*/
-     bottom:0px; /*底部间距*/
+    .bottom {
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      position: fixed;
+      /*固定在底部*/
+      bottom: 0px;
+      /*底部间距*/
     }
+
     span1 {
-     color:red
+      color: red
     }
- 
-    </style>
+  </style>
 
   <title>弹窗示例</title>
   <style>
@@ -124,9 +130,10 @@
       left: 0;
       background-color: rgba(0, 0, 0, 0.7);
       z-index: 9999;
-      display: none; /* 默认隐藏 */
+      display: none;
+      /* 默认隐藏 */
     }
-    
+
     /* 弹窗样式 */
     #popup {
       position: fixed;
@@ -140,27 +147,28 @@
       border-radius: 10px;
       z-index: 10000;
       text-align: center;
-      display: none; /* 默认隐藏 */
+      display: none;
+      /* 默认隐藏 */
     }
-    
+
     #hh {
       margin-top: 50px;
       font-size: 36px;
       color: #333;
     }
-    
+
     h2 {
       margin-top: 30px;
       font-size: 24px;
       color: #666;
     }
-    
+
     label {
       display: block;
       margin-top: 20px;
       font-size: 16px;
     }
-    
+
     input[type=text] {
       width: 80%;
       padding: 10px;
@@ -169,7 +177,7 @@
       border-radius: 4px;
       margin-top: 10px;
     }
-    
+
     button {
       padding: 10px 20px;
       background-color: #007bff;
@@ -180,7 +188,7 @@
       margin-top: 20px;
       cursor: pointer;
     }
-    
+
     #result {
       position: fixed;
       right: 10%;
@@ -207,8 +215,8 @@
 
   <!-- 显示页面元素 -->
   <div class="cent1">
-  	<h1 align="left"id="title"></h1>
-  	<p id="subtitle"></p>
+    <h1 align="left" id="title"></h1>
+    <p id="subtitle"></p>
   </div>
   <div id="result"></div>
   <div id="author"></div>
@@ -240,15 +248,16 @@
       hidePopup();
     }
 
-    window.onload = function() {
+    window.onload = function () {
       showPopup();
     };
   </script>
-<div class="bottom"style="font-family: 'Open Sans', sans-serif;">
+  <div class="bottom" style="font-family: 'Open Sans', sans-serif;">
     <!--<span1>注意：此页面仍在测试阶段，如果此页面的元素又互相重叠的现象，请在浏览器调节页面缩放。</span1> -->
     <br>
-© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-<a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-  </body>
-</html>
+    © 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+        src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15" />吉公网安备22017202000465号</a>
+</body>
 
+</html>

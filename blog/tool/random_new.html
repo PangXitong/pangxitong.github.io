@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <title>抽签程序</title>
   <meta charset="UTF-8">
   <!--百度统计-->
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-          <script>
-            window.onload = function() {
-              alert("2024届10班已毕业，请注意个人隐私");
-            };
-            </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <script>
+    window.onload = function () {
+      alert("2024届10班已毕业，请注意个人隐私");
+    };
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -56,6 +57,7 @@
     }
   </style>
 </head>
+
 <body>
   <h1>抽签程序</h1>
   <p>点击下面的按钮进行抽签：</p>
@@ -66,80 +68,88 @@
 
   <script>
     function drawLottery() {
-  var candidates = [
-    '刘宸明', '李若琪', '于思源', '张佳迪', '段泓宇',  '宋佳玥', '金美涵','李津铭',
-    '徐颢天', '王烁涵', '李丽娜', '马悦',  '阮振硕', '庞玺桐', '朱泓澎','史策', 
-    '李夷然', '牛子文', '高赫阳','朱祉彦', '杨嘉莹', '郑孟莹', '李沈思', '仲昭熙', 
-    '张健羽', '徐鼎凯', '赵赫', '苏佳月', '刘长裕', '杨宝婷', '王泓尧', '孙润泽', 
-    '刘妍鸿', '杨帆', '程潆灏', '姜凯童', '李佳瑞', '江楠','曹语轩','王琨博', 
-  ];
+      var candidates = [
+        '刘宸明', '李若琪', '于思源', '张佳迪', '段泓宇', '宋佳玥', '金美涵', '李津铭',
+        '徐颢天', '王烁涵', '李丽娜', '马悦', '阮振硕', '庞玺桐', '朱泓澎', '史策',
+        '李夷然', '牛子文', '高赫阳', '朱祉彦', '杨嘉莹', '郑孟莹', '李沈思', '仲昭熙',
+        '张健羽', '徐鼎凯', '赵赫', '苏佳月', '刘长裕', '杨宝婷', '王泓尧', '孙润泽',
+        '刘妍鸿', '杨帆', '程潆灏', '姜凯童', '李佳瑞', '江楠', '曹语轩', '王琨博',
+      ];
 
-  var resultElement = document.getElementById('result');
-  var winners = [];
+      var resultElement = document.getElementById('result');
+      var winners = [];
 
-  for (var i = 0; i < 1; i++) {
-    var randomIndex = Math.floor(Math.random() * candidates.length);
-    var winner = candidates[randomIndex];
-    winners.push(winner);
-    candidates.splice(randomIndex, 1);
-  }
-
-  resultElement.innerHTML = '抽中的人是：' + winners.join(', ');
-  
-  // 添加特效
-  var duration = 500; // 特效持续时间（毫秒）
-  var startTime = Date.now();
-
-  function animate() {
-    var currentTime = Date.now();
-    var elapsed = currentTime - startTime;
-    var rotation = (elapsed / duration * 0) % 360; // 每过一定时间旋转360度，并取余数以避免溢出
-
-    resultElement.style.transform = 'rotate(' + rotation + 'deg)';
-
-    if (elapsed < duration) {
-      requestAnimationFrame(animate);
-    } else {
-      startPulsating(); // 转完一圈后启动文本放大缩小效果
-    }
-  }
-
-  function startPulsating() {
-    var scaleFactor = 1.6; // 文本放大的比例
-    var pulsateDuration = 1000; // 文本放大缩小一次的持续时间（毫秒）
-    var startTime = Date.now();
-
-    function pulsate() {
-      var currentTime = Date.now();
-      var elapsed = currentTime - startTime;
-      var scale;
-
-      if (elapsed <= pulsateDuration / 2) {
-        // 前半段时间，文本逐渐放大
-        scale = 1 + (scaleFactor - 1) * (elapsed / (pulsateDuration / 2));
-      } else {
-        // 后半段时间，文本逐渐缩小回初始大小
-        scale = scaleFactor - (scaleFactor - 1) * ((elapsed - pulsateDuration / 2) / (pulsateDuration / 2));
+      for (var i = 0; i < 1; i++) {
+        var randomIndex = Math.floor(Math.random() * candidates.length);
+        var winner = candidates[randomIndex];
+        winners.push(winner);
+        candidates.splice(randomIndex, 1);
       }
 
-      resultElement.style.transform = 'rotate(360deg) scale(' + scale + ')';
+      resultElement.innerHTML = '抽中的人是：' + winners.join(', ');
 
-      if (elapsed < pulsateDuration) {
-        requestAnimationFrame(pulsate);
+      // 添加特效
+      var duration = 500; // 特效持续时间（毫秒）
+      var startTime = Date.now();
+
+      function animate() {
+        var currentTime = Date.now();
+        var elapsed = currentTime - startTime;
+        var rotation = (elapsed / duration * 0) % 360; // 每过一定时间旋转360度，并取余数以避免溢出
+
+        resultElement.style.transform = 'rotate(' + rotation + 'deg)';
+
+        if (elapsed < duration) {
+          requestAnimationFrame(animate);
+        } else {
+          startPulsating(); // 转完一圈后启动文本放大缩小效果
+        }
       }
+
+      function startPulsating() {
+        var scaleFactor = 1.6; // 文本放大的比例
+        var pulsateDuration = 1000; // 文本放大缩小一次的持续时间（毫秒）
+        var startTime = Date.now();
+
+        function pulsate() {
+          var currentTime = Date.now();
+          var elapsed = currentTime - startTime;
+          var scale;
+
+          if (elapsed <= pulsateDuration / 2) {
+            // 前半段时间，文本逐渐放大
+            scale = 1 + (scaleFactor - 1) * (elapsed / (pulsateDuration / 2));
+          } else {
+            // 后半段时间，文本逐渐缩小回初始大小
+            scale = scaleFactor - (scaleFactor - 1) * ((elapsed - pulsateDuration / 2) / (pulsateDuration / 2));
+          }
+
+          resultElement.style.transform = 'rotate(360deg) scale(' + scale + ')';
+
+          if (elapsed < pulsateDuration) {
+            requestAnimationFrame(pulsate);
+          }
+        }
+
+        pulsate();
+      }
+
+      animate();
     }
-
-    pulsate();
-  }
-
-  animate();
-}
   </script>
-    <p style="position: fixed;bottom: 40px;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">版权声明：庞玺桐负责技术支持，名单为在校学生名单<br>抽签规则：各位变量（var）被抽出的概率相等，每次抽签都是独立重复事件（函数：Math.random()），可能出现一个变量被抽两次。</p>
-  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+  <p
+    style="position: fixed;bottom: 40px;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+    版权声明：庞玺桐负责技术支持，名单为在校学生名单<br>抽签规则：各位变量（var）被抽出的概率相等，每次抽签都是独立重复事件（函数：Math.random()），可能出现一个变量被抽两次。</p>
+  <center>
+    <div
+      style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
 
-© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-<a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-  </div></center>
+      © 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+          src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+          height="15" />吉公网安备22017202000465号</a>
+    </div>
+  </center>
 </body>
+
 </html>

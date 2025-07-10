@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <title>多搜索引擎搜索</title>
     <meta charset="UTF-8">
     <!--百度统计-->
     <script>
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
     <style>
         body {
@@ -91,6 +92,7 @@
         }
     </style>
 </head>
+
 <body>
     <!--搜索引擎-->
     <div class="container">
@@ -98,15 +100,19 @@
         <div>
             <div class="search-engine" onclick="changeSearchEngine('https://www.baidu.com/s?wd=', this)">Baidu</div>
             <div class="search-engine" onclick="changeSearchEngine('https://www.bing.com/search?q=', this)">Bing</div>
-            <div class="search-engine" onclick="changeSearchEngine('https://baike.baidu.com/item/', this)">百度百科</div>  
-            <div class="search-engine" onclick="changeSearchEngine('https://github.com/search?q=', this)">GitHub</div>  
-            <div class="search-engine" onclick="changeSearchEngine('https://www.yandex.com/search?text=', this)">Yandex</div>  
-            <div class="search-engine" onclick="changeSearchEngine('https://www.sohu.com/search?q=', this)">搜狐</div>  
-            <div class="search-engine" onclick="changeSearchEngine('https://www.163.com/search?keyword=', this)">网易有道</div>  
-            <div class="search-engine" onclick="changeSearchEngine('https://quark.sm.cn/s?q=', this)">夸克</div>  
-            <div class="search-engine" onclick="changeSearchEngine('https://www.google.com/search?q=', this)">Google</div>
-            <div class="search-engine" onclick="changeSearchEngine('https://search.yahoo.com/search?p=', this)">Yahoo</div>
-            <div class="search-engine" onclick="changeSearchEngine('https://www.aol.com/search?q=', this)">AOL</div>  
+            <div class="search-engine" onclick="changeSearchEngine('https://baike.baidu.com/item/', this)">百度百科</div>
+            <div class="search-engine" onclick="changeSearchEngine('https://github.com/search?q=', this)">GitHub</div>
+            <div class="search-engine" onclick="changeSearchEngine('https://www.yandex.com/search?text=', this)">Yandex
+            </div>
+            <div class="search-engine" onclick="changeSearchEngine('https://www.sohu.com/search?q=', this)">搜狐</div>
+            <div class="search-engine" onclick="changeSearchEngine('https://www.163.com/search?keyword=', this)">网易有道
+            </div>
+            <div class="search-engine" onclick="changeSearchEngine('https://quark.sm.cn/s?q=', this)">夸克</div>
+            <div class="search-engine" onclick="changeSearchEngine('https://www.google.com/search?q=', this)">Google
+            </div>
+            <div class="search-engine" onclick="changeSearchEngine('https://search.yahoo.com/search?p=', this)">Yahoo
+            </div>
+            <div class="search-engine" onclick="changeSearchEngine('https://www.aol.com/search?q=', this)">AOL</div>
             <!-- 添加其他搜索引擎 -->
         </div>
         <br>
@@ -117,7 +123,11 @@
             </form>
         </div>
     </div>
-        <center><p style="max-width: 1000px;text-align: left;font-size: 120%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本网页由庞玺桐开发，默认使用百度搜索，您也可以选择其他搜索引擎进行搜索，搜索结果将在浏览器新建标签页打开，此网页可以帮助全方位多角度的查询资料。</p></center>
+    <center>
+        <p style="max-width: 1000px;text-align: left;font-size: 120%;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本网页由庞玺桐开发，默认使用百度搜索，您也可以选择其他搜索引擎进行搜索，搜索结果将在浏览器新建标签页打开，此网页可以帮助全方位多角度的查询资料。
+        </p>
+    </center>
 
     <script>
         var searchEngineUrl = 'https://www.baidu.com/s?wd='; // 默认使用百度搜索
@@ -143,9 +153,15 @@
             window.open(searchUrl, '_blank'); // 在新标签页中打开搜索结果页面
         }
     </script>
-      <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-        © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-        <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-      </div></center>
+    <center>
+        <div
+            style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+            © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+                    src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+                    height="15" />吉公网安备22017202000465号</a>
+        </div>
+    </center>
 </body>
+
 </html>

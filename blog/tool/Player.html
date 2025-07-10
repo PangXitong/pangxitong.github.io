@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <title>音乐播放器</title>
   <meta charset="UTF-8">
+  <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -148,10 +159,15 @@
     }
   </style>
 </head>
+
 <body>
   <br>
-  <center><h2>Oldsai音乐播放器</h2></center>
-  <center><p>此程序由庞玺桐开发，有定时关闭功能</p></center>
+  <center>
+    <h2>Oldsai音乐播放器</h2>
+  </center>
+  <center>
+    <p>此程序由庞玺桐开发，有定时关闭功能</p>
+  </center>
   <div id="dropzone">
     拖动音频文件到此处
     <div>
@@ -199,17 +215,17 @@
     var timerInput = document.getElementById('timerInput');
     var audio;
 
-    dropzone.addEventListener('dragover', function(e) {
+    dropzone.addEventListener('dragover', function (e) {
       e.preventDefault();
       dropzone.style.border = '2px dashed #00a0e9';
     });
 
-    dropzone.addEventListener('dragleave', function(e) {
+    dropzone.addEventListener('dragleave', function (e) {
       e.preventDefault();
       dropzone.style.border = '2px dashed #ccc';
     });
 
-    dropzone.addEventListener('drop', function(e) {
+    dropzone.addEventListener('drop', function (e) {
       e.preventDefault();
       dropzone.style.display = 'none';
       player.style.display = 'block';
@@ -218,7 +234,7 @@
       var file = e.dataTransfer.files[0];
       var reader = new FileReader();
 
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         audio = new Audio();
         audio.src = e.target.result;
         audio.controls = true;
@@ -231,7 +247,7 @@
         album.textContent = ''; // 设置音乐专辑
         lyrics.textContent = ''; // 设置音乐歌词
 
-        setInterval(function() {
+        setInterval(function () {
           var progress = (audio.currentTime / audio.duration) * 100;
           progressBar.style.width = progress + '%';
 
@@ -254,16 +270,16 @@
 
     function setTimer() {
       var minutes = parseInt(timerInput.value);
-      setTimeout(function() {
+      setTimeout(function () {
         audio.pause();
       }, minutes * 60 * 1000);
     }
 
     function handleFileSelect(evt) {
       var file = evt.target.files[0];
-      
+
       var reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         audio = new Audio();
         audio.src = e.target.result;
         audio.controls = true;
@@ -276,7 +292,7 @@
         album.textContent = ''; // 设置音乐专辑
         lyrics.textContent = ''; // 设置音乐歌词
 
-        setInterval(function() {
+        setInterval(function () {
           var progress = (audio.currentTime / audio.duration) * 100;
           progressBar.style.width = progress + '%';
 
@@ -318,9 +334,15 @@
       fileInput.click();
     }
   </script>
-    <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-      © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-    </div></center>
+  <center>
+    <div
+      style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+      © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+          src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+          height="15" />吉公网安备22017202000465号</a>
+    </div>
+  </center>
 </body>
+
 </html>

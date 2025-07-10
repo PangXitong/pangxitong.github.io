@@ -1,112 +1,129 @@
 <!--头部-->
 <html lang="zh-CN">
-  <head>
-    <meta name="description"content="庞玺桐的博客">
-    <meta charset="utf-8">
-    <title>总结我的2022</title> 
-    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,总结我的2022,总结我的2022,年度总结,跨年,2023,新年,春节,传统文化,百度统计,Gitalk">
-    <link rel="shortcut icon" href="./images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./css.css">
-    <meta name="applicable-device" content="pc,mobile">
-    <script type="text/javascript" src="./JavaScript.js"></script>
-    <!--百度统计-->
-    <script>
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();
-      </script>
-      
 
-    <!--span颜色注释-->
-    <style>
-      span {
-            color: #EDEDED;
-      }
-      span2 {
-            color: #EEFCA9;
-      }
-      span3 {
-             color: red;
-      }
-      span4 {
-             color: black;
-      }
-      span5 {
-             color: #D6B1A6;
-      }
-      span6 {
-             color: #E25DA9;
-      }
-      span7 {
-             color: #848484;
-      }
-      span8 {
-             color: #059CE5;
-      }
-      span9 {
-             color: #B8B8B8;
-      }
-    </style>
-    <!--复制链接-->
-    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script>
-    function shareCopyUrl(that) {
-            var clipboard = new ClipboardJS(that);
-            clipboard.on('success', function (e) {
-            console.info('Text:', e.text);
-            e.clearSelection();
-    }); 
-            clipboard.on('error', function (e) {
-            // console.error('Action:', e.action);
-            // console.error('Trigger:', e.trigger);
-    });
-            // 处理第一次点击不成功
-            clipboard.onClick(event);
+<head>
+  <meta name="description" content="庞玺桐的博客">
+  <meta charset="utf-8">
+  <title>总结我的2022</title>
+  <meta name="keywords" content="庞玺桐,博客,庞玺桐的个人博客,总结我的2022,总结我的2022,年度总结,跨年,2023,新年,春节,传统文化,百度统计,Gitalk">
+  <link rel="shortcut icon" href="./images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./css.css">
+  <meta name="applicable-device" content="pc,mobile">
+  <script type="text/javascript" src="./JavaScript.js"></script>
+  <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <!--span颜色注释-->
+  <style>
+    span {
+      color: #EDEDED;
     }
-    </script>
-    <!--固定顶部导航栏-->    
-    <div class="top">
-      <center> 
-        <ul><big>
+
+    span2 {
+      color: #EEFCA9;
+    }
+
+    span3 {
+      color: red;
+    }
+
+    span4 {
+      color: black;
+    }
+
+    span5 {
+      color: #D6B1A6;
+    }
+
+    span6 {
+      color: #E25DA9;
+    }
+
+    span7 {
+      color: #848484;
+    }
+
+    span8 {
+      color: #059CE5;
+    }
+
+    span9 {
+      color: #B8B8B8;
+    }
+  </style>
+  <!--复制链接-->
+  <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  <script>
+    function shareCopyUrl(that) {
+      var clipboard = new ClipboardJS(that);
+      clipboard.on('success', function (e) {
+        console.info('Text:', e.text);
+        e.clearSelection();
+      });
+      clipboard.on('error', function (e) {
+        // console.error('Action:', e.action);
+        // console.error('Trigger:', e.trigger);
+      });
+      // 处理第一次点击不成功
+      clipboard.onClick(event);
+    }
+  </script>
+  <!--固定顶部导航栏-->
+  <div class="top">
+    <center>
+      <ul><big>
           <li><a href="https://oldsai.cn/">庞玺桐的博客首页
-          <li><a href="https://wtcu.github.io/"target="_blank">WTCU</a></li>
-          <li><a href="../open.html"target="_blank">协议</a></li>
-          <li id="right"><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li></big>
-          </li>        
-        </ul>
-      </center>      
-    </div>
-  </head>
-  <!--身体-->
-  <body bgcolor="#fff">
-    <!--表头-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1 align="center"><big><big><big><big>2021年度总结</h1></big></big></big></big>
-    
-    <center></center>
-    <p align="left"class="container"style="width:900px;">
-      2021年匆匆而去，在这一年中：
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.疫情形势明显好转，我们目前已经不用天天带口罩了。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.我经历了一次意义重大的选拔——省实验空军少年航校招飞，虽然没有成功，但是我意识到了视力重要性，也挺直了腰板。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.经历了重要的变革之一——中考，能考上八中，是我从来都不敢想象的，实属是三生有幸。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;4.在假期读完了刘慈欣的《三体》全套，了解了三体运动、社会科学、量子力学、引力波、黑暗森林学说、费米悖论等基础科学知识。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;5.与同行三年的初中同学们分别，分别了好友赵锦城、翁铭泽、范晨诺。到八中之后，还有朱宣蕊、谭铭悦、姚金、陈寒和我在一个学校。有幸进入10班，我们是一个团结向上、勇争第一的集体，共同经历了军训、入学礼、2021年度运动会、纪念一二·九运动主题歌唱比赛等集体活动。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;6.成绩飞升，进入全班前十、全校前二百。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.学习并爱好羽毛球运动，坚持锻炼身体。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;8.了解民用航空、中国人民解放军，设立自己的梦想——飞行员（民航）。
-      <br>为新的一年立下目标：
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.视力度数不增长，身高达到175cm。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.成绩稳重向好，不断提升，冲进全校前百名。
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.坚持自己的梦想，坚持锻炼身体。
-      <br>祝愿2022年能顺风顺水，万事大吉，加油，奋斗者！</p><br><br><br>
-      
-<p style="text-align: center;">© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/">吉ICP备2024017023号-1</a><a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a></p>
-    </body>
+          <li><a href="https://wtcu.github.io/" target="_blank">WTCU</a></li>
+          <li><a href="../open.html" target="_blank">协议</a></li>
+          <li id="right"><a
+              href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li>
+        </big>
+        </li>
+      </ul>
+    </center>
+  </div>
+</head>
+<!--身体-->
+
+<body bgcolor="#fff">
+  <!--表头-->
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1 align="center"><big><big><big><big>2021年度总结</h1></big></big></big></big>
+
+  <center></center>
+  <p align="left" class="container" style="width:900px;">
+    2021年匆匆而去，在这一年中：
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.疫情形势明显好转，我们目前已经不用天天带口罩了。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.我经历了一次意义重大的选拔——省实验空军少年航校招飞，虽然没有成功，但是我意识到了视力重要性，也挺直了腰板。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.经历了重要的变革之一——中考，能考上八中，是我从来都不敢想象的，实属是三生有幸。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;4.在假期读完了刘慈欣的《三体》全套，了解了三体运动、社会科学、量子力学、引力波、黑暗森林学说、费米悖论等基础科学知识。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;5.与同行三年的初中同学们分别，分别了好友赵锦城、翁铭泽、范晨诺。到八中之后，还有朱宣蕊、谭铭悦、姚金、陈寒和我在一个学校。有幸进入10班，我们是一个团结向上、勇争第一的集体，共同经历了军训、入学礼、2021年度运动会、纪念一二·九运动主题歌唱比赛等集体活动。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;6.成绩飞升，进入全班前十、全校前二百。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.学习并爱好羽毛球运动，坚持锻炼身体。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;8.了解民用航空、中国人民解放军，设立自己的梦想——飞行员（民航）。
+    <br>为新的一年立下目标：
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.视力度数不增长，身高达到175cm。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.成绩稳重向好，不断提升，冲进全校前百名。
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.坚持自己的梦想，坚持锻炼身体。
+    <br>祝愿2022年能顺风顺水，万事大吉，加油，奋斗者！
+  </p><br><br><br>
+
+  <p style="text-align: center;">© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/">吉ICP备2024017023号-1</a><a
+      href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+        src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15" />吉公网安备22017202000465号</a>
+  </p>
+</body>
+
 </html>

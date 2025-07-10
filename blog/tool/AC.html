@@ -1,56 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>排列数和组合数计算器</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排列数和组合数计算器</title>
+  <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 </head>
+
 <body>
-<h2>排列数和组合数计算器</h2>
-<div>
-  <label for="n">总数 (n):</label>
-  <input type="number" id="n">
-</div>
-<div>
-  <label for="r">选取数量 (r):</label>
-  <input type="number" id="r">
-</div>
-<button onclick="calculatePermutation()">计算排列数</button>
-<button onclick="calculateCombination()">计算组合数</button>
-<div id="result"></div>
+  <h2>排列数和组合数计算器</h2>
+  <div>
+    <label for="n">总数 (n):</label>
+    <input type="number" id="n">
+  </div>
+  <div>
+    <label for="r">选取数量 (r):</label>
+    <input type="number" id="r">
+  </div>
+  <button onclick="calculatePermutation()">计算排列数</button>
+  <button onclick="calculateCombination()">计算组合数</button>
+  <div id="result"></div>
 
-<script>
-function calculatePermutation() {
-  var n = parseInt(document.getElementById('n').value);
-  var r = parseInt(document.getElementById('r').value);
-  
-  var permutation = factorial(n) / factorial(n - r);
-  
-  document.getElementById('result').innerHTML = '排列数 (P): ' + permutation;
-}
+  <script>
+    function calculatePermutation() {
+      var n = parseInt(document.getElementById('n').value);
+      var r = parseInt(document.getElementById('r').value);
 
-function calculateCombination() {
-  var n = parseInt(document.getElementById('n').value);
-  var r = parseInt(document.getElementById('r').value);
-  
-  var combination = factorial(n) / (factorial(r) * factorial(n - r));
-  
-  document.getElementById('result').innerHTML = '组合数 (C): ' + combination;
-}
+      var permutation = factorial(n) / factorial(n - r);
 
-function factorial(num) {
-  if (num === 0 || num === 1) {
-    return 1;
-  }
-  for (var i = num - 1; i >= 1; i--) {
-    num *= i;
-  }
-  return num;
-}
-</script>
-<center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-  © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-</div></center>
+      document.getElementById('result').innerHTML = '排列数 (P): ' + permutation;
+    }
+
+    function calculateCombination() {
+      var n = parseInt(document.getElementById('n').value);
+      var r = parseInt(document.getElementById('r').value);
+
+      var combination = factorial(n) / (factorial(r) * factorial(n - r));
+
+      document.getElementById('result').innerHTML = '组合数 (C): ' + combination;
+    }
+
+    function factorial(num) {
+      if (num === 0 || num === 1) {
+        return 1;
+      }
+      for (var i = num - 1; i >= 1; i--) {
+        num *= i;
+      }
+      return num;
+    }
+  </script>
+  <center>
+    <div
+      style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+      © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+          src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+          height="15" />吉公网安备22017202000465号</a>
+    </div>
+  </center>
 </body>
+
 </html>

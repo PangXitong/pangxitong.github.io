@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>遗传身高计算器</title>
@@ -8,61 +9,80 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        
+
         h1 {
             text-align: center;
         }
-        
+
         .form-group {
             margin-bottom: 10px;
         }
-        
+
         label {
             display: block;
             font-weight: bold;
         }
-        
+
         input[type="radio"] {
             margin-right: 5px;
         }
     </style>
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
+
 <body>
     <h1>遗传身高计算器</h1>
-    <center><p style="text-align: left;max-width: 600px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此程序能根据性别和父母身高身高计算孩子身高理论值，但是此数值仅供参考。虽然遗传对子代身高起主要作用，但是身高还受到疾病、年龄、饮食条件、运动量、作息规律等众多环境因素影响。——庞玺桐2023.9.17开发</p>
-    <div style="text-align: left;max-width: 400px;">
-    <div class="form-group">
-        <label for="gender">性别：</label>
-        <table><tr align="center"><td>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">男</label>
-        </td><td>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">女</label>
-        </td></tr></table>
+    <center>
+        <p style="text-align: left;max-width: 600px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此程序能根据性别和父母身高身高计算孩子身高理论值，但是此数值仅供参考。虽然遗传对子代身高起主要作用，但是身高还受到疾病、年龄、饮食条件、运动量、作息规律等众多环境因素影响。——庞玺桐2023.9.17开发
+        </p>
+        <div style="text-align: left;max-width: 400px;">
+            <div class="form-group">
+                <label for="gender">性别：</label>
+                <table>
+                    <tr align="center">
+                        <td>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">男</label>
+                        </td>
+                        <td>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">女</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="form-group">
+                <label for="fatherHeight">父亲身高（厘米）：</label>
+                <input type="number" id="fatherHeight" name="fatherHeight">
+            </div>
+
+            <div class="form-group">
+                <label for="motherHeight">母亲身高（厘米）：</label>
+                <input type="number" id="motherHeight" name="motherHeight">
+            </div>
+
+            <button onclick="calculateHeight()">计算</button>
+
+            <div id="result" style="margin-top: 10px;"></div>
+    </center>
     </div>
-    
-    <div class="form-group">
-        <label for="fatherHeight">父亲身高（厘米）：</label>
-        <input type="number" id="fatherHeight" name="fatherHeight">
-    </div>
-    
-    <div class="form-group">
-        <label for="motherHeight">母亲身高（厘米）：</label>
-        <input type="number" id="motherHeight" name="motherHeight">
-    </div>
-    
-    <button onclick="calculateHeight()">计算</button>
-    
-    <div id="result" style="margin-top: 10px;"></div>
-</center>
-</div>
     <script>
         function calculateHeight() {
             var gender = document.querySelector('input[name="gender"]:checked').value;
             var fatherHeight = parseInt(document.getElementById('fatherHeight').value);
             var motherHeight = parseInt(document.getElementById('motherHeight').value);
-            
+
             var height;
             if (gender === "male") {
                 height = (fatherHeight + motherHeight) / 2 + 6.5; // 男孩身高计算公式
@@ -71,13 +91,19 @@
             } else {
                 height = "请输入正确的性别";
             }
-            
+
             document.getElementById('result').textContent = "预计孩子的遗传身高为：" + height + "厘米";
         }
     </script>
-      <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-        © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-        <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-      </div></center>
+    <center>
+        <div
+            style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+            © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+                    src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+                    height="15" />吉公网安备22017202000465号</a>
+        </div>
+    </center>
 </body>
+
 </html>

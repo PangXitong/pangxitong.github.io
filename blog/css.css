@@ -12,7 +12,7 @@
    /*离顶部的距离为0*/
    margin-bottom: 5px;
    transition: all 0.5s;
-    z-index: 100;
+   z-index: 100;
  }
 
  .top ul {
@@ -736,7 +736,8 @@
    width: 900px;
    margin: center;
  }
-  .sba {
+
+ .sba {
    border: 4px solid #4482FF;
    /*边框*/
    padding-right: 10px;
@@ -763,8 +764,8 @@
    margin: center;
  }
 
-.sb:hover{
+ .sb:hover {
    background-color: #4482ff;
    color: #fff;
    transition-duration: 0.5s;
-}
+ }

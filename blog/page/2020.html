@@ -1,126 +1,143 @@
 <!--头部-->
 <html lang="zh-CN">
-  <head>
-    <meta name="description"content="庞玺桐的博客">
-    <meta charset="utf-8">
-    <title>总结我的2022</title> 
-    <meta name="keywords"content="庞玺桐,博客,庞玺桐的个人博客,总结我的2022,总结我的2022,年度总结,跨年,2023,新年,春节,传统文化,百度统计,Gitalk">
-    <link rel="shortcut icon" href="./images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./css.css">
-    <meta name="applicable-device" content="pc,mobile">
-    <script type="text/javascript" src="./JavaScript.js"></script>
-    <!--百度统计-->
-    <script>
-      var _hmt = _hmt || [];
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();
-      </script>
-      
 
-    <!--span颜色注释-->
-    <style>
-      span {
-            color: #EDEDED;
-      }
-      span2 {
-            color: #EEFCA9;
-      }
-      span3 {
-             color: red;
-      }
-      span4 {
-             color: black;
-      }
-      span5 {
-             color: #D6B1A6;
-      }
-      span6 {
-             color: #E25DA9;
-      }
-      span7 {
-             color: #848484;
-      }
-      span8 {
-             color: #059CE5;
-      }
-      span9 {
-             color: #B8B8B8;
-      }
-    </style>
-    <!--复制链接-->
-    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <script>
-    function shareCopyUrl(that) {
-            var clipboard = new ClipboardJS(that);
-            clipboard.on('success', function (e) {
-            console.info('Text:', e.text);
-            e.clearSelection();
-    }); 
-            clipboard.on('error', function (e) {
-            // console.error('Action:', e.action);
-            // console.error('Trigger:', e.trigger);
-    });
-            // 处理第一次点击不成功
-            clipboard.onClick(event);
+<head>
+  <meta name="description" content="庞玺桐的博客">
+  <meta charset="utf-8">
+  <title>总结我的2022</title>
+  <meta name="keywords" content="庞玺桐,博客,庞玺桐的个人博客,总结我的2022,总结我的2022,年度总结,跨年,2023,新年,春节,传统文化,百度统计,Gitalk">
+  <link rel="shortcut icon" href="./images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./css.css">
+  <meta name="applicable-device" content="pc,mobile">
+  <script type="text/javascript" src="./JavaScript.js"></script>
+  <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <!--span颜色注释-->
+  <style>
+    span {
+      color: #EDEDED;
     }
-    </script>
-    <!--固定顶部导航栏-->    
-    <div class="top">
-      <center> 
-        <ul><big>
+
+    span2 {
+      color: #EEFCA9;
+    }
+
+    span3 {
+      color: red;
+    }
+
+    span4 {
+      color: black;
+    }
+
+    span5 {
+      color: #D6B1A6;
+    }
+
+    span6 {
+      color: #E25DA9;
+    }
+
+    span7 {
+      color: #848484;
+    }
+
+    span8 {
+      color: #059CE5;
+    }
+
+    span9 {
+      color: #B8B8B8;
+    }
+  </style>
+  <!--复制链接-->
+  <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  <script>
+    function shareCopyUrl(that) {
+      var clipboard = new ClipboardJS(that);
+      clipboard.on('success', function (e) {
+        console.info('Text:', e.text);
+        e.clearSelection();
+      });
+      clipboard.on('error', function (e) {
+        // console.error('Action:', e.action);
+        // console.error('Trigger:', e.trigger);
+      });
+      // 处理第一次点击不成功
+      clipboard.onClick(event);
+    }
+  </script>
+  <!--固定顶部导航栏-->
+  <div class="top">
+    <center>
+      <ul><big>
           <li><a href="https://oldsai.cn/">庞玺桐的博客首页
-          <li><a href="https://wtcu.github.io/"target="_blank">WTCU</a></li>
-          <li><a href="../open.html"target="_blank">协议</a></li>
-          <li id="right"><a href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li></big>
-          </li>        
-        </ul>
-      </center>      
-    </div>
-  </head>
-  <!--身体-->
-  <body bgcolor="#fff">
-    <!--表头-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1 align="center"><big><big><big><big>2020年度总结</h1></big></big></big></big>
-    
-    <center></center>
-    <p align="left"class="container"style="width:900px;">
-      2020年转瞬即逝，还记得去年跨年的欣喜，却又到了跨年之际……
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;疫情打破了人们的生活，我们被迫在家上网课，疫情平息开学后，发现自己啥也不是，然后开始努力学习，疫情再一次复发，却不能阻挡我们求学的脚步！
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;这不平凡的一年转瞬即逝，着不平凡的一年夹杂着多少心酸，希望日后不在有这样的一年了，但是这一年值得纪念，我永远铭记在心，难以忘却！
-      <br>总结这一年我到底做了些什么：
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.年初1月10～18号去海滨旅游
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.去奶奶家过年，正赶上疫情爆发
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.回长春之后填表上报行程，从而控制疫情
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;4.网课即将开始
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;5.网课开始，我成了小组长
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;6.经历了两次水中考试
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.终于开学了很激动
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;8.刚开学就放假了
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;9.即使放假了，但是上午要上课外班到下午两点，然后上书法课，在回家上网课
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;10.九年级开学了，考试一直是25名
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;11.疫情复发
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;12.百年难遇的大冻雨（下雨后降温，树杈子全被冰包住）冰封长春
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;13.随着中考倒计时的红字改变，我们又全能赛了（期末考试）
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;14.又跨年了！
-      <br>这一年过的稀里糊涂！好了，总结一下：
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;①影响生活的最大因素：疫情
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;②最不同寻常的经历：网课
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;③最亲密挚友：翁铭泽、张腾文
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;④2019年定下的目标：考进全班前十五名（没能完成）
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;⑤2021年目标：健康的活着&考上理想的高中——师大附中净月分校（最好能考上本校，但是有亿点困难）
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;⑥2021祝福语:决胜中考，为梦狂奔，加油！
-      
-      <br>告别2020，喜迎2021
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;这2020年过得好快，回想起来，却总有一丝辛酸。在这个灾厄之年，我们经历了不同寻常的疫情，也因此在网上上课；我经历过一次次的磨难，却收获了最真挚的友情。虽说不舍这特殊的灾厄之年，但时光不能倒流，这个特殊的2020，我将永远铭记在心……
-      <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;对即将到来的2021，我希望一切能如旧安好，不再有以情敌限制；考上理想的高中，为自己的梦想助力；能收获最真挚的友情，让青春无悔！</p><br><br><br>
-      <p style="text-align: center;">© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/">吉ICP备2024017023号-1</a><a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a></p>
-  </body>
+          <li><a href="https://wtcu.github.io/" target="_blank">WTCU</a></li>
+          <li><a href="../open.html" target="_blank">协议</a></li>
+          <li id="right"><a
+              href="https://github.com/login/oauth/authorize?client_id=b2de3d132f1cc875b717">通过GitHub登录</a></li>
+        </big>
+        </li>
+      </ul>
+    </center>
+  </div>
+</head>
+<!--身体-->
+
+<body bgcolor="#fff">
+  <!--表头-->
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1 align="center"><big><big><big><big>2020年度总结</h1></big></big></big></big>
+
+  <center></center>
+  <p align="left" class="container" style="width:900px;">
+    2020年转瞬即逝，还记得去年跨年的欣喜，却又到了跨年之际……
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;疫情打破了人们的生活，我们被迫在家上网课，疫情平息开学后，发现自己啥也不是，然后开始努力学习，疫情再一次复发，却不能阻挡我们求学的脚步！
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;这不平凡的一年转瞬即逝，着不平凡的一年夹杂着多少心酸，希望日后不在有这样的一年了，但是这一年值得纪念，我永远铭记在心，难以忘却！
+    <br>总结这一年我到底做了些什么：
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;1.年初1月10～18号去海滨旅游
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;2.去奶奶家过年，正赶上疫情爆发
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;3.回长春之后填表上报行程，从而控制疫情
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;4.网课即将开始
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;5.网课开始，我成了小组长
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;6.经历了两次水中考试
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.终于开学了很激动
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;8.刚开学就放假了
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;9.即使放假了，但是上午要上课外班到下午两点，然后上书法课，在回家上网课
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;10.九年级开学了，考试一直是25名
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;11.疫情复发
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;12.百年难遇的大冻雨（下雨后降温，树杈子全被冰包住）冰封长春
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;13.随着中考倒计时的红字改变，我们又全能赛了（期末考试）
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;14.又跨年了！
+    <br>这一年过的稀里糊涂！好了，总结一下：
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;①影响生活的最大因素：疫情
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;②最不同寻常的经历：网课
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;③最亲密挚友：翁铭泽、张腾文
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;④2019年定下的目标：考进全班前十五名（没能完成）
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;⑤2021年目标：健康的活着&考上理想的高中——师大附中净月分校（最好能考上本校，但是有亿点困难）
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;⑥2021祝福语:决胜中考，为梦狂奔，加油！
+
+    <br>告别2020，喜迎2021
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;这2020年过得好快，回想起来，却总有一丝辛酸。在这个灾厄之年，我们经历了不同寻常的疫情，也因此在网上上课；我经历过一次次的磨难，却收获了最真挚的友情。虽说不舍这特殊的灾厄之年，但时光不能倒流，这个特殊的2020，我将永远铭记在心……
+    <br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;对即将到来的2021，我希望一切能如旧安好，不再有以情敌限制；考上理想的高中，为自己的梦想助力；能收获最真挚的友情，让青春无悔！
+  </p><br><br><br>
+  <p style="text-align: center;">© 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/">吉ICP备2024017023号-1</a><a
+      href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+        src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15" />吉公网安备22017202000465号</a>
+  </p>
+</body>
+
 </html>

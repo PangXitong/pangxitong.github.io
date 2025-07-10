@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <title>Markdown to HTML Converter</title>
+  <!--百度统计-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -54,10 +65,10 @@
   </style>
   <script>
     var _hmt = _hmt || [];
-    (function() {
+    (function () {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?b883ff563f9312078424097acef4af75";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
@@ -65,18 +76,19 @@
   <script>
     function convertMarkdown() {
       var markdownInput = document.getElementById("markdown-input").value;
-      
+
       var converter = new showdown.Converter();
       var convertedHtml = converter.makeHtml(markdownInput);
-      
+
       document.getElementById("html-output").innerText = convertedHtml;
       document.getElementById("converted-html").innerHTML = convertedHtml;
     }
   </script>
 </head>
+
 <body>
   <h1>Markdown转换HTML及其预览</h1>
-  
+
   <textarea id="markdown-input" cols="30" rows="10"></textarea>
   <br>
   <button onclick="convertMarkdown()">进行转换</button>
@@ -85,12 +97,18 @@
   <div class="output-container">
     <pre id="html-output"></pre>
   </div>
-  
+
   <h2>HTML预览</h2>
   <div class="output-container" id="converted-html"></div>
-  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-    © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-    <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-    </div></center>
+  <center>
+    <div
+      style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+      © 2022-2025 庞玺桐 版权所有 <a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+          src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+          height="15" />吉公网安备22017202000465号</a>
+    </div>
+  </center>
 </body>
+
 </html>

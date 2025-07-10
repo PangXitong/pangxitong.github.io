@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta charset="UTF-8">
   <title>联欢会抽签</title>
   <!--百度统计-->
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -52,6 +53,7 @@
     }
   </style>
 </head>
+
 <body>
   <h1>抽签</h1>
   <p>剩余项数：<span id="remainingItems">30</span></p>
@@ -100,7 +102,7 @@
       if (drawnIndexes.length === drawList.length) {
         // 所有抽签都已经抽过
         document.getElementById("result").innerText = "已抽完所有内容，请等待页面自动刷新...";
-        setTimeout(function() {
+        setTimeout(function () {
           location.reload(); // 刷新页面
         }, 3000);
       } else {
@@ -115,10 +117,18 @@
       }
     }
   </script>
-    <p style="position: fixed;bottom: 40px;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">版权声明：庞玺桐只负责技术支持，抽奖内容由李丽娜编写<br>抽签规则：共30个项目，抽过的不能再被抽出，其中有只三项能被抽出两次。</p>
-  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-  © 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-  </div></center>
+  <p
+    style="position: fixed;bottom: 40px;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+    版权声明：庞玺桐只负责技术支持，抽奖内容由李丽娜编写<br>抽签规则：共30个项目，抽过的不能再被抽出，其中有只三项能被抽出两次。</p>
+  <center>
+    <div
+      style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+      © 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+          src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+          height="15" />吉公网安备22017202000465号</a>
+    </div>
+  </center>
 </body>
+
 </html>

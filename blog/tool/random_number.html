@@ -1,69 +1,87 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>随机数生成器</title>
-<style>
-    input {
-        margin-bottom: 10px;
-    }
-</style>
-</head>
-<body>
-  <center>
-  <div style="max-width: 600px;text-align: left;">
-    <h1>随机数生成器</h1>
-    <p>本程序使用Javascript函数“Math.random()”执行随机数抽取</p>
-    <label for="min">最小值:</label>
-    <input type="number" id="min" required><br>
-
-    <label for="max">最大值:</label>
-    <input type="number" id="max" required><br>
-
-    <label for="decimals">整数（填写“0”）/小数（填写精确到几位小数）:</label>
-    <input type="number" id="decimals" required><br>
-
-    <label for="quantity">一次性抽出数量:</label>
-    <input type="number" id="quantity" required><br>
-
-    <label for="repeat">是否重复抽出:</label>
-    <select id="repeat">
-        <option value="true">是</option>
-        <option value="false">否</option>
-    </select><br>
-
-    <button onclick="generateRandomNumbers()">生成随机数</button>
-
-    <div id="result"></div>
-  </div>
-  </center>
-<script>
-function generateRandomNumbers() {
-    var min = parseInt(document.getElementById("min").value);
-    var max = parseInt(document.getElementById("max").value);
-    var decimals = parseInt(document.getElementById("decimals").value);
-    var quantity = parseInt(document.getElementById("quantity").value);
-    var repeat = document.getElementById("repeat").value === "true";
-
-    var result = document.getElementById("result");
-    result.innerHTML = "";
-
-    for (var i = 0; i < quantity; i++) {
-        var randomNum = Math.random() * (max - min) + min;
-        randomNum = parseFloat(randomNum.toFixed(decimals));
-
-        if (!repeat) {
-            result.innerHTML += "随机数 " + (i + 1) + ": " + randomNum + "<br>";
-        } else {
-            result.innerHTML += "随机数 " + (i + 1) + ": " + randomNum + "<br>";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机数生成器</title>
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style>
+        input {
+            margin-bottom: 10px;
         }
-    }
-}
-</script>
-  <center><div style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
-  © 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/"class="Link--secondary">吉ICP备2024017023号-1</a>
-  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15"  />吉公网安备22017202000465号</a>
-  </div></center>
+    </style>
+</head>
+
+<body>
+    <center>
+        <div style="max-width: 600px;text-align: left;">
+            <h1>随机数生成器</h1>
+            <p>本程序使用Javascript函数“Math.random()”执行随机数抽取</p>
+            <label for="min">最小值:</label>
+            <input type="number" id="min" required><br>
+
+            <label for="max">最大值:</label>
+            <input type="number" id="max" required><br>
+
+            <label for="decimals">整数（填写“0”）/小数（填写精确到几位小数）:</label>
+            <input type="number" id="decimals" required><br>
+
+            <label for="quantity">一次性抽出数量:</label>
+            <input type="number" id="quantity" required><br>
+
+            <label for="repeat">是否重复抽出:</label>
+            <select id="repeat">
+                <option value="true">是</option>
+                <option value="false">否</option>
+            </select><br>
+
+            <button onclick="generateRandomNumbers()">生成随机数</button>
+
+            <div id="result"></div>
+        </div>
+    </center>
+    <script>
+        function generateRandomNumbers() {
+            var min = parseInt(document.getElementById("min").value);
+            var max = parseInt(document.getElementById("max").value);
+            var decimals = parseInt(document.getElementById("decimals").value);
+            var quantity = parseInt(document.getElementById("quantity").value);
+            var repeat = document.getElementById("repeat").value === "true";
+
+            var result = document.getElementById("result");
+            result.innerHTML = "";
+
+            for (var i = 0; i < quantity; i++) {
+                var randomNum = Math.random() * (max - min) + min;
+                randomNum = parseFloat(randomNum.toFixed(decimals));
+
+                if (!repeat) {
+                    result.innerHTML += "随机数 " + (i + 1) + ": " + randomNum + "<br>";
+                } else {
+                    result.innerHTML += "随机数 " + (i + 1) + ": " + randomNum + "<br>";
+                }
+            }
+        }
+    </script>
+    <center>
+        <div
+            style="position: fixed;bottom: 0;width: 100%;padding: 20px;display: flex;justify-content: center;align-items: center;">
+            © 2022-2025 庞玺桐 版权所有<a href="https://beian.miit.gov.cn/" class="Link--secondary">吉ICP备2024017023号-1</a>
+            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465"><img
+                    src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15"
+                    height="15" />吉公网安备22017202000465号</a>
+        </div>
+    </center>
 </body>
+
 </html>
