@@ -1,0 +1,72 @@
+.flipside-btn{
+    font-family:'Roboto',sans-serif;
+    background: #009A44;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 1.5rem;
+    border: 0;
+    transition: all 0.5s;
+    border-radius: 10px;
+    width: auto;
+    position: relative;
+
+ 
+
+ 
+
+
+}
+.flipside-btn::after {
+    content: ' \f0fb';
+    font-family: "Font Awesome 6 Free", "FontAwesome";; 
+    font-weight: 400;
+    position: absolute;
+    left: 80%;
+    top: 31%;
+    right: 5%;
+    bottom: 0;
+    opacity: 0;
+
+}
+.flipside-btn:hover {
+    background: #009A44;
+    transition: all 0.5s;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px #009A44;
+    padding: 1.5rem 5.5rem 1.5rem 1.5rem;
+
+ 
+}
+
+.flipside-btn:hover::after {
+    opacity: 1;
+    transition: all 0.5s;
+
+}
+
+
+.quiz-icon::before {
+    content: ' \f044';
+    font-family: "Font Awesome 6 Free", "FontAwesome";; 
+    font-weight: 400;
+    opacity: 1;
+ 
+   
+ 
+}
+.practice-icon::before {
+    content: ' \f19d';
+    font-family: "Font Awesome 6 Free", "FontAwesome";; 
+    font-weight: 400;
+    opacity: 1;
+
+}
+.sim-icon::before {
+    content: ' \e163';
+    font-family: "Font Awesome 6 Free", "FontAwesome";; 
+    font-weight: 400;
+    opacity: 1;
+ 
+  
+}
