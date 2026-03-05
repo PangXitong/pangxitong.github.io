@@ -8,21 +8,18 @@
 
 <body>
     <script>
-        // 获取 ?url= 后面的内容
         const params = new URLSearchParams(window.location.search);
-        let url = params.get('url');
+        const url = params.get('url');
 
         if (url) {
-            // 自动补全 https（如果用户没写）
-            if (!/^https?:\/\//.test(url)) {
-                url = 'https://' + url;
-            }
-            // 直接跳转
+            // 直接跳转，不加工、不加https
             window.location.href = url;
         } else {
-            document.write('请在链接后加上 ?url=要跳转的网址');
+            document.write('请在链接后加上 ?url=跳转地址');
         }
     </script>
+</body>
+</script>
 </body>
 
 </html>
