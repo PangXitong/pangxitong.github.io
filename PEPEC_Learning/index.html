@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云塔智联--Al+N飞行管制英语情景交互训练平台</title>
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg">
+    <!--百度统计-->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?c3a493d9a1c55744165dff839ae8bd12";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 60px 20px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: #1a1a2e;
+            margin-bottom: 70px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .card a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .icon-wrapper {
+            width: 140px;
+            height: 140px;
+            border-radius: 32px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .card:hover .icon-wrapper {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 32px;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.15);
+        }
+
+        .card h3 {
+            font-size: 25px;
+            color: #2d3748;
+            text-align: center;
+            line-height: 1.5;
+            font-weight: 600;
+            max-width: 280px;
+            word-wrap: break-word;
+            word-break: break-word;
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 36px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content h3 {
+            margin-bottom: 25px;
+            color: #2d3748;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .modal-content .credentials {
+            background: linear-gradient(135deg, #f6f7f9 0%, #edf2f7 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            border-left: 4px solid #667eea;
+        }
+
+        .modal-content .credentials p {
+            margin: 12px 0;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            display: inline-block;
+            padding: 12px 36px;
+            background: linear-gradient(135deg, #f687b3 0%, #f3729c 100%);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(246, 135, 179, 0.4);
+        }
+
+        .close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(246, 135, 179, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 40px 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 50px;
+            }
+
+            .grid {
+                gap: 35px;
+            }
+
+            .icon-wrapper {
+                width: 110px;
+                height: 110px;
+                border-radius: 26px;
+            }
+
+            .card img {
+                border-radius: 26px;
+            }
+
+            .card h3 {
+                font-size: 15px;
+                max-width: 220px;
+            }
+        }
+
+        .footer-nav {
+            margin-top: auto;
+            padding: 30px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-nav li {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .footer-nav a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #333;
+        }
+
+        .footer-nav img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .footer-nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>云塔智联--Al+N飞行管制英语情景交互训练平台</h1>
+
+        <div class="grid">
+            <a href="https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MzU3MDUzNzMwMw==&scene=1&album_id=3896452090188595209&count=3&from=groupmessage&isappinstalled=0#wechat_redirect"
+                class="card" target="_blank">
+                <div class="icon-wrapper">
+                    <img src="./img/mp.jpg" alt="微信公众号">
+                </div>
+                <h3>飞行管制情境英语会话展示平台的构建与应用</h3>
+            </a>
+
+            <div class="card" onclick="showModal()">
+                <div class="icon-wrapper">
+                    <img src="./img/ai.jpeg" alt="AI网站">
+                </div>
+                <h3>云智飞训-智能化陆空通话训练平台</h3>
+            </div>
+
+            <a href="https://wxaurl.cn/OjwQr7jnglp" class="card" target="_blank">
+                <div class="icon-wrapper">
+                    <img src="./img/ICAO.png" alt="微信小程序">
+                </div>
+                <h3>飞行学员工具箱-ICAO英语PEPEC练习</h3>
+            </a>
+
+            <a href="https://doubao.com/bot/78XGTnxo" class="card" target="_blank">
+                <div class="icon-wrapper">
+                    <img src="./img/doubao.jpeg" alt="飞行管制情景英语培训机器人">
+                </div>
+                <h3>飞行管制情景英语培训机器人</h3>
+            </a>
+        </div>
+    </div>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h3>登录信息</h3>
+            <div class="credentials">
+                <p>账号：demo@oldsai.cn</p>
+                <p>密码：2025</p>
+            </div>
+            <a href="https://ai.oldsai.cn" class="btn" target="_blank">打开链接</a>
+            <span class="close-btn" onclick="closeModal()">关闭</span>
+        </div>
+    </div>
+
+    <script>
+        function showModal() {
+            document.getElementById('loginModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').classList.remove('show');
+        }
+
+        document.getElementById('loginModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+    <nav aria-label="Legal and Resource Links" class="footer-nav">
+        <ul>
+            <li>
+                © <time datetime="2024">2022-2026</time> 庞玺桐 版权所有
+            </li>
+            <li>
+                <a href="https://beian.miit.gov.cn/" target="_blank">吉ICP备2024017023号-1</a>
+            </li>
+            <li>
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=22017202000465" target="_blank">
+                    <img src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png" width="15" height="15" />
+                    吉公网安备22017202000465号
+                </a>
+            </li>
+
+            <li>
+                <a href="/git-guides">No cookies</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>
