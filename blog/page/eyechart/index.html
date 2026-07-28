@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视力表</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f5f5f5;
+      min-height: 100vh;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+    
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e1e4e8;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .header-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #24292e;
+    }
+    
+    .switch-btn {
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      background-color: #0366d6;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .switch-btn:hover {
+      background-color: #005cc5;
+    }
+    
+    .chart-container {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    
+    .chart-wrapper {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .chart-image {
+      display: block;
+      border: none;
+    }
+    
+    .info {
+      padding: 15px 20px;
+      background-color: #e8f0fe;
+      border-top: 1px solid #d1d5db;
+      font-size: 14px;
+      color: #586069;
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 10px 15px;
+      }
+      
+      .header-title {
+        font-size: 16px;
+      }
+      
+      .switch-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+      }
+      
+      .chart-wrapper {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="header-title">视力表 - <span id="current-type">C字表</span></span>
+    <button id="switch-btn" class="switch-btn">切换到E字表</button>
+  </div>
+  
+  <div class="chart-container">
+    <div class="chart-wrapper">
+      <img id="chart-img" src="./C.jpg" alt="视力表" class="chart-image" />
+    </div>
+  </div>
+  
+  <div class="info">
+    <p><strong>当前：</strong><span id="current-label">C字表（标准宽度 28.4cm）</span></p>
+    <p><strong>说明：</strong>视力表按标准物理尺寸显示。如果屏幕宽度不足以完整显示，可左右滚动查看。建议在5米距离使用标准视力表进行检测。</p>
+  </div>
+
+  <script>
+    const chartImg = document.getElementById('chart-img');
+    const switchBtn = document.getElementById('switch-btn');
+    const currentType = document.getElementById('current-type');
+    const currentLabel = document.getElementById('current-label');
+    
+    const chartConfigs = {
+      c: {
+        src: './C.jpg',
+        width: '28.4cm',
+        type: 'C字表',
+        label: 'C字表（标准宽度 28.4cm）'
+      },
+      e: {
+        src: './E.jpg',
+        width: '11.6cm',
+        type: 'E字表',
+        label: 'E字表（标准宽度 11.6cm）'
+      }
+    };
+    
+    let currentChart = 'c';
+    
+    function switchChart() {
+      currentChart = currentChart === 'c' ? 'e' : 'c';
+      const config = chartConfigs[currentChart];
+      
+      chartImg.src = config.src;
+      chartImg.style.width = config.width;
+      
+      currentType.textContent = config.type;
+      currentLabel.textContent = config.label;
+      
+      switchBtn.textContent = currentChart === 'c' ? '切换到E字表' : '切换到C字表';
+    }
+    
+    switchBtn.addEventListener('click', switchChart);
+    
+    // 图片加载完成后设置正确宽度
+    chartImg.addEventListener('load', () => {
+      const config = chartConfigs[currentChart];
+      chartImg.style.width = config.width;
+    });
+    
+    // 初始化
+    const initConfig = chartConfigs[currentChart];
+    chartImg.style.width = initConfig.width;
+  </script>
+</body>
+</html>
